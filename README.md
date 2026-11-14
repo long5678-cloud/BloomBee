@@ -1,43 +1,24 @@
-# BloomBee KV network — local review branch
+# BloomBee KV cache
 
-Composable local retention, distributed usage telemetry, and LMCache-backed remote prefetch for the existing BloomBee project. This checkout is based on upstream `0028a5e89ddb634106a2d86fed0197105a377b97`; the earlier fork branch was `9612af3f4002a69f74ec317b7e3e97af61bcadf6`. It is an uncommitted review candidate, not a published release.
+BloomBee can retain key/value (KV) tensors on a node, publish successful reuse events to a distributed hash table (DHT), and prefetch remote prefixes through LMCache. An ordinary inference request can then use the prefetched tensors on the consumer GPU.
+
+## Modules and options
 
 ```text
-src/bloombee/
-  kv_cache/
-    placement.py                  # Original whole-prefix byte API
-    api.py, dynamo.py              # Cache factories and CPU block retention
-    telemetry*.py                 # Ledger, DHT query, model-evidence adapters
-    page_retention.py             # Terminal-confirmed physical retention
-    network/
-      api.py                      # Options, Components, validated score()
-      ordinary.py                 # Ordinary token-input model request adapter
-      controller.py               # Current ordinary-request controller (d1)
-      worker.py, worker_protocol.py
-      joint_runtime.py, joint_strategy.py
-      native_page_bridge.py       # Official LMCache SDK/coordinator bridge
-      ready_bank.py, bundle_contract.py
-      lrfu_policy.py, transition_policy.py
-      __main__.py                 # Explicit check/score/worker/front/server CLI
-  client/                         # Normal model/session RPC, opt-in metadata
-  server/                         # Physical pages, ready reader, normal backend
-examples/kv_network.py             # Real CPU retention example
-examples/ordinary_request.py       # Ordinary token-input call
-configs/server.local.json          # Explicit local service settings template
-docs/                             # Installation, API, runtime, evidence
-provenance/                       # Source manifest and change evidence
-tests/kv_network/                 # Portable CPU/contract checks and fixtures
+BloomBee KV cache
+├── Local retention
+│   ├── lru         Evict by least recent successful use
+│   ├── hotness     Count successful uses in a time window
+│   ├── decay       Discount older successful uses
+│   └── dynamo      Apply block priorities and GPU/CPU retention rules
+├── Distributed telemetry
+│   └── Record successful model reuse and query it by time window
+└── Remote prefetch
+    ├── lrfu        Rank prefixes by recency and frequency
+    └── transition  Predict the next prefix from observed transitions
 ```
 
-## Module → options → calls
-
-| Module | Options | Calls and responsibility |
-|---|---|---|
-| Local retention | `lru`, `hotness`, `decay`, `dynamo` | `create_cache(...)`; storage contracts differ. Normal service selects the same four names with `BLOOMBEE_RETENTION_POLICY`. |
-| Telemetry | enabled/disabled; window, retention, TTL, membership | `record(Event(...)) → publish() → query(start,end)`; successful complete-group reuse only. |
-| Prefetch | enabled/disabled; `lrfu` or `transition` | `score(context,strategy)` is pure; native runtime qualifies history, warms via LMCache, prepares/acks/retires/activates a bundle, then normal BloomBee uses it. |
-
-A=local retention, B=Telemetry, C=Prefetch in the examples below. These module combinations are unrelated to the historical cache factory options named `A`, `B`, and `A+B`.
+Local retention lives in `src/bloombee/kv_cache/`. The public composition API and LMCache integration live in `src/bloombee/kv_cache/network/`. The ordinary model path uses `src/bloombee/client/` and `src/bloombee/server/`. See the [API reference](docs/kv-network-api.md) for exact eviction rules, tie handling, priorities and storage contracts.
 
 ## Quick start
 
@@ -56,7 +37,7 @@ The last command requires a new output directory. The CPU suite includes real lo
 
 ## Independent and combined calls
 
-The following API sketch assumes an application-supplied `dht`, qualified
+The examples use A for local retention, B for telemetry and C for prefetch. The following API sketch assumes an application-supplied `dht`, qualified
 `context`, and complete `native_config`; it is not a standalone copy/paste script.
 Runnable CPU examples (real retention/DHT/ticket lifecycle; no model or LMCache
 transfer claim) are:
@@ -117,12 +98,8 @@ Edit the immutable execution context and capacities in the configuration first. 
 
 For a minimal token request see `examples/ordinary_request.py`. For remote C, install/run the official pinned coordinator/MP/Redis services and supply their real identities and endpoints as described in [ordinary runtime](docs/ordinary-runtime.md). Cache data must cross the configured network endpoint; shared weights are not shared cache evidence.
 
-## Validation and limits
+## Validation
 
-Historical integrated execution: ten groups, 60/60 short requests, 180 output tokens; eight Remote groups each used a real LMCache cross-node 16 MiB transfer followed by local reuse. R1–R6 used c1; R7/R8 used d1. Those measurements precede this reorganization and the latest-upstream merge.
+On two H20 hosts, three consecutive requests from the public Qwen Coder trace produced all 234 reference output tokens. For the final request, LRFU selected a prefix, LMCache transferred 16 MiB, and the consumer reused 16 tokens across 32 layers. The final request took 9.46 seconds with reuse and 2.40 seconds cold.
 
-The short workload used 33 mapped input tokens and three generated tokens, not full original coding requests. It did not prove prediction ready before natural queue-head arrival, elimination of on-demand waiting, a winning predictor, or general acceleration. Prefetch's target is CPU. Numeric correctness and actual cache-use events remain separate facts.
-
-Current local results and exact gaps are in [validation](docs/validation.md). The new latest-upstream GPU/model/native end-to-end path requires a separate real-environment acceptance; CPU checks cannot certify it. No zero-bug, arbitrary-model, concurrency, TP, or production-readiness guarantee is made.
-
-See [native configuration and audit](docs/native-configuration.md), [API](docs/kv-network-api.md), [evidence](docs/evidence.md), [upstream compatibility](docs/upstream-compatibility.md), and [licenses](NOTICE-KV.md).
+See [validation and workload details](docs/validation.md), [native configuration](docs/native-configuration.md), [upstream compatibility](docs/upstream-compatibility.md), and [licenses](NOTICE-KV.md).

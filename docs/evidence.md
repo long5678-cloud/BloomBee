@@ -18,6 +18,4 @@ Earlier v0.5.6 explicit-known-prefix tests showed prearrival transfer when the c
 
 Old failures, numeric non-bit-exact outcomes, IPC repairs and evidence-only receipt recovery remain in the internal archive. They are not relabeled as successful model reruns. A measured reuse event and numerical correctness are separate fields.
 
-## This checkout
-
-The latest-upstream merge, new import layout, packaging pins, configuration and OrdinaryClient wrapper are new source. Their local receipts are listed in validation. Historical source hashes are retained alongside new hashes in provenance. No new GPU/SSH run was performed while preparing this review checkout.
+See [validation](validation.md) for the current two-host run.
