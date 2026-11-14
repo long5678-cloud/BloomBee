@@ -1,0 +1,5 @@
+# Initial Linux model acceptance profile; full transitive resolution still runs.
+torch==2.8.0
+transformers==5.5.0
+huggingface-hub==1.5.0
+numpy==1.26.4

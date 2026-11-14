@@ -1,36 +1,24 @@
-import os
-import platform
+"""BloomBee public API with model dependencies loaded on first model access.
 
-if platform.system() == "Darwin":
-    # Necessary for forks to work properly on macOS, see https://github.com/kevlened/pytest-parallel/issues/93
-    os.environ.setdefault("no_proxy", "*")
-    os.environ.setdefault("OBJC_DISABLE_INITIALIZE_FORK_SAFETY", "YES")
-
-import hivemind.compression.base as hivemind_compression_base
-import transformers
-from packaging import version
-
-from bloombee.client import *
-from bloombee.models import *
-from bloombee.utils import *
-from bloombee.utils.logging import initialize_logs as _initialize_logs
-
+KV policy and telemetry imports do not import Transformers or start DHT/CUDA.
+The original model initialization remains in _runtime_init.
+"""
+import importlib
+import threading
 __version__ = "2.3.0.dev2"
+_LOCK = threading.RLock()
+_RUNTIME_LOADING = False
+__all__ = ['DistributedLoRA', 'LoRAConfig', 'AutoConfig', 'AutoDistributedConfig', 'AutoDistributedModel', 'AutoDistributedModelForCausalLM', 'AutoDistributedModelForSequenceClassification', 'AutoDistributedSpeculativeModel', 'ClientConfig', 'DistributedBloomConfig', 'DistributedBloomForCausalLM', 'DistributedBloomForSequenceClassification', 'DistributedBloomModel', 'DistributedDeepseekV3Config', 'DistributedDeepseekV3ForCausalLM', 'DistributedDeepseekV3ForSequenceClassification', 'DistributedDeepseekV3Model', 'DistributedFalconConfig', 'DistributedFalconForCausalLM', 'DistributedFalconForSequenceClassification', 'DistributedFalconModel', 'DistributedGemma4Config', 'DistributedGemma4ForCausalLM', 'DistributedGemma4ForSequenceClassification', 'DistributedGemma4Model', 'DistributedGlm4MoeLiteConfig', 'DistributedGlm4MoeLiteForCausalLM', 'DistributedGlm4MoeLiteModel', 'DistributedLlamaConfig', 'DistributedLlamaForCausalLM', 'DistributedLlamaForSequenceClassification', 'DistributedLlamaForSpeculativeGeneration', 'DistributedLlamaModel', 'DistributedMixtralConfig', 'DistributedMixtralForCausalLM', 'DistributedMixtralForSequenceClassification', 'DistributedMixtralModel', 'DistributedNemotronHConfig', 'DistributedNemotronHForCausalLM', 'DistributedNemotronHModel', 'DistributedQwen3Config', 'DistributedQwen3ForCausalLM', 'DistributedQwen3ForSequenceClassification', 'DistributedQwen3Model', 'InferenceSession', 'NoSpendingPolicy', 'RemoteSequenceManager', 'RemoteSequential', 'SpendingPolicyBase', 'WrappedBloomBlock', 'WrappedDeepseekV3Block', 'WrappedFalconBlock', 'WrappedGemma4Block', 'WrappedGlm4MoeLiteBlock', 'WrappedLlamaBlock', 'WrappedMixtralBlock', 'WrappedNemotronHBlock', 'WrappedQwen3Block', 'declare_active_modules', 'get_remote_module_infos', 'register_model_classes']
 
-
-if not os.getenv("BLOOMBEE_IGNORE_DEPENDENCY_VERSION"):
-    assert (
-        version.parse("5.5.0") <= version.parse(transformers.__version__)
-    ), "Please install transformers>=5.5.0: pip install -U 'transformers>=5.5.0'"
-
-
-def _override_bfloat16_mode_default():
-    if os.getenv("USE_LEGACY_BFLOAT16") is None:
-        hivemind_compression_base.USE_LEGACY_BFLOAT16 = False
-
-
-_initialize_logs()
-_override_bfloat16_mode_default()
-
-from bloombee.client.lora import DistributedLoRA
-from bloombee.utils.lora import LoRAConfig
+def __getattr__(name):
+    global _RUNTIME_LOADING
+    if name.startswith("_") or name not in __all__:
+        raise AttributeError(name)
+    with _LOCK:
+        runtime = importlib.import_module("bloombee._runtime_init")
+        for key, value in vars(runtime).items():
+            if not key.startswith("_"):
+                globals()[key] = value
+        if name not in globals():
+            raise AttributeError(name)
+        return globals()[name]

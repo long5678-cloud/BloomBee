@@ -1,0 +1,4142 @@
+{
+  "scope": "Source identity and new destination files; not a GPU/runtime acceptance",
+  "baseline": "0028a5e89ddb634106a2d86fed0197105a377b97",
+  "fork_reference": "9612af3f4002a69f74ec317b7e3e97af61bcadf6",
+  "historical_runtime_base": "bb99922071de23f2bf4ccf204c4a30ea64ac1c32",
+  "lmcache_source": "236f3eec32a2d330662a1795d90a01a1e0782c49",
+  "files": [
+    {
+      "path": ".dockerignore",
+      "sha256": "0c1ab61a223e1577aa5561ac6c226b80c55188e972699a08ebd79cb00afacb2a",
+      "bytes": 89,
+      "upstream_sha256": "0c1ab61a223e1577aa5561ac6c226b80c55188e972699a08ebd79cb00afacb2a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "sha256": "de9501aa72fe340fae3088c09223b7466cb5a7b868e008492a338b4483032b86",
+      "bytes": 885,
+      "upstream_sha256": "de9501aa72fe340fae3088c09223b7466cb5a7b868e008492a338b4483032b86",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "sha256": "86e9c51c2d5a746c4c292a26f2a6ca574d15a1e9d16f7b16d433e255d7563bbb",
+      "bytes": 509,
+      "upstream_sha256": "86e9c51c2d5a746c4c292a26f2a6ca574d15a1e9d16f7b16d433e255d7563bbb",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "sha256": "297c50efe344c80d1a7a3b6441484cdf78954f9e4f2ee07f7cf889fa6b02e38a",
+      "bytes": 586,
+      "upstream_sha256": "297c50efe344c80d1a7a3b6441484cdf78954f9e4f2ee07f7cf889fa6b02e38a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".github/workflows/format.yml",
+      "sha256": "4678469342804ba070b4cbb247428b6db80e8ae08fd3d6aeacbe83466a632d13",
+      "bytes": 649,
+      "upstream_sha256": "4678469342804ba070b4cbb247428b6db80e8ae08fd3d6aeacbe83466a632d13",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".github/workflows/pylint.yml",
+      "sha256": "a44e53f7159a04f11957d5bc051f50fc2d0eedb706b568e35902d35f1049a619",
+      "bytes": 657,
+      "upstream_sha256": "a44e53f7159a04f11957d5bc051f50fc2d0eedb706b568e35902d35f1049a619",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".github/workflows/tests.yml",
+      "sha256": "7984269d5ca8d40f2495e3bb15dcb943f1dbc22c040c29c4f2872fecd734003e",
+      "bytes": 3324,
+      "upstream_sha256": "7984269d5ca8d40f2495e3bb15dcb943f1dbc22c040c29c4f2872fecd734003e",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "577471cacba597ab15604d2432782e87360c21360eed0f271ba0dc8336aec46f",
+      "bytes": 3792,
+      "upstream_sha256": "577471cacba597ab15604d2432782e87360c21360eed0f271ba0dc8336aec46f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".pre-commit-config.yaml",
+      "sha256": "b4e0e4d67a757b9ebfa99a8e0608f804f1e1e7b4b513ea9a489fa4910d338f68",
+      "bytes": 415,
+      "upstream_sha256": "b4e0e4d67a757b9ebfa99a8e0608f804f1e1e7b4b513ea9a489fa4910d338f68",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": ".pylintrc",
+      "sha256": "c69da3c814e2885632bada5c09c313304a77d97563ffacec9a367833742d9239",
+      "bytes": 749,
+      "upstream_sha256": "c69da3c814e2885632bada5c09c313304a77d97563ffacec9a367833742d9239",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "c49b28a17d70b0e425495f6fcddf37e53d8b2a370fe93afbc27321b6dae73a81",
+      "bytes": 4595,
+      "upstream_sha256": "c49b28a17d70b0e425495f6fcddf37e53d8b2a370fe93afbc27321b6dae73a81",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "Dockerfile",
+      "sha256": "c831f11a3e4c9525086386b6f12ec9770628af3301007d2b2c2b3880aa613306",
+      "bytes": 3202,
+      "upstream_sha256": "c831f11a3e4c9525086386b6f12ec9770628af3301007d2b2c2b3880aa613306",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "87f32b5806fa37527b4fa0b3e0e4dd5d8f859fc5e073689a2d6ba0987e07d7bb",
+      "bytes": 11402,
+      "upstream_sha256": "87f32b5806fa37527b4fa0b3e0e4dd5d8f859fc5e073689a2d6ba0987e07d7bb",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "NOTICE-KV.md",
+      "sha256": "3196fdbdb6b6bdee00b7bd14c9ef7834edfb02fd8ed9994905408f6559c26aed",
+      "bytes": 1432,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "README.environment-switches.md",
+      "sha256": "1bf7d146122b0931a5c8083bfb9241694be8c4f9e9914b23a14f541bb2dec16d",
+      "bytes": 12292,
+      "upstream_sha256": "1bf7d146122b0931a5c8083bfb9241694be8c4f9e9914b23a14f541bb2dec16d",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "README.logging.md",
+      "sha256": "7ccf7968faa9b622282c41eef916e43301a38b90357ca540754a8692f5641faa",
+      "bytes": 11081,
+      "upstream_sha256": "7ccf7968faa9b622282c41eef916e43301a38b90357ca540754a8692f5641faa",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "README.md",
+      "sha256": "e77376ae4bea8965a1c0eaf6c22a0716c98a8c41a9908debeb2b777d2ff09994",
+      "bytes": 8341,
+      "upstream_sha256": "b2330bd577c46a6ccf73438d9593be8ef7ae1184a341be8ee6ea4fd3dab7c6d5",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff"
+    },
+    {
+      "path": "benchmarks/benchmark_forward.py",
+      "sha256": "8cf59e702395a3de7d1aafc4900902221815cb964d127ab7bbd2dd6ae419afb8",
+      "bytes": 2919,
+      "upstream_sha256": "8cf59e702395a3de7d1aafc4900902221815cb964d127ab7bbd2dd6ae419afb8",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/benchmark_inference.py",
+      "sha256": "4b73bf387222106f08fc6b422d57efd83a007a8428662ec318880d2706bc08b3",
+      "bytes": 16340,
+      "upstream_sha256": "4b73bf387222106f08fc6b422d57efd83a007a8428662ec318880d2706bc08b3",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/benchmark_speculative_decoding.py",
+      "sha256": "8fe72a0593c778aeb633b87ed27938272a752f5c3d87570b946700f165834f3b",
+      "bytes": 5813,
+      "upstream_sha256": "8fe72a0593c778aeb633b87ed27938272a752f5c3d87570b946700f165834f3b",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/benchmark_training.py",
+      "sha256": "18ff60e1a014b1bb71f6341ed2ac7d4b3dcff52c588520211cd998bbfa652cf9",
+      "bytes": 4505,
+      "upstream_sha256": "18ff60e1a014b1bb71f6341ed2ac7d4b3dcff52c588520211cd998bbfa652cf9",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/README.md",
+      "sha256": "87b9a79107b2cb97f715b39bc26df0a717f67f721bb667d7561c5f1578b5fd5e",
+      "bytes": 208,
+      "upstream_sha256": "87b9a79107b2cb97f715b39bc26df0a717f67f721bb667d7561c5f1578b5fd5e",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/activation_dumper.py",
+      "sha256": "134dde3f5045a184d7e4b3c55b8b3ed30f7695ce09fbd4c4f625a0da1b303b34",
+      "bytes": 14519,
+      "upstream_sha256": "134dde3f5045a184d7e4b3c55b8b3ed30f7695ce09fbd4c4f625a0da1b303b34",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/analyze_compression_factors.py",
+      "sha256": "b17d7893894381fdc5319c4a70b820a2b09d8812e56e566b07c0c2ed0ba3d132",
+      "bytes": 13843,
+      "upstream_sha256": "b17d7893894381fdc5319c4a70b820a2b09d8812e56e566b07c0c2ed0ba3d132",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/analyze_latency_breakdown.py",
+      "sha256": "811b36f3d986189be1b7dad6b5dd4d7d5c2f2c23bdd9f1bfbd67597d09e80781",
+      "bytes": 66101,
+      "upstream_sha256": "811b36f3d986189be1b7dad6b5dd4d7d5c2f2c23bdd9f1bfbd67597d09e80781",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/analyze_phase2c_candidates.py",
+      "sha256": "87e76c546f06629d8bcfaf9132d8058e072777bd630fe27c62d494b320c24add",
+      "bytes": 3690,
+      "upstream_sha256": "87e76c546f06629d8bcfaf9132d8058e072777bd630fe27c62d494b320c24add",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/benchmark_compression.py",
+      "sha256": "2b6d5c77ed8ce37b62899804ebf5cfb00962bc6a4534429a22ca43aef45d0dec",
+      "bytes": 26308,
+      "upstream_sha256": "2b6d5c77ed8ce37b62899804ebf5cfb00962bc6a4534429a22ca43aef45d0dec",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/benchmark_lossless_codecs.py",
+      "sha256": "d6fdbc5da6c9f7143c27db87fe5bae5350ef5afe56e5642991e5179ca26750a8",
+      "bytes": 44935,
+      "upstream_sha256": "d6fdbc5da6c9f7143c27db87fe5bae5350ef5afe56e5642991e5179ca26750a8",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/benchmark_stride_reorg.py",
+      "sha256": "fbcba75bdc73335d522cd07566927adf2ff45ea9bace0a039b4ce3f1b3f7eb0d",
+      "bytes": 13194,
+      "upstream_sha256": "fbcba75bdc73335d522cd07566927adf2ff45ea9bace0a039b4ce3f1b3f7eb0d",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/benchmark_stride_reorg_bits.py",
+      "sha256": "d045481fa3033c8a8bc821382b4277243acef903911bd456e4a05ddc5b76f5e3",
+      "bytes": 17830,
+      "upstream_sha256": "d045481fa3033c8a8bc821382b4277243acef903911bd456e4a05ddc5b76f5e3",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/plot_act_dist_from_log.py",
+      "sha256": "240b7b4f7305289713f09c54d9d78f6e31afeea7c5b89cb1c21493a84db6e7a2",
+      "bytes": 7700,
+      "upstream_sha256": "240b7b4f7305289713f09c54d9d78f6e31afeea7c5b89cb1c21493a84db6e7a2",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/plot_layer_compression.py",
+      "sha256": "587580397effaca717dfe92ff2ccf4797a15cb926b0cf6e2b2eed61977a92a60",
+      "bytes": 2762,
+      "upstream_sha256": "587580397effaca717dfe92ff2ccf4797a15cb926b0cf6e2b2eed61977a92a60",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/compression/summarize_layer_compression.py",
+      "sha256": "67df649cda24882c265e6fa74a91844ca9c7f3aca8cf93a019dedeccf7cfa7ec",
+      "bytes": 5104,
+      "upstream_sha256": "67df649cda24882c265e6fa74a91844ca9c7f3aca8cf93a019dedeccf7cfa7ec",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "benchmarks/inference_workload.py",
+      "sha256": "11c89bbd57d44a0cb2f0d078b35d3d759c1e11905f877385a12008c043b80e66",
+      "bytes": 16817,
+      "upstream_sha256": "11c89bbd57d44a0cb2f0d078b35d3d759c1e11905f877385a12008c043b80e66",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "configs/native-deployment.example.json",
+      "change": "added",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "sha256": "25cc6fc896a57d40dad408bc791b3dd618d5a85743666109fa462bc9d143d645",
+      "bytes": 1989
+    },
+    {
+      "path": "configs/server.local.json",
+      "sha256": "19c7d502f5b73d952dd702de98ab3b9829cb022df04383ddccfc5e717baf2b67",
+      "bytes": 484,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "constraints/model-linux.txt",
+      "sha256": "1e0810aaa586707f60d5511bf5faf6279d1d17b7d8ff7b36136e74a7af73f636",
+      "bytes": 151,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "a5 working changes; incomplete acceptance"
+    },
+    {
+      "path": "docker/start-yotta-dev.sh",
+      "sha256": "a187a0ede0ae56dc59e53acbb197c45b54cc14a21b694aed8f42ba2a4b258198",
+      "bytes": 334,
+      "upstream_sha256": "a187a0ede0ae56dc59e53acbb197c45b54cc14a21b694aed8f42ba2a4b258198",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "docs/evidence.md",
+      "sha256": "fd52a67e7f2f461353a39c6f37817a2506095117bc54b9e09325ea1ed2d10cdc",
+      "bytes": 2746,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "docs/installation.md",
+      "sha256": "4b957b86266ad7db9c67056a5aa929cf963ec8a7a739915bdd22dd39dd00df2d",
+      "bytes": 7398,
+      "change": "added",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff"
+    },
+    {
+      "path": "docs/kv-network-api.md",
+      "sha256": "0351ccc61e845f70e5a16609b97ced6ef48cdd32045a9b4c5b924e6f86f45ca7",
+      "bytes": 7817,
+      "change": "added",
+      "selected_source": "c1 local terminal delivery and async prefetch dispatch repair"
+    },
+    {
+      "path": "docs/kv_cache_prefetch_api.md",
+      "sha256": "4e397ec1a6898d94625631acab80edfa4e3dd555ddbde783a8b6a0912238f8dc",
+      "bytes": 392,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/docs/kv_cache_prefetch_api.md",
+        "sha256": "415b39d25ba60a9514615925f59d67c75b2fa9d327f92b3e80686843195037dc"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "docs/kv_cache_prefix_rpc_api.md",
+      "sha256": "6071711c079c57cec137e29ee771e60bc008b85d16e88f48c1bf3e1f08d0bb57",
+      "bytes": 487,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/docs/kv_cache_prefix_rpc_api.md",
+        "sha256": "9a895ddeb97734bac14474b8f20f81edb303512142d879bd6eedcd68ea9a98bf"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "docs/kv_cache_telemetry_api.md",
+      "sha256": "5b3bd690477da2c8dbc3f78d48c2f875f4099d893d96f54752b0d57afa484a64",
+      "bytes": 399,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/docs/kv_cache_telemetry_api.md",
+        "sha256": "395daaf15b66ffd91680e920776b15ba5a2cc56d542fe53f2475fe5456d74c7d"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "docs/native-configuration.md",
+      "change": "added",
+      "selected_source": "cross-review repair wrapper/configuration/test/documentation",
+      "sha256": "ee702c6b2a2669ede66ef405665b5ceb198402f9a83ef135233658c1f3586420",
+      "bytes": 11437
+    },
+    {
+      "path": "docs/ordinary-runtime.md",
+      "sha256": "a96bf7f7f5877c038bfbea132365dede119eae16788fb77cd39f506f98a412ea",
+      "bytes": 12221,
+      "change": "added",
+      "selected_source": "unified review repair a4"
+    },
+    {
+      "path": "docs/upstream-compatibility.md",
+      "sha256": "a2f285a06bda4b53d58fd40c619664d3fde72c16b5a7a129540b9174c2b0e856",
+      "bytes": 2371,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "docs/upstream-readme.md",
+      "sha256": "fe4f0e69563c0e1f19bab96ce1e274f92bc9571373af0fe8f7a24986b9427c64",
+      "bytes": 20270,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "docs/validation.md",
+      "change": "added",
+      "selected_source": "a5 working acceptance status",
+      "sha256": "4bef02315aa47aa798aa94d3ef41fc8e7b201ae1a075d0fd22504bccd27b8e2e",
+      "bytes": 6949
+    },
+    {
+      "path": "examples/cache_case_replay.py",
+      "upstream_sha256": null,
+      "selected_source": "a5 functional repair",
+      "sha256": "04fdd846b5760a14e2cb81c782cd419a961d66a6fecaa2220edb4e7f9b66fe74",
+      "bytes": 11528,
+      "change": "added"
+    },
+    {
+      "path": "examples/kv_cache_dynamo.py",
+      "sha256": "0248a246d96823ae6e7823f358687282c640f37116b37b1dac6cec5a832aa565",
+      "bytes": 4489,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "examples/kv_cache_model_cpu.py",
+      "sha256": "4deb646308d90b036e6db81d3385f7c1da1a6b0d3e66f22fcd6f7b588c5b3011",
+      "bytes": 8623,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "examples/kv_cache_options.py",
+      "sha256": "25613cf7d540ef1964f60f3c738df42da2f7a08ae2c02286946199f3899df156",
+      "bytes": 7201,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "examples/kv_cache_prefetch.py",
+      "sha256": "0c831517c0185059617118c68912951d28023a7be541cbe4d20d3f26c5c7df30",
+      "bytes": 6635,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/examples/kv_cache_prefetch.py",
+        "sha256": "e6cfaa513c55b314a520ec34d0cd011cb3dc92b9287496d5e9f9f439d3804427"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "examples/kv_cache_prefix_rpc.py",
+      "sha256": "de22959b6346b3b00bfb1f6c0e03a2eae574a15460d5a5786bde86c30c3f8e32",
+      "bytes": 2140,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/examples/kv_cache_prefix_rpc.py",
+        "sha256": "251c6e0a19ccd753846a66fe01e7fefcaa0661084d31520ed4aaa69b16ac0bc0"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "examples/kv_cache_telemetry.py",
+      "sha256": "4cb44f6a0940be1cfdbb033e288e34ff29b3fe1e8bcb3b6e5b42f09f8f48c044",
+      "bytes": 3104,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/examples/kv_cache_telemetry.py",
+        "sha256": "4cb44f6a0940be1cfdbb033e288e34ff29b3fe1e8bcb3b6e5b42f09f8f48c044"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "examples/kv_network.py",
+      "sha256": "715272690af02ba9ae3cddcf3cfaffc9a424b65e026383f6d3d8086ec81931f0",
+      "bytes": 1548,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "examples/kv_network_combinations.py",
+      "sha256": "666855d6f67525d743f5bf3a3a5902b7719e9ba19f0c842bbb5782ad3b01593c",
+      "bytes": 4278,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "examples/merge_lora.py",
+      "sha256": "05c35fb8c9504750aede67f5688229f46d141b29f792eead82849a9a25776e49",
+      "bytes": 1447,
+      "upstream_sha256": "05c35fb8c9504750aede67f5688229f46d141b29f792eead82849a9a25776e49",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "examples/ordinary_request.py",
+      "sha256": "ff933b3bf43348085f6bce83fc7df1d339eabbe5eb0095317863129ffe1b1e3b",
+      "bytes": 1870,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "examples/ordinary_requests.py",
+      "sha256": "420cb0ec57a9c3e8c687d9560604d6c4f5a35bbf52196902b1ce931ef9212cdf",
+      "bytes": 4941,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "a5 working changes; incomplete acceptance"
+    },
+    {
+      "path": "examples/prompt-tuning-personachat.ipynb",
+      "sha256": "8714861cfcf5a1f77c418917f33f57093a52dc4598878810a9692f4fab48de70",
+      "bytes": 9667,
+      "upstream_sha256": "8714861cfcf5a1f77c418917f33f57093a52dc4598878810a9692f4fab48de70",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "examples/prompt-tuning-sst2.ipynb",
+      "sha256": "a196c08295956f0e7b59606648eb2ceb96a562f98a44bdcf030c33b587e04512",
+      "bytes": 10253,
+      "upstream_sha256": "a196c08295956f0e7b59606648eb2ceb96a562f98a44bdcf030c33b587e04512",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "examples/run_deepseek.py",
+      "sha256": "979f769ec20645d82582d41bf1725e4ccb316c477fff6daf2875472bcad076da",
+      "bytes": 1697,
+      "upstream_sha256": "979f769ec20645d82582d41bf1725e4ccb316c477fff6daf2875472bcad076da",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "examples/train_lora.py",
+      "sha256": "f8b96e6bbf487fbd909ad0cbce98bf202e7470fb45757cf40c80efa421659461",
+      "bytes": 7161,
+      "upstream_sha256": "f8b96e6bbf487fbd909ad0cbce98bf202e7470fb45757cf40c80efa421659461",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "figures/bloombee.jpg",
+      "sha256": "d6490b2089b475e956e9a9e1a57b99b757970e35ce505cbb767f626bd456a5db",
+      "bytes": 67059,
+      "upstream_sha256": "d6490b2089b475e956e9a9e1a57b99b757970e35ce505cbb767f626bd456a5db",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "figures/bloombee_logo.png",
+      "sha256": "bb3452039d8620af7eac45ba2be9b3be067fca8591770b911068bfc01bbb474c",
+      "bytes": 28078,
+      "upstream_sha256": "bb3452039d8620af7eac45ba2be9b3be067fca8591770b911068bfc01bbb474c",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "3f4840e0470901b04f3bfc4dc88f7b84723f56303e8c498c213da79458410975",
+      "bytes": 347,
+      "upstream_sha256": "3f4840e0470901b04f3bfc4dc88f7b84723f56303e8c498c213da79458410975",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "pytest.ini",
+      "sha256": "6b9a60ac797618190a09d60c89a3083bd75a9140bf502ff2839038d8a3ae20cb",
+      "bytes": 280,
+      "upstream_sha256": "6b9a60ac797618190a09d60c89a3083bd75a9140bf502ff2839038d8a3ae20cb",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "requirements-review.lock.txt",
+      "sha256": "5837ac9ed3e94074254d5b6fd09e237f73e8e9250a41438695feae0688a45def",
+      "bytes": 1810,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "scripts/install_compatible_torch.py",
+      "sha256": "ec00596393a4e0876052c2366898982402dc488d95f41401ddffc8275a575b97",
+      "bytes": 6986,
+      "upstream_sha256": "ec00596393a4e0876052c2366898982402dc488d95f41401ddffc8275a575b97",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "scripts/install_linux.sh",
+      "sha256": "69d8ee919139cc543a1f6dfb8e2f7842806e34ae5ca16c0be3fd1ad9a593dfb7",
+      "bytes": 1916,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "a5 working changes; incomplete acceptance"
+    },
+    {
+      "path": "scripts/install_p100_torch.sh",
+      "sha256": "f7553eadc2cc301468edebd89f589dc47954f85b93c5f5dc40d23f49141ce30d",
+      "bytes": 391,
+      "upstream_sha256": "f7553eadc2cc301468edebd89f589dc47954f85b93c5f5dc40d23f49141ce30d",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "scripts/test_kv_review.py",
+      "sha256": "8aef8afee54b724aea8c1a3d1b03fc6915ea7509a4d3ea76497fe6182bfc5d41",
+      "bytes": 2099,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "scripts/test_row_compaction_unit.py",
+      "sha256": "7fdabac83f62dbc16ff6bb6c3b881c0753edc2afbafff72218b5ece00fcd234b",
+      "bytes": 3241,
+      "upstream_sha256": "7fdabac83f62dbc16ff6bb6c3b881c0753edc2afbafff72218b5ece00fcd234b",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "setup.cfg",
+      "sha256": "9872604aa133d7772c3da8594aff4f2e10844b06994b58db8050d2b1eae46abb",
+      "bytes": 2452,
+      "upstream_sha256": "c80fabe7365c0562eb039ecbb85c67ad2e0af275d60cf04e19f081162be424b9",
+      "change": "modified",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "setup.py",
+      "sha256": "0cc049cd10a0b09b200e16bbe9ae9e448d2d2096095bbb92e50c7bb82e8fec75",
+      "bytes": 3682,
+      "upstream_sha256": "bdb69e40cd8702c887205bbd6eb62467e260d90de5a7372065115224dde3fcb2",
+      "change": "modified",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "src/bloombee/__init__.py",
+      "sha256": "0a27b3aa4c551d73f8402684c7acb61617d51db2733699444908e8c931ec0242",
+      "bytes": 2586,
+      "upstream_sha256": "9fac6d8ef5616a3ec9e9dd93461df8fe359b167c05818a043cbe90128ce118bb",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/__init__.py",
+        "sha256": "7765f46c3e0ed3a45db0ef75b37a6fb2bb2a64b137e02ee59e2f2b43df29769b"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/_runtime_init.py",
+      "sha256": "9fac6d8ef5616a3ec9e9dd93461df8fe359b167c05818a043cbe90128ce118bb",
+      "bytes": 1116,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "src/bloombee/cli/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "upstream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/cli/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/cli/run_dht.py",
+      "sha256": "ce9debce45149b7420c82a6b38b003ea162b2fa75af3d35d34b7d49aa5234817",
+      "bytes": 4345,
+      "upstream_sha256": "ce9debce45149b7420c82a6b38b003ea162b2fa75af3d35d34b7d49aa5234817",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/cli/run_dht.py",
+        "sha256": "ce9debce45149b7420c82a6b38b003ea162b2fa75af3d35d34b7d49aa5234817"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/cli/run_prod_server.sh",
+      "sha256": "a2f0a8de438ef5edcc41bfac9ef2bb87ac131907a8590fd32d0698517677b55a",
+      "bytes": 223,
+      "upstream_sha256": "a2f0a8de438ef5edcc41bfac9ef2bb87ac131907a8590fd32d0698517677b55a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/cli/run_server.py",
+      "sha256": "8dc50a2cbe0c230449f2545a22100aaac9d28f9b8a428128f6f7136cf5864d1f",
+      "bytes": 17749,
+      "upstream_sha256": "22f464a3c004adddc3606c6bc54efcb224964369a2c8ebdd6a73930cded13c2f",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/__init__.py",
+      "sha256": "b30215a8c2c5be9b693e880ffaca606edccb9ffeb5e9bceaf2f11a1acee3de41",
+      "bytes": 270,
+      "upstream_sha256": "b30215a8c2c5be9b693e880ffaca606edccb9ffeb5e9bceaf2f11a1acee3de41",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/__init__.py",
+        "sha256": "b30215a8c2c5be9b693e880ffaca606edccb9ffeb5e9bceaf2f11a1acee3de41"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/config.py",
+      "sha256": "179662e0b749c9d02ed6edfbc4f940691c097e7f839994fc1baefbb940432a75",
+      "bytes": 2616,
+      "upstream_sha256": "179662e0b749c9d02ed6edfbc4f940691c097e7f839994fc1baefbb940432a75",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/config.py",
+        "sha256": "179662e0b749c9d02ed6edfbc4f940691c097e7f839994fc1baefbb940432a75"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/dynamo_config.py",
+      "sha256": "1bbb93f9ae323be3dbcc8cf53b86cbfa6f46b117c385512ba1f8529712087ab7",
+      "bytes": 1446,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/dynamo_config.py",
+        "sha256": "1bbb93f9ae323be3dbcc8cf53b86cbfa6f46b117c385512ba1f8529712087ab7"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/from_pretrained.py",
+      "sha256": "40eccae1c21dceebc7b49cae3ed6ba5ed8149af3fc794d43e6bc94c64af658f2",
+      "bytes": 3918,
+      "upstream_sha256": "40eccae1c21dceebc7b49cae3ed6ba5ed8149af3fc794d43e6bc94c64af658f2",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/from_pretrained.py",
+        "sha256": "8d33cc377b6ae82aad346959a1265f9fb0f777d3f6bf287aa7f11554a04d0287"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/client/inference_session.py",
+      "sha256": "f558a4456a890cd82a8adf4e04ac6c6d2b90ba5da535afd076614043ee798afc",
+      "bytes": 54040,
+      "upstream_sha256": "4b24becc4fc6f0167f04c76ae977f2599a2166fa8bce8d9b289e1686b48f0d57",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/inference_session.py",
+        "sha256": "4aeaafca0c1122e5aa88fad1c4703821ef43982dc13b3f96ad0e15ad9e097bc8"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/client/lm_head.py",
+      "sha256": "4cd078815bab09e8da5de9e30548c830d346dc9c69bac9bac4bcaf921ec18c99",
+      "bytes": 3466,
+      "upstream_sha256": "4cd078815bab09e8da5de9e30548c830d346dc9c69bac9bac4bcaf921ec18c99",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/lm_head.py",
+        "sha256": "4cd078815bab09e8da5de9e30548c830d346dc9c69bac9bac4bcaf921ec18c99"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/lora.py",
+      "sha256": "83f9126e2f7cd9bd30d474aa9bb1e009f9d45f81d13902df41bce843c9d05a87",
+      "bytes": 16183,
+      "upstream_sha256": "83f9126e2f7cd9bd30d474aa9bb1e009f9d45f81d13902df41bce843c9d05a87",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/client/prefix_generation.py",
+      "sha256": "945eae3e9b1beb66e20a24af7e6d5638141dd08b5ef22d35b32badd65ff1426e",
+      "bytes": 4563,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/src/bloombee/client/prefix_generation.py",
+        "sha256": "945eae3e9b1beb66e20a24af7e6d5638141dd08b5ef22d35b32badd65ff1426e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/ptune.py",
+      "sha256": "0f0eb2fcc57946cef23d9a27bbe929dbdb1e9b2299dab3cf265f5f826764986c",
+      "bytes": 4000,
+      "upstream_sha256": "0f0eb2fcc57946cef23d9a27bbe929dbdb1e9b2299dab3cf265f5f826764986c",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/ptune.py",
+        "sha256": "80b23abd6ed65b58156c71c8b70b57f907a5ae8d8c4435e4175c54757cd4e5f7"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/client/remote_forward_backward.py",
+      "sha256": "0e8c758653f7854bd1efa6ea28db4e0196321a864ed59c9ffdbf0bf8bd371f75",
+      "bytes": 6955,
+      "upstream_sha256": "0e8c758653f7854bd1efa6ea28db4e0196321a864ed59c9ffdbf0bf8bd371f75",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/remote_forward_backward.py",
+        "sha256": "9ad72e54d329763959fe9177e9e3b8f224c961c3bcaf02975c5d0796383d947a"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/client/remote_generation.py",
+      "sha256": "a44587d0cb60883ff97dd99bb8d15e5f4dc392682fb3629378ab9e1f9f008a7c",
+      "bytes": 19193,
+      "upstream_sha256": "a44587d0cb60883ff97dd99bb8d15e5f4dc392682fb3629378ab9e1f9f008a7c",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/remote_generation.py",
+        "sha256": "464c013438dca2841468b9d31f8e5224c2b5feed0d9320a6685fa1094c06d776"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/client/remote_sequential.py",
+      "sha256": "78188492b0e95ac3e495bfb0c16d940d3f18b5dfaa1d64a6a5cf70ced12b2d1f",
+      "bytes": 5033,
+      "upstream_sha256": "78188492b0e95ac3e495bfb0c16d940d3f18b5dfaa1d64a6a5cf70ced12b2d1f",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/remote_sequential.py",
+        "sha256": "78188492b0e95ac3e495bfb0c16d940d3f18b5dfaa1d64a6a5cf70ced12b2d1f"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/routing/__init__.py",
+      "sha256": "3d1c59cfd753176518b5fd532dfd3cf3534453b5dcb8f1cd54bb603e9fff602e",
+      "bytes": 185,
+      "upstream_sha256": "3d1c59cfd753176518b5fd532dfd3cf3534453b5dcb8f1cd54bb603e9fff602e",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/routing/__init__.py",
+        "sha256": "3d1c59cfd753176518b5fd532dfd3cf3534453b5dcb8f1cd54bb603e9fff602e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/routing/sequence_info.py",
+      "sha256": "7d1d84a1f30f6854779948e02e8efa4acf7cf77a7a289ec115d8f6ebba806ce5",
+      "bytes": 3091,
+      "upstream_sha256": "7d1d84a1f30f6854779948e02e8efa4acf7cf77a7a289ec115d8f6ebba806ce5",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/routing/sequence_info.py",
+        "sha256": "7d1d84a1f30f6854779948e02e8efa4acf7cf77a7a289ec115d8f6ebba806ce5"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/routing/sequence_manager.py",
+      "sha256": "5a6d0965d59aa07a8914872e0bde07b90f95420b125e65d75f2029d4d2055e76",
+      "bytes": 25243,
+      "upstream_sha256": "5a6d0965d59aa07a8914872e0bde07b90f95420b125e65d75f2029d4d2055e76",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/routing/sequence_manager.py",
+        "sha256": "2135416f2a877b02ed750d26769907f572836f3bc52053b8ba86e44beb1be2b1"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/client/routing/spending_policy.py",
+      "sha256": "7dc3a2beec1a42414ae379746cf676c46607182f2975cb559c37b824f1731d31",
+      "bytes": 649,
+      "upstream_sha256": "7dc3a2beec1a42414ae379746cf676c46607182f2975cb559c37b824f1731d31",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/routing/spending_policy.py",
+        "sha256": "7dc3a2beec1a42414ae379746cf676c46607182f2975cb559c37b824f1731d31"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/client/sequential_autograd.py",
+      "sha256": "06af6616beea0f262bcf89cc3f215cf14167f4b8ff4b30c8c829d951df0e7318",
+      "bytes": 13260,
+      "upstream_sha256": "06af6616beea0f262bcf89cc3f215cf14167f4b8ff4b30c8c829d951df0e7318",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/client/sequential_autograd.py",
+        "sha256": "70073cf433c062e12dc8207ce641d5548f88de24585956cf78515f95951ad9af"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/constants.py",
+      "sha256": "131f398c0d4168ec8f77ee8b380da9e8881c9cc432c26bd42a0a4c2c5f72d574",
+      "bytes": 932,
+      "upstream_sha256": "131f398c0d4168ec8f77ee8b380da9e8881c9cc432c26bd42a0a4c2c5f72d574",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/constants.py",
+        "sha256": "131f398c0d4168ec8f77ee8b380da9e8881c9cc432c26bd42a0a4c2c5f72d574"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/data_structures.py",
+      "sha256": "8a52a46f3f9245430dea4534811e1d4fe5fb20a74b2ea19050a57492de2777bf",
+      "bytes": 4421,
+      "upstream_sha256": "93837c7ad8c76b2eaa1dc0a32b15521352f26987d56cbd307b8fcc0890551f58",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/data_structures.py",
+        "sha256": "e80edb93188e8aef03e75b86c062f1922eb02ac35b2a48c7ec94cb19478c07b9"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/dht_utils.py",
+      "sha256": "2fd53b6c056c1cef9714870eb4a7c63965ea914b715e9b362c00fee0bca9abd4",
+      "bytes": 220,
+      "upstream_sha256": "2fd53b6c056c1cef9714870eb4a7c63965ea914b715e9b362c00fee0bca9abd4",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/dht_utils.py",
+        "sha256": "2fd53b6c056c1cef9714870eb4a7c63965ea914b715e9b362c00fee0bca9abd4"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/DeviceType.py",
+      "sha256": "2dc300ff4072d1f5edeb83dcf66933df1d50f3056255c8bae13651dc2cc621ea",
+      "bytes": 590,
+      "upstream_sha256": "2dc300ff4072d1f5edeb83dcf66933df1d50f3056255c8bae13651dc2cc621ea",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/DeviceType.py",
+        "sha256": "2dc300ff4072d1f5edeb83dcf66933df1d50f3056255c8bae13651dc2cc621ea"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/ExecutionEnv.py",
+      "sha256": "dced5a7d861bee733cb5dce785a80d29cbe9ebc1015f152a1f53c86f7d4258e3",
+      "bytes": 926,
+      "upstream_sha256": "dced5a7d861bee733cb5dce785a80d29cbe9ebc1015f152a1f53c86f7d4258e3",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/ExecutionEnv.py",
+        "sha256": "9fccdb1d3947103d9ac1365b924c7d76fd670d7ffef07a7276caa4de7097b05e"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "upstream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/compression.py",
+      "sha256": "5d623048079daf8342cb065ac54c1f084ca3b8477667878ee0703151a7e79042",
+      "bytes": 14208,
+      "upstream_sha256": "5d623048079daf8342cb065ac54c1f084ca3b8477667878ee0703151a7e79042",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/compression.py",
+        "sha256": "5d623048079daf8342cb065ac54c1f084ca3b8477667878ee0703151a7e79042"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/conversion_reuse.py",
+      "sha256": "bdd1cbadaa1e90df5fa8601beb8427fe980d288cc63cc9d7e8a12352a68993f3",
+      "bytes": 3047,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "a5 working changes; incomplete acceptance"
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/llama_config.py",
+      "sha256": "4a530f67cbe855083153fa08dfb82126ff530e037c2fde5e3845076421fa3560",
+      "bytes": 12511,
+      "upstream_sha256": "c7dcd12f34b30a5122afb5237716c0fa81809978d24ef256a8754d26e8769049",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/policy.py",
+      "sha256": "beb484d83e95820295f4445e095ae6b1e1e768e9a58c630853f60ff5b182058b",
+      "bytes": 2731,
+      "upstream_sha256": "beb484d83e95820295f4445e095ae6b1e1e768e9a58c630853f60ff5b182058b",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/policy.py",
+        "sha256": "beb484d83e95820295f4445e095ae6b1e1e768e9a58c630853f60ff5b182058b"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/pytorch_backend.py",
+      "sha256": "461b199bfe9f4a4bad4106a4483ae395aea46823e772b3664ece7684ec6e43a3",
+      "bytes": 60716,
+      "upstream_sha256": "53e12e15d08ed77232c88ee8aa76220850d83c7f3d24b3536b82cb57ce1e2464",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/pytorch_backend.py",
+        "sha256": "f7d791d7a8f465a443f1daf9fbab4d4a5a136f0f8e0e60d05a0bd5296d0e9030"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/task.py",
+      "sha256": "82397ec660ca3101494e93b0913c06c0f5418824637578720f90255ccc4fb1bd",
+      "bytes": 375,
+      "upstream_sha256": "82397ec660ca3101494e93b0913c06c0f5418824637578720f90255ccc4fb1bd",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/task.py",
+        "sha256": "4184e37a0612e23c87d644582b1aa18ea5cc9a73cac0491f7b674b8687420452"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/timer.py",
+      "sha256": "889effd6a4ff165f1506ee8c7ab288fcadcefeab5549588f480b05acf855c274",
+      "bytes": 1119,
+      "upstream_sha256": "889effd6a4ff165f1506ee8c7ab288fcadcefeab5549588f480b05acf855c274",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/timer.py",
+        "sha256": "889effd6a4ff165f1506ee8c7ab288fcadcefeab5549588f480b05acf855c274"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/flexgen_utils/utils.py",
+      "sha256": "b3d0de686c4b70720a64a2a59157acc9b38b00e73016c15b2e1ddebc62299e39",
+      "bytes": 7086,
+      "upstream_sha256": "b3d0de686c4b70720a64a2a59157acc9b38b00e73016c15b2e1ddebc62299e39",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/flexgen_utils/utils.py",
+        "sha256": "593e3a7200751e057df7f8d477b4eba95ca281f8c7ff52444ba2cae43fab8a9f"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/README.md",
+      "sha256": "22ff21db59d1467c09764187ed7937ce13991fe1fff26c307bf9c19263089d53",
+      "bytes": 4326,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "src/bloombee/kv_cache/__init__.py",
+      "sha256": "dda2bf24baec91b4760a51172a8ff7798b612a58b7bbdaa2d7234dc2f901a336",
+      "bytes": 758,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/__init__.py",
+        "sha256": "a33804fae60ddb99424ac69bca6cda85234c072db8e59c7d5af7247da75d2ae1"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/api.py",
+      "sha256": "24209277cf5b6e420be8962e5ced72fe2dd28cbdac63a2d433a5683b4f81a1e1",
+      "bytes": 15927,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/api.py",
+        "sha256": "a8edaf2e811d44a8df5d37731473afa867fc2b00fb4536e12b573a943b660b0c"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/directory.py",
+      "sha256": "d5dfc0d077f01282d51a57c5587abec3d49149c567e1fa3ad7c63fffc102aef0",
+      "bytes": 6326,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/directory.py",
+        "sha256": "d5dfc0d077f01282d51a57c5587abec3d49149c567e1fa3ad7c63fffc102aef0"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/dynamo.py",
+      "sha256": "dfb2bdcbb85d91c829b76c862555c1ba7bf45eeebed7f26ae3c313d49eea3320",
+      "bytes": 19082,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/dynamo.py",
+        "sha256": "dfb2bdcbb85d91c829b76c862555c1ba7bf45eeebed7f26ae3c313d49eea3320"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/history.py",
+      "sha256": "f55249a87f2f678ece7aca6f67fa320c987a9c84f68d6ed3e31b5f60921575ce",
+      "bytes": 6391,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/history.py",
+        "sha256": "f55249a87f2f678ece7aca6f67fa320c987a9c84f68d6ed3e31b5f60921575ce"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/identity.py",
+      "sha256": "fe3cd0cdafc56288d9c40922e7ccaeb753c2044d7022288033b3d7317ca9ed22",
+      "bytes": 3496,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/identity.py",
+        "sha256": "fe3cd0cdafc56288d9c40922e7ccaeb753c2044d7022288033b3d7317ca9ed22"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/__init__.py",
+      "sha256": "b56cc05c7ad407f9739c5f9a3d97bce5cfa4da9de466e4a3699628b63abf9a8c",
+      "bytes": 72,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/__main__.py",
+      "sha256": "33aae185ec7210915a9bce9a3637a39b68ef968909db3175a85517e7c4f12fd1",
+      "bytes": 4870,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/api.py",
+      "sha256": "afae0202545566e2e8e8fe6a3ea9046a72d5b77de5531a087429d369f6ae87cb",
+      "bytes": 2903,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/bundle_contract.py",
+      "sha256": "da84008639c6214e7bdb16c46f83968159df6ce4e953c345421ffd6fd709b3f2",
+      "bytes": 6164,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/native_a1/bundle_contract.py",
+        "sha256": "da84008639c6214e7bdb16c46f83968159df6ce4e953c345421ffd6fd709b3f2"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/capture_shadow.py",
+      "sha256": "262f6fa7a008537994747ed02038b716c010051c954c275acfda54d77bdbaba3",
+      "bytes": 3105,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/strategy_a1/capture_shadow.py",
+        "sha256": "262f6fa7a008537994747ed02038b716c010051c954c275acfda54d77bdbaba3"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/client_compat.py",
+      "sha256": "4feeaaa36dd3bf284710f413309d155e4033978be1568d4ce45eb6a6abd9f564",
+      "bytes": 670,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/code/client_compat_a1.py",
+        "sha256": "4feeaaa36dd3bf284710f413309d155e4033978be1568d4ce45eb6a6abd9f564"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/clock_domain.py",
+      "sha256": "7f7597c45a06379c348a4c30efbb563f96894f6afc556daf32d83a7a90ad914e",
+      "bytes": 1353,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/clock_domain.py",
+        "sha256": "7f7597c45a06379c348a4c30efbb563f96894f6afc556daf32d83a7a90ad914e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/completion.py",
+      "sha256": "c587f3f380417c438fef5c3cd88581cfa41082a3ba7f62246e9eca8e76c85d1f",
+      "bytes": 10735,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/configuration.py",
+      "change": "added",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "sha256": "637cfb1b89687a1fc2dcdf32472e9628c08ef1243d54cf10c592bbaacae8c3fe",
+      "bytes": 20558
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/controller.py",
+      "sha256": "a6c9c53e9a278ec7ab7c9f72b3389de2eb71191d420354a622f3b11eb9336cef",
+      "bytes": 27281,
+      "change": "added",
+      "selected_source": "unified c4: frozen score publication recovery",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/front.py",
+      "sha256": "8c721f365d4c9daaf3b76c12fc63edbc11f4204ad8fb6171939c262d84b2cc6a",
+      "bytes": 23362,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/history_candidates.py",
+      "sha256": "94f26617f8bb90718f5b6b5c201f22a9d0dc71c17962978aa05a368746009880",
+      "bytes": 13525,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/history_candidates.py",
+        "sha256": "a5dffdf3cfc6cecb0f8c781a63b3dbf17fdf4eb8a560ab4f1840397681753c3a"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/independent_audit.py",
+      "change": "added",
+      "selected_source": {
+        "source": "../../execution/prefetch_joint_a1/staging/audit_ec.py",
+        "source_sha256": "6ce18ecef90884471a5e791d506aa2dab74862e0a4561d11f333af002b7b0dcf",
+        "destination": "src/bloombee/kv_cache/network/independent_audit.py",
+        "destination_sha256": "6ce18ecef90884471a5e791d506aa2dab74862e0a4561d11f333af002b7b0dcf",
+        "change": "verbatim adoption; no gate relaxation"
+      },
+      "sha256": "2ebfa9747c0a8970100c3fca68c38417149e0f2a8c1516a1109675e22f705d0b",
+      "bytes": 29050
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/joint_runtime.py",
+      "sha256": "18e5614eaf1871b0444b88b5044146eae55bbcdbba36101f5a33c4df47ee1a50",
+      "bytes": 5883,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/native_a1/joint_runtime.py",
+        "sha256": "7eb4e8c5af89f6f6eeb7d958ccbaf70f8c745ab282d575bfddacf21a09eb6af9"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/joint_strategy.py",
+      "sha256": "083292ad2a813c79ef840c56b8427c29f9f45f925f176a9fb9d6728dd2633545",
+      "bytes": 12996,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/native_a1/joint_strategy.py",
+        "sha256": "377434c74c0a775180d3a013155b71c7b8d748e46006d29fb72f0a3f468e4168"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/lifecycle.py",
+      "change": "added",
+      "selected_source": "cross-review repair wrapper/configuration/test/documentation",
+      "sha256": "26913d914cff0ea6e539ce6009825ebcf1cc4b84356c13e632fc1e984180539f",
+      "bytes": 634
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/lrfu_policy.py",
+      "sha256": "c76430a525f92b125164d47400e28f5a7813bc3404d2b8407126f40e7f9e434b",
+      "bytes": 1824,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/lrfu_policy.py",
+        "sha256": "d1eb5bb67b17cfc1600e795d90eaa3f03a4072161ab744d0963a91168ce88686"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/make_provider_config.py",
+      "sha256": "acb5ab2a39f0fdbb803e3e8be396f51be507662a82002dfebd5a56822a85a980",
+      "bytes": 1457,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/make_provider_config.py",
+        "sha256": "acb5ab2a39f0fdbb803e3e8be396f51be507662a82002dfebd5a56822a85a980"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/native_page_bridge.py",
+      "sha256": "631e0c1f10334944a0e4890f88881f39ae75177805d07cc0dd48a1443ac9005f",
+      "bytes": 22138,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/native_a1/native_page_bridge.py",
+        "sha256": "819cadc2f60a48070ab152d331f2a1c3f9b089a0846834c767577d070c66fe40"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/native_probe.py",
+      "sha256": "4e9ec71122799bf4c3e5a84dec14f89c808b74ed331b18bf1027f1f03f4ad10e",
+      "bytes": 9515,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/native_probe.py",
+        "sha256": "238c7bdc685794796702fb2067e77e3b478b79b3bf51a8c39daad83563690e27"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/native_warm.py",
+      "sha256": "210e60223af8a90ff49dbcdc30eef4c7d5ae03472d57fae899cb970bb5f296a6",
+      "bytes": 7354,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/native_warm.py",
+        "sha256": "92b28cb96271754c7cef54f97df72789aa63e7c6080586f02f53c98dac3a7e1b"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/ordinary.py",
+      "sha256": "5794dec7a630a0a6c92c4574813878ad6137967877dcbd4f5484207a27b7da39",
+      "bytes": 11836,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle"
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/provider_runtime.py",
+      "sha256": "0357b63e3914abadd30ae7475721d169b3ff4b4dc25d4f7e271652d02417d3b6",
+      "bytes": 16526,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/provider_runtime.py",
+        "sha256": "34fc5a14524f36d36a5ed3e71e5c16a2c6ed79b064bf09f8bd617c04b69503a6"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/ready_bank.py",
+      "sha256": "2988b06560321488fa0dc512cb518efd9d36c621c34bbb4b8520da299ddbbfb2",
+      "bytes": 14563,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/native_a1/ready_bank.py",
+        "sha256": "30c4711852b5955c32f9f929af862806210b6dff860d6d9767ad38a3e3fb14c6"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/release_ack.py",
+      "upstream_sha256": null,
+      "sha256": "931e38a5e6540df61523b5f6cf970e6aaf1528aba664e84abaa7f18b92003925",
+      "bytes": 5155,
+      "change": "added",
+      "selected_source": "unified c4: strict owner fields and concurrent release revalidation"
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/release_l1.py",
+      "sha256": "ea39d14685e5354cf25dd22779f9948c1ae41af0940f65b1b70540753823da5d",
+      "bytes": 4482,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/native_a1/release_l1.py",
+        "sha256": "ea39d14685e5354cf25dd22779f9948c1ae41af0940f65b1b70540753823da5d"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/snapshot_bridge.py",
+      "sha256": "20dccb437cc6b6628b92a6088da22255764668146cf34622e8323575a959c242",
+      "bytes": 4053,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/snapshot_bridge.py",
+        "sha256": "0beb8c6cf5d766ca9700df704c03851a1a9821110cd5ab316a7592d6aa2c1a46"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/strategy_contract.py",
+      "sha256": "f7f50525e9f09612ccc8907f9256e556296b44b9d03356c03769b4b42c75938f",
+      "bytes": 4667,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/strategy_contract.py",
+        "sha256": "f7f50525e9f09612ccc8907f9256e556296b44b9d03356c03769b4b42c75938f"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/strategy_runner.py",
+      "sha256": "4718341319bcdccd5841569fcbb51ca7e96a143d495a2fc906a7279d51c02a4a",
+      "bytes": 16198,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/strategy_runner.py",
+        "sha256": "50340d7899a65aa55cf9138ec470c04052da4e38097827958b60f63f7a60530d"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/transition_policy.py",
+      "sha256": "09c5f813cbfe2d12a3aca9ebc969727cae21c24971d6d8446bfad756b7a32cf5",
+      "bytes": 7775,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/strategy_a1/transition_policy.py",
+        "sha256": "09c5f813cbfe2d12a3aca9ebc969727cae21c24971d6d8446bfad756b7a32cf5"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/warm_selected.py",
+      "sha256": "bbcf610900594bd967a79f4ea4d7c66740d04c88c9955bd46307e0815b9ffa9d",
+      "bytes": 1108,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/common_a1/warm_selected.py",
+        "sha256": "e5c347173c4d1a90ce2da06ccd8e1c0e89ff09ec8d71028daa900d1fc51f59ed"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/worker.py",
+      "sha256": "d5d476091ff415bf9452a3d198730266d7bfce3ef59463675b8122bdcd5d15ea",
+      "bytes": 3315,
+      "change": "added",
+      "selected_source": {
+        "path": "/Users/yunzhonglong/Documents/HiveMind_PrivateIP_Task/KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/code/joint_worker_a1.py",
+        "sha256": "1e2c208ac274f071d8539828b58deb9f9ec5ffb9a8c62fde4d2c0d1826ff6d65"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/network/worker_protocol.py",
+      "sha256": "376eb6196f89d50c8fef03d898a7fdbfcf224eaab576fb508940be8863e69def",
+      "bytes": 19169,
+      "change": "added",
+      "selected_source": "unified c4: frozen score publication recovery",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/kv_cache/page_bundle.py",
+      "sha256": "5289877298c274763f7b7a21d8d720c0c1ec3bcc8d769355c57b4ff13d597533",
+      "bytes": 7809,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/page_bundle.py",
+        "sha256": "5289877298c274763f7b7a21d8d720c0c1ec3bcc8d769355c57b4ff13d597533"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/page_retention.py",
+      "sha256": "a881bbdf8613a7ec6a1fb4ca8675705883581cc0777b1865663254d6d2b85d78",
+      "bytes": 10529,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/page_retention.py",
+        "sha256": "a881bbdf8613a7ec6a1fb4ca8675705883581cc0777b1865663254d6d2b85d78"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/placement.py",
+      "sha256": "0674459c7dd8ca78a4eb2f3a2f362e506a1a1c7121b2c541951e601ced9cfa28",
+      "bytes": 13887,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/placement.py",
+        "sha256": "0674459c7dd8ca78a4eb2f3a2f362e506a1a1c7121b2c541951e601ced9cfa28"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/prefetch.py",
+      "sha256": "cebe3aa8af8de632efa034bb4dd9f6253375fbfae4f1e934eb108444aafd72ff",
+      "bytes": 16570,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/src/bloombee/kv_cache/prefetch.py",
+        "sha256": "cebe3aa8af8de632efa034bb4dd9f6253375fbfae4f1e934eb108444aafd72ff"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/prefix_context.py",
+      "sha256": "3670469b96ebcefba82919931c0f61b81671bbb1d9399b071ca3f33e48bcbf91",
+      "bytes": 1328,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/src/bloombee/kv_cache/prefix_context.py",
+        "sha256": "3670469b96ebcefba82919931c0f61b81671bbb1d9399b071ca3f33e48bcbf91"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/prefix_holder.py",
+      "sha256": "bac81c8c1ff7dd4ec2d9403baf8ee3eb0b8420c40917570cef7d7732b8860bc9",
+      "bytes": 3701,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/src/bloombee/kv_cache/prefix_holder.py",
+        "sha256": "bac81c8c1ff7dd4ec2d9403baf8ee3eb0b8420c40917570cef7d7732b8860bc9"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/retention_completion.py",
+      "sha256": "00e91e4c926a0fe75f4649cbdbb5abade8db779c993a04998e4cd99593d3e5b4",
+      "bytes": 5294,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/retention_completion.py",
+        "sha256": "00e91e4c926a0fe75f4649cbdbb5abade8db779c993a04998e4cd99593d3e5b4"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/telemetry.py",
+      "sha256": "8193ab7c0cf3b74331f7aebe7f7e8ca14af2fbc2935066b18b0d618c015e1040",
+      "bytes": 12953,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/telemetry.py",
+        "sha256": "8193ab7c0cf3b74331f7aebe7f7e8ca14af2fbc2935066b18b0d618c015e1040"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/telemetry_adapter.py",
+      "sha256": "54d378b23017e9242b718f6f369d69e604cf5494a8cb63fc9b7eb3b1dc6f9000",
+      "bytes": 6501,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/telemetry_adapter.py",
+        "sha256": "54d378b23017e9242b718f6f369d69e604cf5494a8cb63fc9b7eb3b1dc6f9000"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/telemetry_paged.py",
+      "sha256": "445e16b48f33efbe4fa7ffb44815e6d8b9fee81ea244a1950d01a9561b1763ca",
+      "bytes": 9430,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/telemetry_paged.py",
+        "sha256": "445e16b48f33efbe4fa7ffb44815e6d8b9fee81ea244a1950d01a9561b1763ca"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/tensor_utils.py",
+      "sha256": "03f34c3823001fc2d7566b21da9df6d03b9a144fc43ded5fa274ad416bbaa14b",
+      "bytes": 3586,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/tensor_utils.py",
+        "sha256": "03f34c3823001fc2d7566b21da9df6d03b9a144fc43ded5fa274ad416bbaa14b"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/tiered.py",
+      "sha256": "8f0884663cabf7b3ca629a4428bbafa52b9c97adc91c391b9c7889f9ac883f18",
+      "bytes": 12619,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/tiered.py",
+        "sha256": "8f0884663cabf7b3ca629a4428bbafa52b9c97adc91c391b9c7889f9ac883f18"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/token_cache.py",
+      "sha256": "0b168047859bf63b4a9a8da9447e95d0a8382dde16df54383a584c9f2d77e39e",
+      "bytes": 15332,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/token_cache.py",
+        "sha256": "0b168047859bf63b4a9a8da9447e95d0a8382dde16df54383a584c9f2d77e39e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/token_rules.py",
+      "sha256": "3437d78712d22425fbe410e6b3539c92f038905c94bf2a7afd8e0f654a1594b7",
+      "bytes": 7241,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/token_rules.py",
+        "sha256": "3437d78712d22425fbe410e6b3539c92f038905c94bf2a7afd8e0f654a1594b7"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/kv_cache/transport.py",
+      "sha256": "567450fe7715bbd6304600874fa684a5dc47c6828e4ac745c0d60c68496f8639",
+      "bytes": 10304,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/kv_cache/transport.py",
+        "sha256": "567450fe7715bbd6304600874fa684a5dc47c6828e4ac745c0d60c68496f8639"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/__init__.py",
+      "sha256": "d90c888735a2a8a7a9a77043ac0b904bdb9a80574a57076d3677d0a2470bd105",
+      "bytes": 1352,
+      "upstream_sha256": "8198dcaae5d104c443a77f49accda1df50955b9fac1fc16d1318bb58eb0f9db7",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/bloom/__init__.py",
+      "sha256": "441883c543caaa0954f298966e2f4bb90149cb86ecc83c856afd0548535a27d3",
+      "bytes": 564,
+      "upstream_sha256": "441883c543caaa0954f298966e2f4bb90149cb86ecc83c856afd0548535a27d3",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/bloom/__init__.py",
+        "sha256": "441883c543caaa0954f298966e2f4bb90149cb86ecc83c856afd0548535a27d3"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/bloom/block.py",
+      "sha256": "06e213a5742dc3f6f6e177d1980a16cf292448b629d49d1be15d968cfdd7816e",
+      "bytes": 8529,
+      "upstream_sha256": "06e213a5742dc3f6f6e177d1980a16cf292448b629d49d1be15d968cfdd7816e",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/bloom/block.py",
+        "sha256": "06e213a5742dc3f6f6e177d1980a16cf292448b629d49d1be15d968cfdd7816e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/bloom/config.py",
+      "sha256": "d4607283865dce27c18d167a2e99a4c317b2add4ca729fb054e284cfecf111dd",
+      "bytes": 1432,
+      "upstream_sha256": "d4607283865dce27c18d167a2e99a4c317b2add4ca729fb054e284cfecf111dd",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/bloom/config.py",
+        "sha256": "d4607283865dce27c18d167a2e99a4c317b2add4ca729fb054e284cfecf111dd"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/bloom/model.py",
+      "sha256": "4f18c0a549827a02803a87e9da72a8d865fbaa3b63f07770d77e5d161e49d8fa",
+      "bytes": 9450,
+      "upstream_sha256": "4f18c0a549827a02803a87e9da72a8d865fbaa3b63f07770d77e5d161e49d8fa",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/bloom/model.py",
+        "sha256": "4f18c0a549827a02803a87e9da72a8d865fbaa3b63f07770d77e5d161e49d8fa"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/deepseekv3/__init__.py",
+      "sha256": "465e6b6930f76bf0f0a7a258115fc03ba9931776138fc9d3b9f412c865ad7045",
+      "bytes": 623,
+      "upstream_sha256": "465e6b6930f76bf0f0a7a258115fc03ba9931776138fc9d3b9f412c865ad7045",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/deepseekv3/__init__.py",
+        "sha256": "465e6b6930f76bf0f0a7a258115fc03ba9931776138fc9d3b9f412c865ad7045"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/deepseekv3/block.py",
+      "sha256": "fe30babfcbdbfbac0e0a43e401a11cf86f3fa814c08f6b11a658696872cf2f07",
+      "bytes": 9374,
+      "upstream_sha256": "fe30babfcbdbfbac0e0a43e401a11cf86f3fa814c08f6b11a658696872cf2f07",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/deepseekv3/block.py",
+        "sha256": "763b22836988f7f024a418a653430fe9411f32c8acc94464d11cc0c6a06d06dd"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/deepseekv3/config.py",
+      "sha256": "90689c50422d1af3183bb86bf5d54c2bee2f5547560cabd4298ebde4382e0c94",
+      "bytes": 2591,
+      "upstream_sha256": "90689c50422d1af3183bb86bf5d54c2bee2f5547560cabd4298ebde4382e0c94",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/deepseekv3/config.py",
+        "sha256": "90689c50422d1af3183bb86bf5d54c2bee2f5547560cabd4298ebde4382e0c94"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/deepseekv3/expert_quant.py",
+      "sha256": "91808ea4b568815bf71ff0f8f970b1a6ca6e2471be4cda217eb99cd2cc986f51",
+      "bytes": 3736,
+      "upstream_sha256": "91808ea4b568815bf71ff0f8f970b1a6ca6e2471be4cda217eb99cd2cc986f51",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/deepseekv3/expert_quant.py",
+        "sha256": "91808ea4b568815bf71ff0f8f970b1a6ca6e2471be4cda217eb99cd2cc986f51"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/deepseekv3/model.py",
+      "sha256": "acdcaa067e90c0111c4f593142a7ed232be78ac146cf09a3cbd097be7a926c7d",
+      "bytes": 8568,
+      "upstream_sha256": "acdcaa067e90c0111c4f593142a7ed232be78ac146cf09a3cbd097be7a926c7d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/deepseekv3/model.py",
+        "sha256": "acdcaa067e90c0111c4f593142a7ed232be78ac146cf09a3cbd097be7a926c7d"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/deepseekv3/quantized_experts.py",
+      "sha256": "18be454139ee883e92e056e149c8103d4ea559dcb7501a86755632b87e52cf4b",
+      "bytes": 4095,
+      "upstream_sha256": "18be454139ee883e92e056e149c8103d4ea559dcb7501a86755632b87e52cf4b",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/deepseekv3/quantized_experts.py",
+        "sha256": "a517a6c81fdff5a3556b360e909439e7ef1257b6d8d66055759780c84b3fbfaf"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/falcon/__init__.py",
+      "sha256": "f710a9e848370aebc51975c18e0807746704ef1bfb72cd2126ad14071aad340f",
+      "bytes": 576,
+      "upstream_sha256": "f710a9e848370aebc51975c18e0807746704ef1bfb72cd2126ad14071aad340f",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/falcon/__init__.py",
+        "sha256": "f710a9e848370aebc51975c18e0807746704ef1bfb72cd2126ad14071aad340f"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/falcon/block.py",
+      "sha256": "d4c741d84ed7acf878264573781acce01f6b0786f296ecc658ee37d2d2902e48",
+      "bytes": 24734,
+      "upstream_sha256": "d4c741d84ed7acf878264573781acce01f6b0786f296ecc658ee37d2d2902e48",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/falcon/block.py",
+        "sha256": "d4c741d84ed7acf878264573781acce01f6b0786f296ecc658ee37d2d2902e48"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/falcon/config.py",
+      "sha256": "4a76ab07a368a85c6b7533a542519bca8e4d6dcb6235beea62a93fa0731b1442",
+      "bytes": 2012,
+      "upstream_sha256": "4a76ab07a368a85c6b7533a542519bca8e4d6dcb6235beea62a93fa0731b1442",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/falcon/config.py",
+        "sha256": "4a76ab07a368a85c6b7533a542519bca8e4d6dcb6235beea62a93fa0731b1442"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/falcon/model.py",
+      "sha256": "1b5190015ec57de44d6b4d2c41527c0a43d4cafcffbc8a21a2fdb7543467e812",
+      "bytes": 10808,
+      "upstream_sha256": "1b5190015ec57de44d6b4d2c41527c0a43d4cafcffbc8a21a2fdb7543467e812",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/falcon/model.py",
+        "sha256": "1b5190015ec57de44d6b4d2c41527c0a43d4cafcffbc8a21a2fdb7543467e812"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/gemma4/__init__.py",
+      "sha256": "f61bfd4b56563061d23a999d9c51d2082c7abc5c369241bfc48a80cd03516d1f",
+      "bytes": 1390,
+      "upstream_sha256": "f61bfd4b56563061d23a999d9c51d2082c7abc5c369241bfc48a80cd03516d1f",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/gemma4/__init__.py",
+        "sha256": "f61bfd4b56563061d23a999d9c51d2082c7abc5c369241bfc48a80cd03516d1f"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/gemma4/block.py",
+      "sha256": "0ecd15db6ce2c23b2d08123c200ce24ede9b3ca85a8b60560819190c91866e9a",
+      "bytes": 13673,
+      "upstream_sha256": "0ecd15db6ce2c23b2d08123c200ce24ede9b3ca85a8b60560819190c91866e9a",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/gemma4/block.py",
+        "sha256": "ed0c8fb0dbf1853661786afd8ffea0c3d7e151b0d63c09e9792b0e323d65eb1b"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/gemma4/config.py",
+      "sha256": "af9967aebbe2620fab8c02cf6bd2069b13200001dcf6fea84789ea7422150ac4",
+      "bytes": 5092,
+      "upstream_sha256": "af9967aebbe2620fab8c02cf6bd2069b13200001dcf6fea84789ea7422150ac4",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/gemma4/config.py",
+        "sha256": "af9967aebbe2620fab8c02cf6bd2069b13200001dcf6fea84789ea7422150ac4"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/gemma4/model.py",
+      "sha256": "d3480bef9136224fdf74476caa2940daf5dd8bc8d8f73b29b051792ca5dd18d8",
+      "bytes": 13655,
+      "upstream_sha256": "d3480bef9136224fdf74476caa2940daf5dd8bc8d8f73b29b051792ca5dd18d8",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/gemma4/model.py",
+        "sha256": "cb485ed46d92131fecee6076ab6e2f3303f411896700ad557dad362b3ee448e1"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/glm4_moe_lite/__init__.py",
+      "sha256": "b5c42d649df00dd4cf0040fbfda662a9dd7e0612048092bea5cc7450c2a68a8b",
+      "bytes": 502,
+      "upstream_sha256": "b5c42d649df00dd4cf0040fbfda662a9dd7e0612048092bea5cc7450c2a68a8b",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/glm4_moe_lite/__init__.py",
+        "sha256": "b5c42d649df00dd4cf0040fbfda662a9dd7e0612048092bea5cc7450c2a68a8b"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/glm4_moe_lite/block.py",
+      "sha256": "a185b6151565f77ec7af6622b034714c3e69db584015b1e687c84e4ec80744fb",
+      "bytes": 5162,
+      "upstream_sha256": "a185b6151565f77ec7af6622b034714c3e69db584015b1e687c84e4ec80744fb",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/glm4_moe_lite/block.py",
+        "sha256": "126835f5634cd7ad202d5f490162056bb1d4b823c7d254359b5f80a2b8d894d3"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/glm4_moe_lite/config.py",
+      "sha256": "e412ebd0b70f5cf1c8c7106d0b0e1b2e85ecdd67cfaa155786f488d726b70d29",
+      "bytes": 1605,
+      "upstream_sha256": "e412ebd0b70f5cf1c8c7106d0b0e1b2e85ecdd67cfaa155786f488d726b70d29",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/glm4_moe_lite/config.py",
+        "sha256": "e412ebd0b70f5cf1c8c7106d0b0e1b2e85ecdd67cfaa155786f488d726b70d29"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/glm4_moe_lite/model.py",
+      "sha256": "d768b240f79d09b36ac63bcf40811c4cf88bcfa4a73aec274b6a1b8091f47d6f",
+      "bytes": 6896,
+      "upstream_sha256": "d768b240f79d09b36ac63bcf40811c4cf88bcfa4a73aec274b6a1b8091f47d6f",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/glm4_moe_lite/model.py",
+        "sha256": "d768b240f79d09b36ac63bcf40811c4cf88bcfa4a73aec274b6a1b8091f47d6f"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/gpt_oss/__init__.py",
+      "sha256": "0e90c21db55bb02f66e10001954e1e7c18dd35da1b69ac064f05723943c2a2cc",
+      "bytes": 644,
+      "upstream_sha256": "0e90c21db55bb02f66e10001954e1e7c18dd35da1b69ac064f05723943c2a2cc",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/gpt_oss/block.py",
+      "sha256": "bbe6ca4d1f394837bcb16b7dbac476f2a1582c134c44895907d015d1739d125b",
+      "bytes": 5883,
+      "upstream_sha256": "bbe6ca4d1f394837bcb16b7dbac476f2a1582c134c44895907d015d1739d125b",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/gpt_oss/config.py",
+      "sha256": "bf01245e89d7372615d7e6246fbc04ff9cfedd59d19007d764c86a4412d6f095",
+      "bytes": 1482,
+      "upstream_sha256": "bf01245e89d7372615d7e6246fbc04ff9cfedd59d19007d764c86a4412d6f095",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/gpt_oss/model.py",
+      "sha256": "e148bbc1d3faa66af1680a389f4f161018fd5020377b69e0d255f9bea21b3f56",
+      "bytes": 3633,
+      "upstream_sha256": "e148bbc1d3faa66af1680a389f4f161018fd5020377b69e0d255f9bea21b3f56",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/llama/__init__.py",
+      "sha256": "dec98d68a2db0f7817ed6266b170c31ad2ada1cbbe4198b5f8274e37d94586c4",
+      "bytes": 725,
+      "upstream_sha256": "dec98d68a2db0f7817ed6266b170c31ad2ada1cbbe4198b5f8274e37d94586c4",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/__init__.py",
+        "sha256": "dec98d68a2db0f7817ed6266b170c31ad2ada1cbbe4198b5f8274e37d94586c4"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/block.py",
+      "sha256": "457c44edebef1218d44ef34ee34d5cc49ecdfa552a8f67ef1d66591c427d8bb8",
+      "bytes": 48821,
+      "upstream_sha256": "eb71aa8e5a6987ba596014879846ff4b0dc1f3b714b181f9120e9072427a76de",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/block.py",
+        "sha256": "65aa4abfeb25bb566d5ce60e3afc9d169049a3429c1bbbcc111cd0724450796f"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/llama/config.py",
+      "sha256": "19eac96b8332f477f820bf3bc43766383e74dd84b09995604ebd407212da9ff2",
+      "bytes": 2052,
+      "upstream_sha256": "19eac96b8332f477f820bf3bc43766383e74dd84b09995604ebd407212da9ff2",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/config.py",
+        "sha256": "19eac96b8332f477f820bf3bc43766383e74dd84b09995604ebd407212da9ff2"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/config/flexgen.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "upstream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/llama/config/flexgen_config.json",
+      "sha256": "fc0f0f350a23a9d943bbfaee435407c22668fc37ba5ed563dd6b954d1760c8ca",
+      "bytes": 797,
+      "upstream_sha256": "fc0f0f350a23a9d943bbfaee435407c22668fc37ba5ed563dd6b954d1760c8ca",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/llama/config/policy.json",
+      "sha256": "f3a6092ae280c501377a6d731080b1546bb629ceb84efab7eb8ce296aa289f34",
+      "bytes": 726,
+      "upstream_sha256": "f3a6092ae280c501377a6d731080b1546bb629ceb84efab7eb8ce296aa289f34",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/llama/eagle_drafter.py",
+      "sha256": "a0dbd8b18df609219f03d0da1c87e90829b7294d4c4c5557d2d867fdb972c1fe",
+      "bytes": 77379,
+      "upstream_sha256": "a0dbd8b18df609219f03d0da1c87e90829b7294d4c4c5557d2d867fdb972c1fe",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/eagle_drafter.py",
+        "sha256": "a0dbd8b18df609219f03d0da1c87e90829b7294d4c4c5557d2d867fdb972c1fe"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/flex_llama.py",
+      "sha256": "9ff12bf852cdda4e1315388b743659dbcc820f7dc653a52472a395d20b182cc0",
+      "bytes": 56957,
+      "upstream_sha256": "9ff12bf852cdda4e1315388b743659dbcc820f7dc653a52472a395d20b182cc0",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/flex_llama.py",
+        "sha256": "0bf4a06c644a7c3289d774053ede8b39bbe56e66695629232d2c2fd8b5495c2c"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/llama/model.py",
+      "sha256": "a23d9ddf1619c846f6105dfb3a13716fb3bfdc908e8d7263e288e2c20e0d8686",
+      "bytes": 13614,
+      "upstream_sha256": "a23d9ddf1619c846f6105dfb3a13716fb3bfdc908e8d7263e288e2c20e0d8686",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/model.py",
+        "sha256": "a23d9ddf1619c846f6105dfb3a13716fb3bfdc908e8d7263e288e2c20e0d8686"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/spe_dec_tree.py",
+      "sha256": "34894bf47d4af7fa232a048cbdab6c1ea982ca99587be3ddf098ebb8521639ff",
+      "bytes": 16116,
+      "upstream_sha256": "34894bf47d4af7fa232a048cbdab6c1ea982ca99587be3ddf098ebb8521639ff",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/spe_dec_tree.py",
+        "sha256": "34894bf47d4af7fa232a048cbdab6c1ea982ca99587be3ddf098ebb8521639ff"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/spec_decoding_drafter.py",
+      "sha256": "5ed98ee05b64f74782b7bd9f7f15f1c9ba225852502f13be5d6c10ebce75c60d",
+      "bytes": 20841,
+      "upstream_sha256": "5ed98ee05b64f74782b7bd9f7f15f1c9ba225852502f13be5d6c10ebce75c60d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/spec_decoding_drafter.py",
+        "sha256": "5ed98ee05b64f74782b7bd9f7f15f1c9ba225852502f13be5d6c10ebce75c60d"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/spec_decoding_tree_shape.py",
+      "sha256": "ea595d7fb60f7076038534f4f7ad2d40d53a43e4ff9e4bef52c64d855b68bf8a",
+      "bytes": 9092,
+      "upstream_sha256": "ea595d7fb60f7076038534f4f7ad2d40d53a43e4ff9e4bef52c64d855b68bf8a",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/spec_decoding_tree_shape.py",
+        "sha256": "ea595d7fb60f7076038534f4f7ad2d40d53a43e4ff9e4bef52c64d855b68bf8a"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/spec_decoding_verify.py",
+      "sha256": "0519ae899edfae0fda7b6534c1e3196faf61e02b9c185bdffedd3610f1dab438",
+      "bytes": 6199,
+      "upstream_sha256": "0519ae899edfae0fda7b6534c1e3196faf61e02b9c185bdffedd3610f1dab438",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/spec_decoding_verify.py",
+        "sha256": "0519ae899edfae0fda7b6534c1e3196faf61e02b9c185bdffedd3610f1dab438"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/speculative_model.py",
+      "sha256": "ef6f4783d9f445905b1f8156ba48d3435b1e33e2b00b1dd3e3c8e38f23afca44",
+      "bytes": 85945,
+      "upstream_sha256": "ef6f4783d9f445905b1f8156ba48d3435b1e33e2b00b1dd3e3c8e38f23afca44",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/speculative_model.py",
+        "sha256": "ef6f4783d9f445905b1f8156ba48d3435b1e33e2b00b1dd3e3c8e38f23afca44"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/llama/tensor_tree.py",
+      "sha256": "83ded7897139d3d0dd95da79d938b39045b3c63bca272fe9c5e18c907f21809b",
+      "bytes": 22990,
+      "upstream_sha256": "83ded7897139d3d0dd95da79d938b39045b3c63bca272fe9c5e18c907f21809b",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/llama/tensor_tree.py",
+        "sha256": "83ded7897139d3d0dd95da79d938b39045b3c63bca272fe9c5e18c907f21809b"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/mixtral/__init__.py",
+      "sha256": "63b3afcbc12c2d19c112dc8c8da11ea057a9e9243ab048590be41e9b2ae9228a",
+      "bytes": 588,
+      "upstream_sha256": "63b3afcbc12c2d19c112dc8c8da11ea057a9e9243ab048590be41e9b2ae9228a",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/mixtral/__init__.py",
+        "sha256": "63b3afcbc12c2d19c112dc8c8da11ea057a9e9243ab048590be41e9b2ae9228a"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/mixtral/block.py",
+      "sha256": "11bd528d20d743312dd529c21c44ebac42db4d603e72eafeb601580c83db7098",
+      "bytes": 7592,
+      "upstream_sha256": "11bd528d20d743312dd529c21c44ebac42db4d603e72eafeb601580c83db7098",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/mixtral/block.py",
+        "sha256": "7221a1f99ed94e7c97fa8fddf1d37a2573ef9a74679f580cea00344fa3a7f036"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/mixtral/config.py",
+      "sha256": "7435911a52507533dd701151318442df9cf2db7b57204f6a1d7fe7f2a96c69a5",
+      "bytes": 1527,
+      "upstream_sha256": "7435911a52507533dd701151318442df9cf2db7b57204f6a1d7fe7f2a96c69a5",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/mixtral/config.py",
+        "sha256": "7435911a52507533dd701151318442df9cf2db7b57204f6a1d7fe7f2a96c69a5"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/mixtral/model.py",
+      "sha256": "fd631b7121b006b63a60c1df7f1b645d1c0079c590b6232ddf8f391cb57feb95",
+      "bytes": 8171,
+      "upstream_sha256": "fd631b7121b006b63a60c1df7f1b645d1c0079c590b6232ddf8f391cb57feb95",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/mixtral/model.py",
+        "sha256": "151810c57f255bfafda7976d3f3d2a1c6d5b878f232b20ee7b935c781e4e0c7c"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/nemotron_h/__init__.py",
+      "sha256": "0ada9cea988878cc34404f4eebab29f155f49a1005158e8d7db43ccd579b1dd2",
+      "bytes": 479,
+      "upstream_sha256": "0ada9cea988878cc34404f4eebab29f155f49a1005158e8d7db43ccd579b1dd2",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/nemotron_h/__init__.py",
+        "sha256": "0ada9cea988878cc34404f4eebab29f155f49a1005158e8d7db43ccd579b1dd2"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/nemotron_h/block.py",
+      "sha256": "d0ecb671778170ed7f03f8a8c028ca6266df6b90eb2ff1887217c3d6e43daa36",
+      "bytes": 11915,
+      "upstream_sha256": "d0ecb671778170ed7f03f8a8c028ca6266df6b90eb2ff1887217c3d6e43daa36",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/nemotron_h/block.py",
+        "sha256": "fcce78b803bdb25b1f33c40dee98480580885ad404dffb353805b32e3ec335c5"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/nemotron_h/config.py",
+      "sha256": "29ea9629a98510a8585b37e16163c0fc2fdad079789b0b7215372f8499dcfea0",
+      "bytes": 1866,
+      "upstream_sha256": "29ea9629a98510a8585b37e16163c0fc2fdad079789b0b7215372f8499dcfea0",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/nemotron_h/config.py",
+        "sha256": "29ea9629a98510a8585b37e16163c0fc2fdad079789b0b7215372f8499dcfea0"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/nemotron_h/model.py",
+      "sha256": "a0327bc88e9a112e67020abbb9ed58dcd27db57a4c5dfb4f359b67bec9801cf9",
+      "bytes": 8099,
+      "upstream_sha256": "a0327bc88e9a112e67020abbb9ed58dcd27db57a4c5dfb4f359b67bec9801cf9",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/nemotron_h/model.py",
+        "sha256": "a0327bc88e9a112e67020abbb9ed58dcd27db57a4c5dfb4f359b67bec9801cf9"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/qwen3/__init__.py",
+      "sha256": "9380c5a8b53953320c6d5029a99032b91e7b07e9b4de504c32a709ca192b52ae",
+      "bytes": 872,
+      "upstream_sha256": "9380c5a8b53953320c6d5029a99032b91e7b07e9b4de504c32a709ca192b52ae",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/qwen3/__init__.py",
+        "sha256": "9380c5a8b53953320c6d5029a99032b91e7b07e9b4de504c32a709ca192b52ae"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/qwen3/block.py",
+      "sha256": "88c02531dd9e9672ea956a9d26808be216b9e17f4a2a9f7d890c70ec696bd12d",
+      "bytes": 9506,
+      "upstream_sha256": "88c02531dd9e9672ea956a9d26808be216b9e17f4a2a9f7d890c70ec696bd12d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/qwen3/block.py",
+        "sha256": "9ef4b88386065fad789036db772f84695538c532604ede9792bb1340941b0ceb"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/models/qwen3/config.py",
+      "sha256": "38d46a7f41c7caf10eb91859b3282dee5c5bef9c578c16aad45f772beaaab159",
+      "bytes": 1667,
+      "upstream_sha256": "38d46a7f41c7caf10eb91859b3282dee5c5bef9c578c16aad45f772beaaab159",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/qwen3/config.py",
+        "sha256": "38d46a7f41c7caf10eb91859b3282dee5c5bef9c578c16aad45f772beaaab159"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/qwen3/model.py",
+      "sha256": "8002e41f0bbcd4a4989d794afd7a5b9f8da10272211016e3039e2a0ef82f903d",
+      "bytes": 12022,
+      "upstream_sha256": "8002e41f0bbcd4a4989d794afd7a5b9f8da10272211016e3039e2a0ef82f903d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/qwen3/model.py",
+        "sha256": "8002e41f0bbcd4a4989d794afd7a5b9f8da10272211016e3039e2a0ef82f903d"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/template/README.md",
+      "sha256": "50a6aa40225bd20fcbaa8e384b1cfe2f36423033fd2853ab4ad1e54b26f5f15f",
+      "bytes": 6076,
+      "upstream_sha256": "50a6aa40225bd20fcbaa8e384b1cfe2f36423033fd2853ab4ad1e54b26f5f15f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/template/block.py.j2",
+      "sha256": "bef0c161dd362cd6c122e5265b481d7d2de5dc1997ceb586ecac73ebfd28dc01",
+      "bytes": 31407,
+      "upstream_sha256": "bef0c161dd362cd6c122e5265b481d7d2de5dc1997ceb586ecac73ebfd28dc01",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/template/config.py.j2",
+      "sha256": "90a82e647c81226a0a1efe4983ce8cd2b752935d7d932d699197d37fe51f9788",
+      "bytes": 2558,
+      "upstream_sha256": "90a82e647c81226a0a1efe4983ce8cd2b752935d7d932d699197d37fe51f9788",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/template/decoder_shared_impl.pyfrag",
+      "sha256": "6533df5fc0f0715f7c1a9447563fb1531d3854b3ddc6d2ba8f5cd119060a4f9c",
+      "bytes": 10556,
+      "upstream_sha256": "6533df5fc0f0715f7c1a9447563fb1531d3854b3ddc6d2ba8f5cd119060a4f9c",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/template/gen_block.py",
+      "sha256": "2972c980e373c76460c35da74aa4762025de7d70c78e2f88fdbde63273c90742",
+      "bytes": 5883,
+      "upstream_sha256": "2972c980e373c76460c35da74aa4762025de7d70c78e2f88fdbde63273c90742",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/models/template/gen_block.py",
+        "sha256": "2972c980e373c76460c35da74aa4762025de7d70c78e2f88fdbde63273c90742"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/models/template/llama.yaml",
+      "sha256": "b4445815b9639505d42fc546417fa710b7eee7ca818023453308f7b57fd2b756",
+      "bytes": 3441,
+      "upstream_sha256": "b4445815b9639505d42fc546417fa710b7eee7ca818023453308f7b57fd2b756",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/models/template/model.py.j2",
+      "sha256": "81d0e89a0a87e90c0f89a036075b5471ed69c5bcae1cdfe414a1a60705b19f94",
+      "bytes": 10229,
+      "upstream_sha256": "81d0e89a0a87e90c0f89a036075b5471ed69c5bcae1cdfe414a1a60705b19f94",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/server/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "upstream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/__init__.py",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/backend.py",
+      "sha256": "2e5986b60395543e7c54628b3704fc49f2d15da92186f21ff1e544016d438a66",
+      "bytes": 98918,
+      "upstream_sha256": "0eaf7ebeeb44795f60fb94e868cb61be8af4f148b4de6691583e2e8c77f3e111",
+      "change": "modified",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/backward_chain.py",
+      "sha256": "cfef0041091c4d9ac5ba97b11e3dace250c1f1815b43d5461ea12336bd517728",
+      "bytes": 11817,
+      "upstream_sha256": "cfef0041091c4d9ac5ba97b11e3dace250c1f1815b43d5461ea12336bd517728",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/server/block_functions.py",
+      "sha256": "ce1f1de259354c58890980894c4ef091494a27102a2f830331dd48c72297ddec",
+      "bytes": 161294,
+      "upstream_sha256": "335e16ad792c5c377d86c2e56357b8826357f29ab818402a8a4bd4cf18251bdd",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/block_functions.py",
+        "sha256": "a9936fc42af196a94747eb3952cc94d36577f1782ef2184fe3a55da08396c07e"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/block_selection.py",
+      "sha256": "29aa3212a359b3c86b8b161321c3e7650580fcdc38bca5c6ef9b423434bdb3a2",
+      "bytes": 3962,
+      "upstream_sha256": "29aa3212a359b3c86b8b161321c3e7650580fcdc38bca5c6ef9b423434bdb3a2",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/block_selection.py",
+        "sha256": "29aa3212a359b3c86b8b161321c3e7650580fcdc38bca5c6ef9b423434bdb3a2"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/block_utils.py",
+      "sha256": "dd32d3e6a4b4989765dc6c96dc790b23eeee9a8f78cbe847681b29db43550cd6",
+      "bytes": 9654,
+      "upstream_sha256": "30cae27322008632c39dd207d19cec338e361b77ae54508444e2b741695dd0b2",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/dynamo_gpu.py",
+      "sha256": "eeedaffc5c500ac3f5ea42ddc1e4e5e76db3b5381e01646f4a1df2f9364d5843",
+      "bytes": 9182,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/dynamo_gpu.py",
+        "sha256": "eeedaffc5c500ac3f5ea42ddc1e4e5e76db3b5381e01646f4a1df2f9364d5843"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/dynamo_native_context.py",
+      "sha256": "e65376c01113253bb4b17a4e2ffa5ca3c07b630ac7be3c10887d4fe462d27d32",
+      "bytes": 1527,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/dynamo_native_context.py",
+        "sha256": "e65376c01113253bb4b17a4e2ffa5ca3c07b630ac7be3c10887d4fe462d27d32"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/dynamo_page_service.py",
+      "sha256": "9062f5e4624410e030ecdd49d2444f443f8df1736e52592190327fe3a397750c",
+      "bytes": 34328,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/dynamo_pages.py",
+      "sha256": "0096ff694b16836f23c9bc4d3cc5e25cca2e529fba30dd5d0bc641dccda5c87c",
+      "bytes": 23044,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/dynamo_remote.py",
+      "sha256": "1427b87288a9bd6ee1df878855f505124e3db3304f26ae365ae7ae31059f985e",
+      "bytes": 21775,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/dynamo_remote.py",
+        "sha256": "ea67a31b533f40c85d6f8e9d38dcf0b74b529431d2ab58a46b8d41a95fb81beb"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/dynamo_service.py",
+      "sha256": "6629e6cdd61015206fd541b636c99b2853c027c85544f9421253fbb35a93f283",
+      "bytes": 23763,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/dynamo_service.py",
+        "sha256": "77aa2c18a6a04d05d39727d6f19811326256f32b9d736c543c52ce54b3f215ec"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/flexgen_tensor_parallel.py",
+      "sha256": "af198332b136b1603dee3d4b117fc41f215063112bd44f0c7d90dabb777aa840",
+      "bytes": 35887,
+      "upstream_sha256": "53c09165357d73171f3388552e8104fbb818b722b09f1dd504a60cbb4999d1a2",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/flexgen_tensor_parallel.py",
+        "sha256": "a43e5dd883c9ac357db66a45dcb6906ba7229c07314ddbd6e8332c68a2d49ebb"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/fragment_attention.py",
+      "upstream_sha256": null,
+      "sha256": "366d623bfc4b5e12aa137a6d9268b146da650c323ccfd30ef570ece8bc6b41df",
+      "bytes": 3483,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle"
+    },
+    {
+      "path": "src/bloombee/server/from_pretrained.py",
+      "sha256": "0bdfc11c9980d54a54247354f1f9a9d8b2d7ad65dc5ec8546592b0c3dbc814e6",
+      "bytes": 23123,
+      "upstream_sha256": "99b56e2bc0a7c2fede2a6b62ab1f229f7222056131d3751806172137609e5b93",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/handler.py",
+      "sha256": "510b520d6c9e20fa6bfeed08583b00d16a8e3811d673c6ccbf744b6ea5aa5630",
+      "bytes": 154232,
+      "upstream_sha256": "93d207440022d66c45bbc4968d59bc3a7e96261abd072e28777a191fc2b5bf33",
+      "change": "modified",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/lora.py",
+      "sha256": "0cb3786acedc43c0ad05d1e5ceaf51aad72e69eea986ac6ab4e6be15c069b5a7",
+      "bytes": 7535,
+      "upstream_sha256": "0cb3786acedc43c0ad05d1e5ceaf51aad72e69eea986ac6ab4e6be15c069b5a7",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/server/memory_cache.py",
+      "sha256": "85163d18497e70203651157b0f5a85789a133c25a04ab4d847c06bc067aed3b5",
+      "bytes": 30971,
+      "upstream_sha256": "1b07f0a18a91aa97bb30cac21dd5ab42fcfbe94ef0137b8463c0f836b5f80d13",
+      "change": "modified",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/memory_cache_manager.py",
+      "sha256": "e324d360ac91cb9a09313a4d4763dff779d32b983d28d5f897a8fc2f7354deff",
+      "bytes": 151614,
+      "upstream_sha256": "82d6751513864719b371f80172784c9a4952434743419e40e6e14a0923328596",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/memory_cache_manager.py",
+        "sha256": "bf91cf5025be80e1ab1d07eba6301c2f4ec6b23c646425ab2e01b00ac5ee0da1"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/microbatch.py",
+      "sha256": "0a76433ff2d05792d1a3bae3fcaaec696d6a2c158cb2221963791e9fba23e4ae",
+      "bytes": 10878,
+      "upstream_sha256": "8777b80b79f62f32528a26259386c415cafdf8acd5f9066e901e59654ab3a5bf",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/microbatch.py",
+        "sha256": "257a208f155981c6c1aee64703d455dd51b9a5c0e431e7ce399b43a609d8e97a"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/mla_chunk.py",
+      "sha256": "d4f7a6ee09c8237ac789da562f4ed340a83267ae90108e66812742e6a19915ff",
+      "bytes": 3594,
+      "upstream_sha256": "d4f7a6ee09c8237ac789da562f4ed340a83267ae90108e66812742e6a19915ff",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/server/overlap_attribution.py",
+      "sha256": "3ae82f0d29e0cb956b3949094bb369404a9889a15c99df1377302229c579a33f",
+      "bytes": 21458,
+      "upstream_sha256": "3ae82f0d29e0cb956b3949094bb369404a9889a15c99df1377302229c579a33f",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/overlap_attribution.py",
+        "sha256": "bdaf967a1deb90587fe7f00076b3abe0403ffd766c1478927e658d759a7ecb94"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/page_attention_kernel.py",
+      "upstream_sha256": null,
+      "sha256": "d41747841c9db2ecb0e7766cd8d3b53be1c0c80a3ee145e38720508c2e4625cc",
+      "bytes": 4388,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle"
+    },
+    {
+      "path": "src/bloombee/server/page_bundle_reader.py",
+      "sha256": "92a33537a235714d25726e87981dc2397826b4b51e6f5a43d848fb2ffd5c339a",
+      "bytes": 24226,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/page_bundle_reader.py",
+        "sha256": "92a33537a235714d25726e87981dc2397826b4b51e6f5a43d848fb2ffd5c339a"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/page_control.py",
+      "sha256": "1c58b9aae0c8a43a6a00e5a44466f069ee1631d7c169cc97909014d5af1e1b08",
+      "bytes": 20914,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/page_release_ack.py",
+      "upstream_sha256": null,
+      "sha256": "57a9d84d3abffdc094af33954e702100a45debc6ee48e388effb199aaa5d5b46",
+      "bytes": 7851,
+      "change": "added",
+      "selected_source": "unified c4: strict owner fields and concurrent release revalidation"
+    },
+    {
+      "path": "src/bloombee/server/paged_kv.py",
+      "sha256": "583387d463725539ad8109275876e59491e393100328f6fa83fdfc47549ab9d8",
+      "bytes": 12051,
+      "upstream_sha256": "583387d463725539ad8109275876e59491e393100328f6fa83fdfc47549ab9d8",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/paged_kv.py",
+        "sha256": "583387d463725539ad8109275876e59491e393100328f6fa83fdfc47549ab9d8"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/prefix_rpc.py",
+      "sha256": "7ad4f9c52b9603b9f478529b0c207a265a856017293f5b75875d9975f17f655f",
+      "bytes": 24132,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/src/bloombee/server/prefix_rpc.py",
+        "sha256": "7ad4f9c52b9603b9f478529b0c207a265a856017293f5b75875d9975f17f655f"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/reachability.py",
+      "sha256": "c0ecd66756340aa4abfa22bb8bcb226ca97ee9f82a8ed6ef952954500c875126",
+      "bytes": 8157,
+      "upstream_sha256": "c0ecd66756340aa4abfa22bb8bcb226ca97ee9f82a8ed6ef952954500c875126",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/reachability.py",
+        "sha256": "c0ecd66756340aa4abfa22bb8bcb226ca97ee9f82a8ed6ef952954500c875126"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/remote_prefix_session.py",
+      "sha256": "acc2291ac21feb8dca4d0468bf68f1fc025ddf418de182f27ad6133ed9f38473",
+      "bytes": 19433,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/src/bloombee/server/remote_prefix_session.py",
+        "sha256": "acc2291ac21feb8dca4d0468bf68f1fc025ddf418de182f27ad6133ed9f38473"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/s2s_flow.py",
+      "sha256": "08386d01d3bbc214b31e826635d03e2da78a84bef9a9fb135cb5a83ef84574a6",
+      "bytes": 7044,
+      "upstream_sha256": "08386d01d3bbc214b31e826635d03e2da78a84bef9a9fb135cb5a83ef84574a6",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/s2s_flow.py",
+        "sha256": "08386d01d3bbc214b31e826635d03e2da78a84bef9a9fb135cb5a83ef84574a6"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/server.py",
+      "sha256": "e92371d2545ca757ed7e0f2b874bad638110d22089b7eeca55c644df31ec35e0",
+      "bytes": 49282,
+      "upstream_sha256": "42f7bed3942cbcadd148db0565b31a4e3ff7bf761a0af86b2d48e770909b55b3",
+      "change": "modified",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/__init__.py",
+      "sha256": "2b4d653e5b4d7c9f8282bc569cd6a23b8fcbf2edeb982956dea9b52ca05f6bc3",
+      "bytes": 86,
+      "upstream_sha256": "2b4d653e5b4d7c9f8282bc569cd6a23b8fcbf2edeb982956dea9b52ca05f6bc3",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/__init__.py",
+        "sha256": "2b4d653e5b4d7c9f8282bc569cd6a23b8fcbf2edeb982956dea9b52ca05f6bc3"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/adaptive_neural_pruner.py",
+      "sha256": "8a8795f4b3dc5e5a05a96cf735f2f291baa7ec2c803c6e4c4307c8cd44b017b8",
+      "bytes": 22730,
+      "upstream_sha256": "8a8795f4b3dc5e5a05a96cf735f2f291baa7ec2c803c6e4c4307c8cd44b017b8",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/adaptive_neural_pruner.py",
+        "sha256": "8a8795f4b3dc5e5a05a96cf735f2f291baa7ec2c803c6e4c4307c8cd44b017b8"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/lm_head_trainer.py",
+      "sha256": "836a55185abfbfe925ee92750dee4e6ca8b7f89596daafe195aee8bf4d8a065d",
+      "bytes": 3184,
+      "upstream_sha256": "836a55185abfbfe925ee92750dee4e6ca8b7f89596daafe195aee8bf4d8a065d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/lm_head_trainer.py",
+        "sha256": "836a55185abfbfe925ee92750dee4e6ca8b7f89596daafe195aee8bf4d8a065d"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/mid_layer_LM_head.py",
+      "sha256": "8575f37f879c0a2d3c07839c15d737f8a61aeeefa541cefe264ddd6c5d8cd903",
+      "bytes": 705,
+      "upstream_sha256": "8575f37f879c0a2d3c07839c15d737f8a61aeeefa541cefe264ddd6c5d8cd903",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/mid_layer_LM_head.py",
+        "sha256": "8575f37f879c0a2d3c07839c15d737f8a61aeeefa541cefe264ddd6c5d8cd903"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/pruner_factory.py",
+      "sha256": "d0b1f68409b5436436e52b16a5abdf88ace983ba1c754754c55f3bc3a94c26c8",
+      "bytes": 1926,
+      "upstream_sha256": "d0b1f68409b5436436e52b16a5abdf88ace983ba1c754754c55f3bc3a94c26c8",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/pruner_factory.py",
+        "sha256": "d0b1f68409b5436436e52b16a5abdf88ace983ba1c754754c55f3bc3a94c26c8"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/pruner_interface.py",
+      "sha256": "c2404e5e91de85b1d243c9f3fea7f4070b1ea12ee34757d99d5bfc097d7007eb",
+      "bytes": 941,
+      "upstream_sha256": "c2404e5e91de85b1d243c9f3fea7f4070b1ea12ee34757d99d5bfc097d7007eb",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/pruner_interface.py",
+        "sha256": "c2404e5e91de85b1d243c9f3fea7f4070b1ea12ee34757d99d5bfc097d7007eb"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/pruner_manager.py",
+      "sha256": "79453351681cacb881bc3e74d592961ca23277c3cd1c65d5d6d6ee15d4d10dfa",
+      "bytes": 6970,
+      "upstream_sha256": "79453351681cacb881bc3e74d592961ca23277c3cd1c65d5d6d6ee15d4d10dfa",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/pruner_manager.py",
+        "sha256": "79453351681cacb881bc3e74d592961ca23277c3cd1c65d5d6d6ee15d4d10dfa"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/simple_probability_pruner.py",
+      "sha256": "0a90efc6da2f26e84553172f34d4f739e320c28c8be84184e4a51cc6e90c7d4e",
+      "bytes": 9812,
+      "upstream_sha256": "0a90efc6da2f26e84553172f34d4f739e320c28c8be84184e4a51cc6e90c7d4e",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/simple_probability_pruner.py",
+        "sha256": "0a90efc6da2f26e84553172f34d4f739e320c28c8be84184e4a51cc6e90c7d4e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/speculative_pruner/utils.py",
+      "sha256": "0f0044a6854ee75012b2c56885cf66954a1bd2a323017223679c47991506e295",
+      "bytes": 2540,
+      "upstream_sha256": "0f0044a6854ee75012b2c56885cf66954a1bd2a323017223679c47991506e295",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/speculative_pruner/utils.py",
+        "sha256": "0f0044a6854ee75012b2c56885cf66954a1bd2a323017223679c47991506e295"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/task_pool.py",
+      "sha256": "74a58bf6f4ab9dab895aba8169c1cca260f7c8fb64094d8a2ab0006321f065d1",
+      "bytes": 11821,
+      "upstream_sha256": "3eb26ced679a415c155f77295cd4f13f553b37157f6f3a64711cfa515b36ce8b",
+      "change": "modified",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/task_prioritizer.py",
+      "sha256": "9eb55220153a3c03e3873431ff6868cf2f961e20d5e9deaf064966702dd2dd28",
+      "bytes": 747,
+      "upstream_sha256": "9eb55220153a3c03e3873431ff6868cf2f961e20d5e9deaf064966702dd2dd28",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/task_prioritizer.py",
+        "sha256": "9eb55220153a3c03e3873431ff6868cf2f961e20d5e9deaf064966702dd2dd28"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/throughput.py",
+      "sha256": "5e7e9b54eb57e7c0b21b47fa0c5c52cedaba24ace8693b7942d147b46371d05e",
+      "bytes": 13616,
+      "upstream_sha256": "5e7e9b54eb57e7c0b21b47fa0c5c52cedaba24ace8693b7942d147b46371d05e",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/throughput.py",
+        "sha256": "5e7e9b54eb57e7c0b21b47fa0c5c52cedaba24ace8693b7942d147b46371d05e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/server/timing_summary.py",
+      "sha256": "ddd5f10e6a2fc53277467a5a3bdc42abe7162347c97248ef51f4d94a2ed3317e",
+      "bytes": 19805,
+      "upstream_sha256": "ddd5f10e6a2fc53277467a5a3bdc42abe7162347c97248ef51f4d94a2ed3317e",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/server/timing_summary.py",
+        "sha256": "ddd5f10e6a2fc53277467a5a3bdc42abe7162347c97248ef51f4d94a2ed3317e"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/__init__.py",
+      "sha256": "2d563dc6484ee0b85a7a73a04eea44fe70e9ad3915125912e33aa08798a0bde9",
+      "bytes": 691,
+      "upstream_sha256": "5f7e770e954aae90b09b336c6e38c46c664da89335a96fcc09a8853d9798b4c7",
+      "change": "modified",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/__init__.py",
+        "sha256": "5f7e770e954aae90b09b336c6e38c46c664da89335a96fcc09a8853d9798b4c7"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/asyncio.py",
+      "sha256": "0fec476df6fc511d26d5636df005d039942c9121918a833feb9229fd87d46a7d",
+      "bytes": 525,
+      "upstream_sha256": "0fec476df6fc511d26d5636df005d039942c9121918a833feb9229fd87d46a7d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/asyncio.py",
+        "sha256": "0fec476df6fc511d26d5636df005d039942c9121918a833feb9229fd87d46a7d"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/auto_config.py",
+      "sha256": "3fa365756ac9b2b41092b40c4c2f63c371bffd3f15a13c929d5a5791fd00f2e0",
+      "bytes": 4062,
+      "upstream_sha256": "2dc4e7da221d0d132d5ac37f80860fb321fa72c10e9ec1dbee740ec092c649ca",
+      "change": "modified",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/backward_protocol.py",
+      "sha256": "4b26273cec3869aeb51ab30b10d0b99e34ea4ffc0265efec1464ba02da38c71f",
+      "bytes": 2421,
+      "upstream_sha256": "4b26273cec3869aeb51ab30b10d0b99e34ea4ffc0265efec1464ba02da38c71f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/utils/cache_compat.py",
+      "sha256": "cdc1b4a2c8b1f4c57d603f94ecf3f3d5f6edeb0f2173a73b2d4068fc1e819da5",
+      "bytes": 5327,
+      "upstream_sha256": "cdc1b4a2c8b1f4c57d603f94ecf3f3d5f6edeb0f2173a73b2d4068fc1e819da5",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/cache_compat.py",
+        "sha256": "cdc1b4a2c8b1f4c57d603f94ecf3f3d5f6edeb0f2173a73b2d4068fc1e819da5"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/convert_block.py",
+      "sha256": "09c2913d299d499779f0d45d4f4890d8eb48042e7b649d879cf3f16fc6904d2d",
+      "bytes": 19286,
+      "upstream_sha256": "09c2913d299d499779f0d45d4f4890d8eb48042e7b649d879cf3f16fc6904d2d",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/convert_block.py",
+        "sha256": "4f2ab9c483be8e0c46d7c917a7596dbd3a781c4385857aac4477faaec60eb8ec"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/cuda_compat.py",
+      "sha256": "919046f9e429ed3f88cd854f0fb4551ff71b2a99bebb7b56f9e7f0bfd0ca2538",
+      "bytes": 2436,
+      "upstream_sha256": "919046f9e429ed3f88cd854f0fb4551ff71b2a99bebb7b56f9e7f0bfd0ca2538",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/cuda_compat.py",
+        "sha256": "919046f9e429ed3f88cd854f0fb4551ff71b2a99bebb7b56f9e7f0bfd0ca2538"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/cuda_graphs.py",
+      "sha256": "50c28abeb49a85c6d5b0f7088080035b793b045e80991fd712a5a74582ad259a",
+      "bytes": 2950,
+      "upstream_sha256": "50c28abeb49a85c6d5b0f7088080035b793b045e80991fd712a5a74582ad259a",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/cuda_graphs.py",
+        "sha256": "50c28abeb49a85c6d5b0f7088080035b793b045e80991fd712a5a74582ad259a"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/debug.py",
+      "sha256": "4d0837eef8dcd3d1c010b9a99f01ae8cead0efdebcd3f9ea07702c3ca873f9a5",
+      "bytes": 775,
+      "upstream_sha256": "4d0837eef8dcd3d1c010b9a99f01ae8cead0efdebcd3f9ea07702c3ca873f9a5",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/debug.py",
+        "sha256": "4d0837eef8dcd3d1c010b9a99f01ae8cead0efdebcd3f9ea07702c3ca873f9a5"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/debug_config.py",
+      "sha256": "f9f4828fbe4cc33a0460f7b13c51c6b4f6ec3dd45e0914febb0e15b44e7b5c72",
+      "bytes": 3793,
+      "upstream_sha256": "f9f4828fbe4cc33a0460f7b13c51c6b4f6ec3dd45e0914febb0e15b44e7b5c72",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/debug_config.py",
+        "sha256": "f9f4828fbe4cc33a0460f7b13c51c6b4f6ec3dd45e0914febb0e15b44e7b5c72"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/dht.py",
+      "sha256": "a3b3f1893a82180d51e1e9081c610dd32d49b0cac86fbbcee609da144d48517b",
+      "bytes": 5672,
+      "upstream_sha256": "a3b3f1893a82180d51e1e9081c610dd32d49b0cac86fbbcee609da144d48517b",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/dht.py",
+        "sha256": "a3b3f1893a82180d51e1e9081c610dd32d49b0cac86fbbcee609da144d48517b"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/disk_cache.py",
+      "sha256": "03a9c30d315267e38a8c24370de7bb3c249f69e722deb17541f5f96113bce408",
+      "bytes": 2968,
+      "upstream_sha256": "03a9c30d315267e38a8c24370de7bb3c249f69e722deb17541f5f96113bce408",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/disk_cache.py",
+        "sha256": "03a9c30d315267e38a8c24370de7bb3c249f69e722deb17541f5f96113bce408"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/hf_auth.py",
+      "sha256": "ac2206b465c6ce42925dd8acd694ed72ea90c5eef2af92f7b1fee6e5ecedc6ae",
+      "bytes": 270,
+      "upstream_sha256": "ac2206b465c6ce42925dd8acd694ed72ea90c5eef2af92f7b1fee6e5ecedc6ae",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/hf_auth.py",
+        "sha256": "ac2206b465c6ce42925dd8acd694ed72ea90c5eef2af92f7b1fee6e5ecedc6ae"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/hf_compat.py",
+      "sha256": "87eebc7a8f1080e8a05121e8a677962f865bcbd50f1e50df160480e67c9c8c20",
+      "bytes": 2020,
+      "upstream_sha256": "87eebc7a8f1080e8a05121e8a677962f865bcbd50f1e50df160480e67c9c8c20",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/hf_compat.py",
+        "sha256": "87eebc7a8f1080e8a05121e8a677962f865bcbd50f1e50df160480e67c9c8c20"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/hivemind_compat.py",
+      "sha256": "652987b8a795b9c2f6db3721f0e4f0bfec74833dfafd7c9925e2f982835b61b4",
+      "bytes": 2180,
+      "upstream_sha256": "652987b8a795b9c2f6db3721f0e4f0bfec74833dfafd7c9925e2f982835b61b4",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/hivemind_compat.py",
+        "sha256": "652987b8a795b9c2f6db3721f0e4f0bfec74833dfafd7c9925e2f982835b61b4"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/logging.py",
+      "sha256": "53395584e1675687a42cef5ca069a0a4e739aa6e56aa46fdbe647f4286df0012",
+      "bytes": 3269,
+      "upstream_sha256": "53395584e1675687a42cef5ca069a0a4e739aa6e56aa46fdbe647f4286df0012",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/logging.py",
+        "sha256": "53395584e1675687a42cef5ca069a0a4e739aa6e56aa46fdbe647f4286df0012"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/lora.py",
+      "sha256": "606c099a0c9b3cb7fe8c723976bdb01690f5ed07bf937ba2825e6ddd3f816122",
+      "bytes": 5267,
+      "upstream_sha256": "606c099a0c9b3cb7fe8c723976bdb01690f5ed07bf937ba2825e6ddd3f816122",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "src/bloombee/utils/lossless_transport.py",
+      "sha256": "ff59093c574c5922f53c187f1fb53a640f3134c36c3e643b57746d6449af6755",
+      "bytes": 107055,
+      "upstream_sha256": "ff59093c574c5922f53c187f1fb53a640f3134c36c3e643b57746d6449af6755",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/lossless_transport.py",
+        "sha256": "4861e2014aeb707fc7f17a30363a380cc242cbe0d119b788cf6a0912675c1e73"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/lossless_wrapper_config.py",
+      "sha256": "6bbc4798af3fbcb20362ad871a1eb02fd3f6ecc0190af8466517a002df7aa9c8",
+      "bytes": 1577,
+      "upstream_sha256": "6bbc4798af3fbcb20362ad871a1eb02fd3f6ecc0190af8466517a002df7aa9c8",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/lossless_wrapper_config.py",
+        "sha256": "6bbc4798af3fbcb20362ad871a1eb02fd3f6ecc0190af8466517a002df7aa9c8"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/memory_usage.py",
+      "sha256": "be46373703b70f441e6cc790ebe23b71c128da3a0d75df183a50675c514e955e",
+      "bytes": 8536,
+      "upstream_sha256": "be46373703b70f441e6cc790ebe23b71c128da3a0d75df183a50675c514e955e",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/memory_usage.py",
+        "sha256": "8b7e5d88691f495d6ed27d3d156ff39434bc476f612b2eecd775a695c027a628"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/microbatch_config.py",
+      "sha256": "3f353fa3a37afce35e14bb3e252ad18af5147ff50e357db21ecfa3a709d143ec",
+      "bytes": 13833,
+      "upstream_sha256": "3f353fa3a37afce35e14bb3e252ad18af5147ff50e357db21ecfa3a709d143ec",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/microbatch_config.py",
+        "sha256": "3f353fa3a37afce35e14bb3e252ad18af5147ff50e357db21ecfa3a709d143ec"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/microbatch_ops.py",
+      "sha256": "1cc89f22f811ed1ee1385c6f3b6efb374b5625e9b9aa35ae179166a93ae88f11",
+      "bytes": 8552,
+      "upstream_sha256": "1cc89f22f811ed1ee1385c6f3b6efb374b5625e9b9aa35ae179166a93ae88f11",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/microbatch_ops.py",
+        "sha256": "7ef436a9b7524feed585fd45c85a4404a6cebabab157360cd3afd0c42ebfbe98"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/microbatch_schema.py",
+      "sha256": "4971f2c79568c4feb224f2b71d8d042bdc419e5225d3bc0e431eff67417b4c46",
+      "bytes": 10109,
+      "upstream_sha256": "4971f2c79568c4feb224f2b71d8d042bdc419e5225d3bc0e431eff67417b4c46",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/microbatch_schema.py",
+        "sha256": "00ae1330e587f780b96bbd58692236222219914525b764c72f4301d2e7e9b7b2"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/misc.py",
+      "sha256": "46349b6e171065efb9377ebbe5456b53c432d23907057eaad1333ca5d0fc49a9",
+      "bytes": 1642,
+      "upstream_sha256": "46349b6e171065efb9377ebbe5456b53c432d23907057eaad1333ca5d0fc49a9",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/misc.py",
+        "sha256": "8f0023225b7d804a3a4863d2fea0c70ac4528b6adbae3277ca476d8372f6d20b"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/p2p.py",
+      "sha256": "6d730ceb98ae756c47e49290afdf8c5be60570a5ec7b75368cc2582c3c67a108",
+      "bytes": 1113,
+      "upstream_sha256": "6d730ceb98ae756c47e49290afdf8c5be60570a5ec7b75368cc2582c3c67a108",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/p2p.py",
+        "sha256": "6d730ceb98ae756c47e49290afdf8c5be60570a5ec7b75368cc2582c3c67a108"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/packaging.py",
+      "sha256": "22c22da1240a66576d4f81bd3149c5b0cdf15291fe0ac7564f969b5f99793498",
+      "bytes": 119,
+      "upstream_sha256": "22c22da1240a66576d4f81bd3149c5b0cdf15291fe0ac7564f969b5f99793498",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/packaging.py",
+        "sha256": "22c22da1240a66576d4f81bd3149c5b0cdf15291fe0ac7564f969b5f99793498"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/peft.py",
+      "sha256": "79d81c650acd6f64245a47cacd3f759d92338bcfa4039ed1c1320fd1177e3827",
+      "bytes": 11328,
+      "upstream_sha256": "79d81c650acd6f64245a47cacd3f759d92338bcfa4039ed1c1320fd1177e3827",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/peft.py",
+        "sha256": "79d81c650acd6f64245a47cacd3f759d92338bcfa4039ed1c1320fd1177e3827"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/ping.py",
+      "sha256": "b68c14e00f28b17fc93226fd7ff0e97d5bc11cdf366e7deee516cb2d6c9701a3",
+      "bytes": 2914,
+      "upstream_sha256": "b68c14e00f28b17fc93226fd7ff0e97d5bc11cdf366e7deee516cb2d6c9701a3",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/ping.py",
+        "sha256": "b68c14e00f28b17fc93226fd7ff0e97d5bc11cdf366e7deee516cb2d6c9701a3"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/pipeline_timing.py",
+      "sha256": "ae15a835bce39ea8b98085f3f0b38de56517318587557d5f42da18e4ab990c1a",
+      "bytes": 16769,
+      "upstream_sha256": "ae15a835bce39ea8b98085f3f0b38de56517318587557d5f42da18e4ab990c1a",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/pipeline_timing.py",
+        "sha256": "4ba183fedd0ae42a8247df04ed88cea472215a27386728e634b0360bf5f7e577"
+      },
+      "source_modified": true
+    },
+    {
+      "path": "src/bloombee/utils/random.py",
+      "sha256": "8d17088935f502b46a1d03fcbd3a8c1beb9fe140edd57fe873d45e2434af3462",
+      "bytes": 310,
+      "upstream_sha256": "8d17088935f502b46a1d03fcbd3a8c1beb9fe140edd57fe873d45e2434af3462",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/random.py",
+        "sha256": "8d17088935f502b46a1d03fcbd3a8c1beb9fe140edd57fe873d45e2434af3462"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/real_activation_dumper.py",
+      "sha256": "894637639ae7b5e1be2fba2a45073f5ee6453a0eed8f4c128bcb6f47d9bd1dc8",
+      "bytes": 15905,
+      "upstream_sha256": "894637639ae7b5e1be2fba2a45073f5ee6453a0eed8f4c128bcb6f47d9bd1dc8",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/real_activation_dumper.py",
+        "sha256": "894637639ae7b5e1be2fba2a45073f5ee6453a0eed8f4c128bcb6f47d9bd1dc8"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/s2s_activation_quant.py",
+      "sha256": "3edc30f8f6447266bf9d2263e3275867fa50e0438f86af9e586e2f4701dbefa0",
+      "bytes": 5144,
+      "upstream_sha256": "3edc30f8f6447266bf9d2263e3275867fa50e0438f86af9e586e2f4701dbefa0",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/s2s_activation_quant.py",
+        "sha256": "3edc30f8f6447266bf9d2263e3275867fa50e0438f86af9e586e2f4701dbefa0"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "src/bloombee/utils/version.py",
+      "sha256": "10c0bd8c68317a5ebb80ee0a95a7e1e70f71b28a479b0618ada57b66a13b175b",
+      "bytes": 1468,
+      "upstream_sha256": "10c0bd8c68317a5ebb80ee0a95a7e1e70f71b28a479b0618ada57b66a13b175b",
+      "change": "unchanged",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/execution/throughput_final_a1/integration_a1/src/bloombee/utils/version.py",
+        "sha256": "10c0bd8c68317a5ebb80ee0a95a7e1e70f71b28a479b0618ada57b66a13b175b"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "tests/bench_arch_reform.py",
+      "sha256": "058d873c0351b693c00b468d78d3dc44e0338933dd5c1b0d461e2e786261df9f",
+      "bytes": 8644,
+      "upstream_sha256": "058d873c0351b693c00b468d78d3dc44e0338933dd5c1b0d461e2e786261df9f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/bootstrap.id",
+      "sha256": "b91bf4c7a7225d532d9adcc8b559ae2761498fc81d054db681046a60faa3fbce",
+      "bytes": 1196,
+      "upstream_sha256": "b91bf4c7a7225d532d9adcc8b559ae2761498fc81d054db681046a60faa3fbce",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/conftest.py",
+      "sha256": "8252d653aeae0293f56f9dfce422da46c2ac8b01de16996765ed9aecd84b90bf",
+      "bytes": 4336,
+      "upstream_sha256": "8252d653aeae0293f56f9dfce422da46c2ac8b01de16996765ed9aecd84b90bf",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_gpu_priorities.py",
+      "sha256": "5399829720481b6e5ebf7fe51032841e9c1d9f376401cc793b70423169a55312",
+      "bytes": 1751,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_lazy_blocks.py",
+      "sha256": "ef37ef29c44a49cb283a120529ee13dbff90ad69691a4072182df763e3f15462",
+      "bytes": 3619,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_native_history.py",
+      "sha256": "28439f252c0a62a13142fec79f06697e8a83649ea338a6c6f433b5f83017c0d4",
+      "bytes": 18449,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_page_service.py",
+      "sha256": "5aa43688f291dd907eb3c466fcfeac9997d7305cb1e4a53c923d4f220b1828dc",
+      "bytes": 13823,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_pages.py",
+      "sha256": "d32048561d836d69851859f4aba922079c35e708e8e6996d43bf2439444e316f",
+      "bytes": 19761,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_pages_chunk.py",
+      "sha256": "1cdd3de8fa7b199641c4622fb2cab288caa3655374c3b6804bd388999ebb4abc",
+      "bytes": 8274,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_remote.py",
+      "sha256": "8c09eb2c8ead8a59bb0f758cfa992cb5749142b30c2c96b6363483a67426faf5",
+      "bytes": 10101,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_service.py",
+      "sha256": "c4d94f869c9fc21eadeb990bcd409442da13add84372e3e7394db552786e6f9d",
+      "bytes": 16974,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_dynamo_service_chunks.py",
+      "sha256": "a46b75e6e345d05f420c4a35f4f8e595e3d787de2b7dae9f0261d551505b28a3",
+      "bytes": 5057,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_kv_cache_dynamo.py",
+      "sha256": "56639cdc0277ded39647dd5aabe8afedd7389ed60b40f85cfde2ece5a9ccc1ac",
+      "bytes": 14706,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_kv_cache_dynamo_api.py",
+      "sha256": "cb731a3f6e1bfc039cccebf49bc23cbb3d87e1f5fde06fa1922bff93785a4fc8",
+      "bytes": 2973,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "existing local cache regression test; newly included in manifest coverage"
+    },
+    {
+      "path": "tests/kv_network/cache/test_page_release_ack.py",
+      "upstream_sha256": null,
+      "sha256": "6ce419731c39171fd4d0b48ed2c5354d5f2915d6071993a09741fa547d6ed688",
+      "bytes": 15565,
+      "change": "added",
+      "selected_source": "unified c4: strict owner fields and concurrent release revalidation"
+    },
+    {
+      "path": "tests/kv_network/cache/test_physical_page_attention.py",
+      "upstream_sha256": null,
+      "sha256": "7824eefb97b8e1fe01cc676ba9423d939a32c0ea8dcf4925cdd945afaf034bb8",
+      "bytes": 4321,
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle"
+    },
+    {
+      "path": "tests/kv_network/cache/test_retired_cache_handle.py",
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "c3 terminal delivery, asynchronous prefetch, score receipt retry and retired handle lifecycle repair",
+      "sha256": "ba2056429b6d01b854c7566626112e7a0b20f8c962415b1ec751f768fdb795e1",
+      "bytes": 6301
+    },
+    {
+      "path": "tests/kv_network/check_page_retention.py",
+      "sha256": "c242f78b574e17cd82e0d828d15ef2b1414a1029a2baca8e43c46bafd32f1732",
+      "bytes": 9197,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/fixtures/inputs.json",
+      "sha256": "48f93702a433067f9a6fe4f111dab8c14e2de485aa5aa1eddc786f9271ce4fd4",
+      "bytes": 10632,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/fixtures/paged/P_gpu.json",
+      "sha256": "59c0e1ad881819b0bb6397a9d90838946fcb00b15629df2018de5b46e6a58c93",
+      "bytes": 2441221,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/fixtures/paged/P_remote.json",
+      "sha256": "5ab0b5b91d814efe9f3ee763646581fbd391a901182acfd95bd77b4e78e30a1f",
+      "bytes": 2856709,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/fixtures/paged/Q_cpu_restore.json",
+      "sha256": "fb09a45a8fc40305f92214620be8d64c38a3341e46fff0bca13c489a9428c7d1",
+      "bytes": 2497902,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/fixtures/paged/Q_partial_remote.json",
+      "sha256": "a9df64b1faf5ce53772a3038536d15c4b4844e634e5b16d872030ffe7518f74c",
+      "bytes": 2493885,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/fixtures/published_identity.json",
+      "sha256": "3a291b21eb261981343c52260e8a754124fc60d593cd2a30ef91a15d9b53bbaa",
+      "bytes": 1686018,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/review_fixtures.py",
+      "sha256": "d3879577f6b0406d19bcd73ac05d51393bbf9fcdc3a054dad3db76053ef2e028",
+      "bytes": 1431,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_api.py",
+      "sha256": "e1293f12c24b1ee38d19f12a0ada0474ec0b21f6181a473cf70e322413971b17",
+      "bytes": 5910,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_background_dispatch.py",
+      "upstream_sha256": null,
+      "selected_source": "unified c4: strict owner fields and concurrent release revalidation",
+      "sha256": "f0cef1e078703b020545bd30df748d49bb95ca2f833d43f5dced9e7c4ffdd95b",
+      "bytes": 9680,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_bridge.py",
+      "sha256": "d88996e7e9cc7f782560ddc6f8aa06264fb3dc5187fc9a4b7d83077b588c1405",
+      "bytes": 10986,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_cache_protocol_logging.py",
+      "upstream_sha256": null,
+      "selected_source": "a5 functional repair",
+      "sha256": "10d271726fa96b479885563e2866f5bd135a107598affcdb2a5a59d89ff6cbd6",
+      "bytes": 2144,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_clock_domain.py",
+      "sha256": "d5d4b1f5760bdad7c6c5633dbbe367803f4650b900bff31f420758f5d397dc1a",
+      "bytes": 2093,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_completion_recovery.py",
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "c3 terminal delivery, asynchronous prefetch, score receipt retry and retired handle lifecycle repair",
+      "sha256": "2f16eb032f81eed5fa835908231bea26ac1070af25223cb196c66475e980c7dc",
+      "bytes": 2505
+    },
+    {
+      "path": "tests/kv_network/test_composition.py",
+      "sha256": "6584f8a6fef6a694905019f850a8c46778ea7b439691c25111480d6b0d167e5f",
+      "bytes": 3633,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_controller.py",
+      "sha256": "0b5411ef2c7270e51a8375e9440fe3a51e587a1322670cdb8f024fe1b3034ea0",
+      "bytes": 6509,
+      "change": "added",
+      "selected_source": "c1 local terminal delivery and async prefetch dispatch repair"
+    },
+    {
+      "path": "tests/kv_network/test_group_gpu_retention.py",
+      "upstream_sha256": null,
+      "selected_source": "a5 functional repair",
+      "sha256": "f5bfa51b172c1be0429574d98ccc3f8b51ce17fabe2e48426377efc52448b939",
+      "bytes": 7058,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_independent_audit.py",
+      "change": "added",
+      "selected_source": "unified c4: frozen score publication recovery",
+      "sha256": "1beba59079cf7b4b08cd6d1da912ebeb2ca17671c30db5bfc808c69a6c2c5e93",
+      "bytes": 16370
+    },
+    {
+      "path": "tests/kv_network/test_local_identity.py",
+      "sha256": "27b361e9d33f12741734ffaaa5ac8774f331bece225822fd968243f8d49bd1f4",
+      "bytes": 1414,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_local_terminal_delivery.py",
+      "upstream_sha256": null,
+      "selected_source": "c1 local terminal delivery and async prefetch dispatch repair",
+      "sha256": "65f1060fda112890d6910195e3843f3b38ab31c81b23bdfdfe13bdd3ddc4fd5d",
+      "bytes": 4524,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_native_configuration.py",
+      "change": "added",
+      "selected_source": "a5 working changes; real acceptance incomplete; not covered by a4 signoff",
+      "sha256": "916d593c4e0165d9da69e007559afc843ce72dbba37a7aafac13e9e44f47fc20",
+      "bytes": 10494
+    },
+    {
+      "path": "tests/kv_network/test_ordinary_timeout.py",
+      "upstream_sha256": null,
+      "selected_source": "a5 bounded timeout and quiet-frontier repair",
+      "sha256": "d1b942bbf9011841580a10d0064d35f82bee17ead5001b16636131468a48892e",
+      "bytes": 6123,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_paged_evidence.py",
+      "sha256": "8e734b20cac09da70895c86e93c965268193e90fb4f0467e2166a89739cb6b18",
+      "bytes": 6886,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/kv_network/test_quiet_frontier.py",
+      "upstream_sha256": null,
+      "selected_source": "a5 bounded timeout and quiet-frontier repair",
+      "sha256": "005f00ecd470bb73d3e48c626768f47ad902c5bb66961b562fb73d803f2ad1e3",
+      "bytes": 2619,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_release_ack_consumer.py",
+      "upstream_sha256": null,
+      "sha256": "16cfc395547e5613d5954311b1e886164968c69d6b752c8b5fe758497e4abfc6",
+      "bytes": 8853,
+      "change": "added",
+      "selected_source": "unified c4: strict owner fields and concurrent release revalidation"
+    },
+    {
+      "path": "tests/kv_network/test_request_purpose.py",
+      "upstream_sha256": null,
+      "selected_source": "a5 functional repair",
+      "sha256": "45e67997bece9e8745ada4d0192704887b0b9621fd5b2d36964f1bb760d35b63",
+      "bytes": 3595,
+      "change": "added"
+    },
+    {
+      "path": "tests/kv_network/test_review_regressions.py",
+      "change": "added",
+      "selected_source": "unified c4: physical-page attention and verified release lifecycle",
+      "sha256": "1477f57821ac1d3934b200fbfcdf8c99c68bd29f3c30b5c0360291284f12fda7",
+      "bytes": 23593
+    },
+    {
+      "path": "tests/kv_network/test_score_publication_review.py",
+      "upstream_sha256": null,
+      "change": "added",
+      "sha256": "131587bdd8eb57eaa8c6cf0d7f1e6cb15d7c59b9194dca4709a8973a30892b23",
+      "bytes": 5045,
+      "selected_source": "unified c4: frozen score publication recovery"
+    },
+    {
+      "path": "tests/kv_network/test_transition.py",
+      "sha256": "182b17270d8269e8b56ce207ffa9a88f308be60e062862df6b7ccad4f180adbe",
+      "bytes": 4378,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/prefetch/test_history_prefetch.py",
+      "sha256": "a565c6355eda49afb9ae45f4c2419e6a7d6dcc861261f7a34326c452291fe167",
+      "bytes": 9304,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/tests/prefetch/test_history_prefetch.py",
+        "sha256": "a565c6355eda49afb9ae45f4c2419e6a7d6dcc861261f7a34326c452291fe167"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "tests/run_lora_pretrained.py",
+      "sha256": "1c46cb16609ea50699331c20e63767f6c0c95b8c9d161edc9491b0b62afbae73",
+      "bytes": 7654,
+      "upstream_sha256": "1c46cb16609ea50699331c20e63767f6c0c95b8c9d161edc9491b0b62afbae73",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/run_lora_rpc.py",
+      "sha256": "6302f137d9bb1cdc0683ee95b6ea0ec993f892c141686015e872ec1a70c8e077",
+      "bytes": 21663,
+      "upstream_sha256": "6302f137d9bb1cdc0683ee95b6ea0ec993f892c141686015e872ec1a70c8e077",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/server2.id",
+      "sha256": "562b4af85400902fba86792f18e0fd653cbb1bb664c50f7c505702c5741246f2",
+      "bytes": 1197,
+      "upstream_sha256": "562b4af85400902fba86792f18e0fd653cbb1bb664c50f7c505702c5741246f2",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/sim_end_to_end_decode.py",
+      "sha256": "78c0167e937e30892d58eeea63cfc7bc632f5bf6d235f26467bb310e594fc2e7",
+      "bytes": 11089,
+      "upstream_sha256": "78c0167e937e30892d58eeea63cfc7bc632f5bf6d235f26467bb310e594fc2e7",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_aux_functions.py",
+      "sha256": "6a70f1f2c6dc60d4285cb36c14e3764032419134e46d36be7c2220e3cadfe0e3",
+      "bytes": 1792,
+      "upstream_sha256": "6a70f1f2c6dc60d4285cb36c14e3764032419134e46d36be7c2220e3cadfe0e3",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_backend_tree_position_ids.py",
+      "sha256": "2d011abd28e8345ec714c4c09f45f01cd7eab0567f10361990110e863e562eb7",
+      "bytes": 5879,
+      "upstream_sha256": "2d011abd28e8345ec714c4c09f45f01cd7eab0567f10361990110e863e562eb7",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_backward_chain.py",
+      "sha256": "bd7bf9b4409a0c5b8786f3f79b71bdff7377987e36edbe3dbe4534760f0045a5",
+      "bytes": 11683,
+      "upstream_sha256": "bd7bf9b4409a0c5b8786f3f79b71bdff7377987e36edbe3dbe4534760f0045a5",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_benchmark_reports.py",
+      "sha256": "8cda6bbd8e2b632e0f613f4e4b6dc7c9a4bd2cdb0d61d39d481e2dfc72ad2b38",
+      "bytes": 2754,
+      "upstream_sha256": "8cda6bbd8e2b632e0f613f4e4b6dc7c9a4bd2cdb0d61d39d481e2dfc72ad2b38",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_block_exact_match.py",
+      "sha256": "edbae7397131315b72d68cbd52e6bffcd725f210f7701401acc356c8dcc88611",
+      "bytes": 1879,
+      "upstream_sha256": "edbae7397131315b72d68cbd52e6bffcd725f210f7701401acc356c8dcc88611",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_bloom_block_cache_contract.py",
+      "sha256": "d14febd500b71b10edbdb61da352baf56f099882fd24653eaf7d4c822f6b1070",
+      "bytes": 1912,
+      "upstream_sha256": "d14febd500b71b10edbdb61da352baf56f099882fd24653eaf7d4c822f6b1070",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_cache.py",
+      "sha256": "2775fbefa710fd74012e93491c4b81ac4c440b72da9dcf760321b38c64e3c50a",
+      "bytes": 12432,
+      "upstream_sha256": "2775fbefa710fd74012e93491c4b81ac4c440b72da9dcf760321b38c64e3c50a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_chained_calls.py",
+      "sha256": "68227089cc1343ff9ef1a6714a8a6f56ee0325e4b3e5ec315077a05f36dda692",
+      "bytes": 3074,
+      "upstream_sha256": "68227089cc1343ff9ef1a6714a8a6f56ee0325e4b3e5ec315077a05f36dda692",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_conversion_reuse.py",
+      "sha256": "241a8de67cb7facd9c64999c9b262400e453ca513bb7dc58ad69d8070b93b296",
+      "bytes": 2232,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "a5 working changes; incomplete acceptance"
+    },
+    {
+      "path": "tests/test_debug_config.py",
+      "sha256": "60a0744646f5eb59a2c1636d7c1afff605077dd4cf0ff70fd00ace8b8285c8b5",
+      "bytes": 2581,
+      "upstream_sha256": "60a0744646f5eb59a2c1636d7c1afff605077dd4cf0ff70fd00ace8b8285c8b5",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_deepseekv3_block_parity.py",
+      "sha256": "c0d96e24fe09aeddfa67a0b0087d44c0c497c5abbe9999b6c10c94d6842921d5",
+      "bytes": 5384,
+      "upstream_sha256": "c0d96e24fe09aeddfa67a0b0087d44c0c497c5abbe9999b6c10c94d6842921d5",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_deepseekv3_quantization.py",
+      "sha256": "c80e47b44e64af9f98209a18bd8ea16f67f4c6f91a07c1f9379ffa4fcca7b328",
+      "bytes": 6751,
+      "upstream_sha256": "c80e47b44e64af9f98209a18bd8ea16f67f4c6f91a07c1f9379ffa4fcca7b328",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_drafter_selection.py",
+      "sha256": "07136a1b8d8005252b62f65083cab2329fe03ddecb1c2557b3ede3e096d8ac90",
+      "bytes": 5023,
+      "upstream_sha256": "07136a1b8d8005252b62f65083cab2329fe03ddecb1c2557b3ede3e096d8ac90",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_dtype.py",
+      "sha256": "7bf61b5c2d8907efc8ba9a5886f01140e1bcb9b0ca0baf958c394a10b81b4519",
+      "bytes": 678,
+      "upstream_sha256": "7bf61b5c2d8907efc8ba9a5886f01140e1bcb9b0ca0baf958c394a10b81b4519",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_eagle_drafter_budget.py",
+      "sha256": "0aa2bb6ee7d071d9e4b785ed6d84f17ea53759fd7ac1cadfc10f3b3ddb52d25e",
+      "bytes": 18633,
+      "upstream_sha256": "0aa2bb6ee7d071d9e4b785ed6d84f17ea53759fd7ac1cadfc10f3b3ddb52d25e",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_falcon_cuda_graph_inputs.py",
+      "sha256": "5f6a3162bb87a2789068b9e9f77ba47257f1fa97fe6de9bd2abcfdd70082d956",
+      "bytes": 2522,
+      "upstream_sha256": "5f6a3162bb87a2789068b9e9f77ba47257f1fa97fe6de9bd2abcfdd70082d956",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_falcon_generation_inputs.py",
+      "sha256": "110be13c0aedf85d02d4c828e12de3b5086fc75b3221ca738922e21e747d86fd",
+      "bytes": 7033,
+      "upstream_sha256": "110be13c0aedf85d02d4c828e12de3b5086fc75b3221ca738922e21e747d86fd",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_fast_generate_eligibility.py",
+      "sha256": "25b5f5852fa0a001e6ce14b9df78867b0a729749aeb67b31dc89ce62110e6b56",
+      "bytes": 5474,
+      "upstream_sha256": "25b5f5852fa0a001e6ce14b9df78867b0a729749aeb67b31dc89ce62110e6b56",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_flex_llama_gqa_parity.py",
+      "sha256": "07a3556b3f5a23f0a4b05fdcb63571f36c62f395082afa902b8db53f85720cc5",
+      "bytes": 3241,
+      "upstream_sha256": "07a3556b3f5a23f0a4b05fdcb63571f36c62f395082afa902b8db53f85720cc5",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_flexgen_tensor_parallel.py",
+      "sha256": "b6343ac4d0adaa4b2ad30b314cc5decd1fdc1d3899eab1ad7e7c3f1f0bf91216",
+      "bytes": 2853,
+      "upstream_sha256": "b6343ac4d0adaa4b2ad30b314cc5decd1fdc1d3899eab1ad7e7c3f1f0bf91216",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_full_model.py",
+      "sha256": "99f97018d558ff72a809e572c10b356c72209d9a899b1c4fd2865fa2e9381170",
+      "bytes": 7243,
+      "upstream_sha256": "99f97018d558ff72a809e572c10b356c72209d9a899b1c4fd2865fa2e9381170",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_gemma4_block_parity.py",
+      "sha256": "22c6cb7dcfd295ae8e18f49cbd9d619d12505ee852f79794940a21c497331633",
+      "bytes": 5531,
+      "upstream_sha256": "22c6cb7dcfd295ae8e18f49cbd9d619d12505ee852f79794940a21c497331633",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_gemma4_head_dim_dispatch.py",
+      "sha256": "3455235b0f0a6507302b6802fd635d166a648fe5bb8870d73ea9cbb541de1d0d",
+      "bytes": 3209,
+      "upstream_sha256": "3455235b0f0a6507302b6802fd635d166a648fe5bb8870d73ea9cbb541de1d0d",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_gemma4_kv_eq_v.py",
+      "sha256": "5656f7546db639ce161efddb5abe2933c2130cdddeb445e6d1fdcf970d109a1c",
+      "bytes": 5648,
+      "upstream_sha256": "5656f7546db639ce161efddb5abe2933c2130cdddeb445e6d1fdcf970d109a1c",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_gemma4_per_block_cache_alloc.py",
+      "sha256": "351231693f5efad3d757dfd11f448d8c494d1ba608eb289b0a3be2c65a7d961d",
+      "bytes": 5010,
+      "upstream_sha256": "351231693f5efad3d757dfd11f448d8c494d1ba608eb289b0a3be2c65a7d961d",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_gemma4_sliding_mask.py",
+      "sha256": "f77728ee7b381561a56082dbd4e20715a66cd76c6ca49a187749f4986bdd4b19",
+      "bytes": 5255,
+      "upstream_sha256": "f77728ee7b381561a56082dbd4e20715a66cd76c6ca49a187749f4986bdd4b19",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_glm_mla_chunks.py",
+      "sha256": "dbdda9ff2212760f96319c9aba5aaacd7502726ebae945e4fcc91126715b257a",
+      "bytes": 7628,
+      "upstream_sha256": "22b158ca84a7bc98de817d0a76fc2cb3ef6dde5749ca80ae3017b69665b491d4",
+      "change": "modified",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/test_glm_rotary_precision.py",
+      "sha256": "1b7760b771533f2e2f4998265e46efa813726937b0836023542e8958cc46e31f",
+      "bytes": 3181,
+      "upstream_sha256": "1b7760b771533f2e2f4998265e46efa813726937b0836023542e8958cc46e31f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_inference_session_spec_pruning.py",
+      "sha256": "126f2ac3352a4dddc5aaf7782ed026648d15adba275bad4b573264bafdc39f86",
+      "bytes": 5228,
+      "upstream_sha256": "126f2ac3352a4dddc5aaf7782ed026648d15adba275bad4b573264bafdc39f86",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_inference_workload.py",
+      "sha256": "d6c368c1c56f1845ce062ec18c397da6f1c752451c1b1b4bfc728a773ce1e7e5",
+      "bytes": 6072,
+      "upstream_sha256": "d6c368c1c56f1845ce062ec18c397da6f1c752451c1b1b4bfc728a773ce1e7e5",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_kv_cache_placement.py",
+      "sha256": "8e42b6249e528b1514e22cbd8fc1a8df4512492bdce2845403c708f62c8e8c6a",
+      "bytes": 3203,
+      "change": "added",
+      "selected_source": "new delivery wrapper/documentation or explicitly merged source"
+    },
+    {
+      "path": "tests/test_kv_cache_telemetry_api.py",
+      "sha256": "5cd45dad52ead57f46ffe79e37efa0c88f3c39a3aaf89c191840913284a1cdd4",
+      "bytes": 11386,
+      "change": "added",
+      "selected_source": {
+        "path": "KVCache分布式推理研究/每周任务执行留痕/第3周/code/framework_a1/tests/test_kv_cache_telemetry_api.py",
+        "sha256": "5cd45dad52ead57f46ffe79e37efa0c88f3c39a3aaf89c191840913284a1cdd4"
+      },
+      "source_modified": false
+    },
+    {
+      "path": "tests/test_llama_fp16_semantics.py",
+      "sha256": "50be2ac1baa93e78ac9901d2229a4b8512dfd089710daf4c5d015b289b078604",
+      "bytes": 3000,
+      "upstream_sha256": "50be2ac1baa93e78ac9901d2229a4b8512dfd089710daf4c5d015b289b078604",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_llama_kv_head_compat.py",
+      "sha256": "3fd1238924dab7e9595bedacb2037ac9a5827d04793f9f4ad2d3931823ff1130",
+      "bytes": 3622,
+      "upstream_sha256": "3fd1238924dab7e9595bedacb2037ac9a5827d04793f9f4ad2d3931823ff1130",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_llama_rope_parameters.py",
+      "sha256": "6dc0fe654bbf7e1f6badc11de46c10b203ae1ab84833faa5f96832051006bb12",
+      "bytes": 2305,
+      "upstream_sha256": "6dc0fe654bbf7e1f6badc11de46c10b203ae1ab84833faa5f96832051006bb12",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_llama_task_metadata.py",
+      "sha256": "40d021eb009ed74286de02f213061951b0fa3c518df9a09eb63ed918dc11b0ca",
+      "bytes": 1991,
+      "upstream_sha256": "40d021eb009ed74286de02f213061951b0fa3c518df9a09eb63ed918dc11b0ca",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_llama_tied_head_loading.py",
+      "sha256": "14c796cc3ce5cccda152adaa63fe4d08fea7558009a69e0f5ef61c37e228e280",
+      "bytes": 1889,
+      "upstream_sha256": "14c796cc3ce5cccda152adaa63fe4d08fea7558009a69e0f5ef61c37e228e280",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_lossless_codec_benchmark.py",
+      "sha256": "61322cb60b2a21090785c02ada6ebc55a788ba41d4e46d99419d1e3799e553bf",
+      "bytes": 8585,
+      "upstream_sha256": "61322cb60b2a21090785c02ada6ebc55a788ba41d4e46d99419d1e3799e553bf",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_lossless_transport.py",
+      "sha256": "0a0aa13436a150e440413e47535b949270e0735c29308a6828505204968910b8",
+      "bytes": 10703,
+      "upstream_sha256": "0a0aa13436a150e440413e47535b949270e0735c29308a6828505204968910b8",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_memory_cache_paged_shim.py",
+      "sha256": "4904f0a8248aada80bd6faff757694d1c6be4b4d9161c6b3941d39f8198136f8",
+      "bytes": 4677,
+      "upstream_sha256": "4904f0a8248aada80bd6faff757694d1c6be4b4d9161c6b3941d39f8198136f8",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_mha_gen_llama_decode_parity.py",
+      "sha256": "9ff3a084fa650a038e4dce972c1828b2d561fb227856d13b9a7ccd3b34541aa7",
+      "bytes": 4855,
+      "upstream_sha256": "9ff3a084fa650a038e4dce972c1828b2d561fb227856d13b9a7ccd3b34541aa7",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_nemotron_attention_mask.py",
+      "sha256": "952df657b5922f5aa9f51f7d3e84c0d922068588a43bf7cdb8b0f21d46429675",
+      "bytes": 2338,
+      "upstream_sha256": "952df657b5922f5aa9f51f7d3e84c0d922068588a43bf7cdb8b0f21d46429675",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_nemotron_select_cache.py",
+      "sha256": "252330c357f028ebe26cf4ceca280758db9f712cd66d8bfe9f3bf6264ff63bf2",
+      "bytes": 5903,
+      "upstream_sha256": "252330c357f028ebe26cf4ceca280758db9f712cd66d8bfe9f3bf6264ff63bf2",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_optimized_layers.py",
+      "sha256": "97422a57f9667cd11c4c20115dfa72d39b8de5368e7177ec9befe56174d20e72",
+      "bytes": 9392,
+      "upstream_sha256": "97422a57f9667cd11c4c20115dfa72d39b8de5368e7177ec9befe56174d20e72",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_optional_model_registration.py",
+      "sha256": "2fe7038e3a4b358e978742cf42bf62b294ec396ee3c61927546df88baa80abfb",
+      "bytes": 2767,
+      "upstream_sha256": null,
+      "change": "added",
+      "selected_source": "a5 working changes; incomplete acceptance"
+    },
+    {
+      "path": "tests/test_p2p_config.py",
+      "sha256": "9fc7cf93ffc6d997c97d82624afbad67c09406dcf80bb7b9e93ee4cb1bd2c7a6",
+      "bytes": 1062,
+      "upstream_sha256": "9fc7cf93ffc6d997c97d82624afbad67c09406dcf80bb7b9e93ee4cb1bd2c7a6",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_paged_kv.py",
+      "sha256": "03f8367a705b38ded9188035857d70c7510d8b8a4e0b6f0de73627d37fd4ab89",
+      "bytes": 6549,
+      "upstream_sha256": "03f8367a705b38ded9188035857d70c7510d8b8a4e0b6f0de73627d37fd4ab89",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_paged_kv_flexgen_substrate.py",
+      "sha256": "232bb959946e976b91ee0d19b388d6b36c3583e856dcc27287b54954f579b62a",
+      "bytes": 7374,
+      "upstream_sha256": "232bb959946e976b91ee0d19b388d6b36c3583e856dcc27287b54954f579b62a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_paged_kv_spec_dec_routing.py",
+      "sha256": "0f4baa3a047f50cb838c8f0004e9e630b711b205348a131720750ac85f2e608f",
+      "bytes": 7678,
+      "upstream_sha256": "0f4baa3a047f50cb838c8f0004e9e630b711b205348a131720750ac85f2e608f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_peft.py",
+      "sha256": "a382fd46073411411c3cc6f40bbd56e35487c3f6569f009434113a2e9a601d8b",
+      "bytes": 1537,
+      "upstream_sha256": "a382fd46073411411c3cc6f40bbd56e35487c3f6569f009434113a2e9a601d8b",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_priority_pool.py",
+      "sha256": "88c1380dc41e8645921f3cbd28fbfb7be9c6fc2926cb5465af264c0141fad7b5",
+      "bytes": 3581,
+      "upstream_sha256": "88c1380dc41e8645921f3cbd28fbfb7be9c6fc2926cb5465af264c0141fad7b5",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_prompt_inference.py",
+      "sha256": "2399a91211b68797bb43844680a9933942f928031477e8b7385bd0fc1215c55f",
+      "bytes": 3835,
+      "upstream_sha256": "2399a91211b68797bb43844680a9933942f928031477e8b7385bd0fc1215c55f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_prompt_token_device.py",
+      "sha256": "ffeccac1e3ee0b51443a51e30d9319b5cc6b8b5f1135695450aa177eb774f283",
+      "bytes": 1573,
+      "upstream_sha256": "ffeccac1e3ee0b51443a51e30d9319b5cc6b8b5f1135695450aa177eb774f283",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_ptune_training_setup.py",
+      "sha256": "ba50b5a99a5b688e7d8223112dcd963dca6c6e7c95162889a48eb8029bdca41a",
+      "bytes": 2128,
+      "upstream_sha256": "ba50b5a99a5b688e7d8223112dcd963dca6c6e7c95162889a48eb8029bdca41a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_qwen3_block_parity.py",
+      "sha256": "fe1fe8afee844e3f7150fab41d9857c9b4c49d1c0e638e4c5d22b1bd67217e79",
+      "bytes": 6638,
+      "upstream_sha256": "fe1fe8afee844e3f7150fab41d9857c9b4c49d1c0e638e4c5d22b1bd67217e79",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_real_activation_dumper.py",
+      "sha256": "38c164359fb1640c38d7114b2dfb2c786ff03a97055380b88072655414c80ef4",
+      "bytes": 1849,
+      "upstream_sha256": "38c164359fb1640c38d7114b2dfb2c786ff03a97055380b88072655414c80ef4",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_recovery_history_source.py",
+      "sha256": "984d0e208c50a49ab07a368024406f4043416e6c059a78a1d6615ffb9860cb0f",
+      "bytes": 2567,
+      "upstream_sha256": "984d0e208c50a49ab07a368024406f4043416e6c059a78a1d6615ffb9860cb0f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_remote_generation_cache.py",
+      "sha256": "b70120dc3d973792d5d0e6256df6e17b779ca05141113f290e705fa3bf1fb36a",
+      "bytes": 3742,
+      "upstream_sha256": "b70120dc3d973792d5d0e6256df6e17b779ca05141113f290e705fa3bf1fb36a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_remote_sequential.py",
+      "sha256": "27e30f0e05cfe2ded0905e698157e19ae50e6964fe19bb7aee9d6e8abcfb2d90",
+      "bytes": 6082,
+      "upstream_sha256": "27e30f0e05cfe2ded0905e698157e19ae50e6964fe19bb7aee9d6e8abcfb2d90",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_review_p1_fixes.py",
+      "sha256": "d8f4dfb92211092419a3da84d98689439788f3a3737b446669ab5cdf0adf434c",
+      "bytes": 19770,
+      "upstream_sha256": "d8f4dfb92211092419a3da84d98689439788f3a3737b446669ab5cdf0adf434c",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_rpc_inference_dtype_guard.py",
+      "sha256": "b867485596c6e98548f973a755dca5f5a8b8411823588f3dc775dc8303a03b8c",
+      "bytes": 1673,
+      "upstream_sha256": "b867485596c6e98548f973a755dca5f5a8b8411823588f3dc775dc8303a03b8c",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_sequence_manager.py",
+      "sha256": "078bf249905cc0e8e02f4908fd166717754c43ccd7683409a13fece58e5e4ddc",
+      "bytes": 1950,
+      "upstream_sha256": "078bf249905cc0e8e02f4908fd166717754c43ccd7683409a13fece58e5e4ddc",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_server_stats.py",
+      "sha256": "bd77cb7d92af611151d351aad4cd8c6d31e38d2cc8ba1e225cb73bcc82d3c9e0",
+      "bytes": 1836,
+      "upstream_sha256": "bd77cb7d92af611151d351aad4cd8c6d31e38d2cc8ba1e225cb73bcc82d3c9e0",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_serving_cache_regressions.py",
+      "sha256": "b2952c13faf547e62f687f7bff23087b9d89a166d8c381b3de934ed94ad7d198",
+      "bytes": 11507,
+      "upstream_sha256": "b2952c13faf547e62f687f7bff23087b9d89a166d8c381b3de934ed94ad7d198",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_spe_dec_tree.py",
+      "sha256": "f911613167513ca7dd2a5eebedc9019bce21fbc60b703425f2b875149addd80f",
+      "bytes": 4522,
+      "upstream_sha256": "f911613167513ca7dd2a5eebedc9019bce21fbc60b703425f2b875149addd80f",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_spec_cache_compaction.py",
+      "sha256": "a2c51a7ccd52c5db084e59e7cbb01e0b9ec406a403085ab162e98bfe11516040",
+      "bytes": 6313,
+      "upstream_sha256": "a2c51a7ccd52c5db084e59e7cbb01e0b9ec406a403085ab162e98bfe11516040",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_spec_cache_reorder_sync.py",
+      "sha256": "d95ae3aa200befd82ff9daee80be3c9b35e7d5f574cf168697f413aba52e42e7",
+      "bytes": 1408,
+      "upstream_sha256": "d95ae3aa200befd82ff9daee80be3c9b35e7d5f574cf168697f413aba52e42e7",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_spec_decoding_tree_shape.py",
+      "sha256": "8a89fe1c5815740a2af89a83ed0400d61e2fed610fbcd75bca7cb85b21d3afe7",
+      "bytes": 2731,
+      "upstream_sha256": "8a89fe1c5815740a2af89a83ed0400d61e2fed610fbcd75bca7cb85b21d3afe7",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_spec_decoding_verify.py",
+      "sha256": "90854012e787f3420ca074bce23fb01a7ea280500115e3162f74c53694d0c50e",
+      "bytes": 5078,
+      "upstream_sha256": "90854012e787f3420ca074bce23fb01a7ea280500115e3162f74c53694d0c50e",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_spec_session_position.py",
+      "sha256": "b5f72ad58025b81958d00ffd0ae7b8a252570a10283752edc656784c0e69b66a",
+      "bytes": 866,
+      "upstream_sha256": "b5f72ad58025b81958d00ffd0ae7b8a252570a10283752edc656784c0e69b66a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_speculative_generation.py",
+      "sha256": "23fd780ba78c8ac9afcd7e5f26f9248ad2768bdb70b069521355e320920c1dc2",
+      "bytes": 3214,
+      "upstream_sha256": "23fd780ba78c8ac9afcd7e5f26f9248ad2768bdb70b069521355e320920c1dc2",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_speculative_pruner_manager.py",
+      "sha256": "83811799629319eecfca667a8bd803d4088d17b15d8f05b0661d016a23f32398",
+      "bytes": 1177,
+      "upstream_sha256": "83811799629319eecfca667a8bd803d4088d17b15d8f05b0661d016a23f32398",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_standard_lora.py",
+      "sha256": "a5ac8af874ee546400c86fbb84dac8853e8685d9293541ac36b6565e49ca6fb9",
+      "bytes": 14140,
+      "upstream_sha256": "a5ac8af874ee546400c86fbb84dac8853e8685d9293541ac36b6565e49ca6fb9",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_tensor_parallel.py",
+      "sha256": "61aff86a913ad948fcde51220e6db87ec260eae3888d0480c4fe694e982a1b3e",
+      "bytes": 2037,
+      "upstream_sha256": "61aff86a913ad948fcde51220e6db87ec260eae3888d0480c4fe694e982a1b3e",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    },
+    {
+      "path": "tests/test_utils.py",
+      "sha256": "1bdcac7d6b5b156b0a0751973f6f5f5da1d5711cd40811c4adf3e65d7a4ac37a",
+      "bytes": 731,
+      "upstream_sha256": "1bdcac7d6b5b156b0a0751973f6f5f5da1d5711cd40811c4adf3e65d7a4ac37a",
+      "change": "unchanged",
+      "selected_source": "latest upstream"
+    }
+  ],
+  "review_stage": "frozen c4 score publication recovery; review/runtime receipts tracked separately",
+  "reviewed_a4_manifest_sha256": "eec26300b6da8334c196b3c355335c17191c41c03873deed3ba1e1540135163f",
+  "previous_manifest_sha256": "26ce0068945844ead720958001ef081246c693ca207a4e28e5ada0693aa3187e"
+}

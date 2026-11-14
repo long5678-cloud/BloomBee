@@ -1,6 +1,7 @@
 """Chunked GLM prefill must keep the two MLA latent widths intact."""
 
 import pytest
+from review_fixtures import make_cpu_cache_manager
 import torch
 
 from bloombee.server import mla_chunk

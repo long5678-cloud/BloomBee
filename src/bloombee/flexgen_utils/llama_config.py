@@ -266,6 +266,10 @@ def resolve_flexgen_llama_weights(
         return os.path.abspath(os.path.expanduser(os.path.join(path, f"{model_name}-np")))
 
     if local_src_dir is not None:
+        from bloombee.flexgen_utils.conversion_reuse import configured_conversion
+        reused = configured_conversion(local_src_dir, revision)
+        if reused is not None:
+            return reused
         return convert_local_llama_weights(local_src_dir, model_name, path, revision=revision)
 
     if raw_path and os.path.isdir(raw_path):

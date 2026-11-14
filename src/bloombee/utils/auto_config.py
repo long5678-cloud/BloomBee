@@ -20,6 +20,11 @@ class _ModelClasses:
 
 
 _CLASS_MAPPING = {}  # Populated by bloombee.models.* subpackages with register_model_classes()
+_UNAVAILABLE_MODEL_REASONS = {}
+
+
+def register_unavailable_model(model_type: str, reason: str):
+    _UNAVAILABLE_MODEL_REASONS[model_type] = reason
 
 
 def register_model_classes(*, config: Type[PretrainedConfig], **kwargs):
@@ -27,6 +32,7 @@ def register_model_classes(*, config: Type[PretrainedConfig], **kwargs):
     assert config.model_type not in _CLASS_MAPPING, f"Model type {config.model_type} is already registered"
 
     _CLASS_MAPPING[config.model_type] = _ModelClasses(config=config, **kwargs)
+    _UNAVAILABLE_MODEL_REASONS.pop(config.model_type, None)
 
 
 class _AutoDistributedBase:
@@ -43,6 +49,9 @@ class _AutoDistributedBase:
 
         config = AutoConfig.from_pretrained(model_name_or_path, *args, **kwargs)
         if config.model_type not in _CLASS_MAPPING:
+            if config.model_type in _UNAVAILABLE_MODEL_REASONS:
+                raise ValueError(f"BloomBee model type {config.model_type} is unavailable in the current Transformers build: "
+                                 + _UNAVAILABLE_MODEL_REASONS[config.model_type])
             raise ValueError(f"BloomBee does not support model type {config.model_type}")
 
         proper_cls = getattr(_CLASS_MAPPING[config.model_type], cls._mapping_field)

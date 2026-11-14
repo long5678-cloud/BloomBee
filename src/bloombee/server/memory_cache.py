@@ -97,6 +97,7 @@ class MemoryCache:
         self._enqueued_tokens = mp.Value(ctypes.c_int64, 0, lock=True)
         self._handle_counter = mp.Value(ctypes.c_int64, 0, lock=False)
         self._allocated_tensors: Dict[Handle, Any] = {}
+        self._last_allocation_handle: Optional[Handle] = None  # Runtime side of the allocation FIFO.
         self._handle_size_bytes: Dict[Handle, int] = {}
         self._handle_to_allocation: Dict[Handle, Tuple[Handle, ...]] = {}
         self._allocation_tokens: Dict[Tuple[Handle, ...], int] = {}
@@ -104,6 +105,14 @@ class MemoryCache:
         # storage as _allocated_tensors[handle]. Populated lazily at
         # allocation time; only present when BLOOMBEE_PAGED_KV=1.
         self._paged_tables: Dict[Handle, PagedKVTable] = {}
+        # Runtime-only session lifetime notifications for opt-in native history.
+        # Connection handlers retain their existing allocation/token protocol.
+        self.release_journal = None
+        self._release_allocations = {}
+        self._dynamo_session_release = {}
+        self._dynamo_active_history = {}
+        self._dynamo_page_records = {}
+        self._dynamo_failed_page_handles = set()
         self.runtime_pid = os.getpid()
 
         self._pipe_recv, self._pipe_send = mp.Pipe(duplex=False)  # any ConnectionHandler -> runtime
@@ -375,6 +384,11 @@ class MemoryCache:
         def _process_message(recv_handles, recv_data):
             if recv_data is not None:  # create new tensors
                 assert len(recv_handles) == len(recv_data)
+                if recv_handles:
+                    self._last_allocation_handle = recv_handles[-1]
+                    if getattr(self, "release_journal", None) is not None:
+                        group = tuple(recv_handles)
+                        self._release_allocations.update(dict.fromkeys(group, group))
                 for handle, descr in zip(recv_handles, recv_data):
                     seq_len = descr.shape[-1] if descr.shape else 0
                     # [MBPIPE] Extract batch_size from descriptor (first dim)
@@ -575,13 +589,25 @@ class MemoryCache:
                         self._register_paged_view(handle, allocated_cache)
 
             else:  # delete tensors by handle
+                returned = []
                 for handle in recv_handles:
+                    callback = self._dynamo_session_release.pop(handle, None)
+                    self._dynamo_active_history.pop(handle, None)
+                    owned = handle in self._allocated_tensors
+                    lease = callback() if callback is not None else None
+                    if getattr(self, "release_journal", None) is not None:
+                        group = self._release_allocations.pop(handle, None)
+                        returned.append(lease if owned and group == tuple(recv_handles) else None)
+                    self._dynamo_page_records.pop(handle, None)
+                    self._dynamo_failed_page_handles.discard(handle)
                     if handle not in self._allocated_tensors:
                         logger.warning(
                             f"Sanity check failed: asked to delete handle {handle}, but there is no such handle"
                         )
                     self._allocated_tensors.pop(handle, None)
                     self._paged_tables.pop(handle, None)
+                if getattr(self, "release_journal", None) is not None:
+                    self.release_journal.observe_free(recv_handles, returned)
 
         while self._pipe_recv.poll():
             _process_message(*self._pipe_recv.recv())
@@ -589,6 +615,11 @@ class MemoryCache:
         # Ensure all requested handles are materialized; wait synchronously if needed
         missing_handles = [handle for handle in handles if handle not in self._allocated_tensors]
         while missing_handles:
+            # Handlers assign consecutive IDs and send creates under the same lock.
+            # Once the runtime has read a create, waiting cannot recreate its slab.
+            for handle in missing_handles:
+                if self._last_allocation_handle is not None and handle <= self._last_allocation_handle:
+                    raise RuntimeError(f"KV cache handle {handle} is no longer available")
             _process_message(*self._pipe_recv.recv())
             missing_handles = [handle for handle in handles if handle not in self._allocated_tensors]
 

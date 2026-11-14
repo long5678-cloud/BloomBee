@@ -302,6 +302,14 @@ class _FlexgenLlamaShard(nn.Module):
         if layer_past is None:
             return None
         key_states, value_states = layer_past
+        from bloombee.server.dynamo_pages import PagedOperand
+        if isinstance(key_states, PagedOperand) or isinstance(value_states, PagedOperand):
+            if not isinstance(key_states, PagedOperand) or not isinstance(value_states, PagedOperand):
+                raise ValueError("paired paged operands required")
+            if key_states.device != self.device:
+                raise NotImplementedError("direct paged KV requires same-device attention")
+            return (key_states.head_slice(self.layout.q_head_start, self.layout.q_head_end),
+                    value_states.head_slice(self.layout.q_head_start, self.layout.q_head_end))
         key_states, value_states, batch_size, seq_len, head_dim = self._unpack_layer_past(key_states, value_states)
 
         if self.is_output_shard:

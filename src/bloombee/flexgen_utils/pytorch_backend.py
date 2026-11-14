@@ -817,7 +817,11 @@ class TorchDevice:
         k_new = k.permute(1, 0, 2, 3).reshape(tgt_s, b * n_head, head_dim)
         # shape: (1, b * n_head, head_dim)
         v_new = v.permute(1, 0, 2, 3).reshape(tgt_s, b * n_head, head_dim)
-        if not isinstance(k_cache, TorchTensor):
+        from bloombee.server.dynamo_pages import PagedOperand, paged_attention_value
+        paged_pair = isinstance(k_cache, PagedOperand) or isinstance(v_cache, PagedOperand)
+        if paged_pair and (compress_cache or attn_sparsity < 1.0):
+            raise NotImplementedError("paged ordinary Llama requires dense uncompressed attention")
+        if not paged_pair and not isinstance(k_cache, TorchTensor):
             k_cache = TorchTensor.create_from_torch(k_cache, attention_mask.device)
             v_cache = TorchTensor.create_from_torch(v_cache, attention_mask.device)
 
@@ -849,7 +853,10 @@ class TorchDevice:
                 )
             _MHA_GEN_DECODE_PROBE_EMITTED = True
         
-        if isinstance(k_cache, TorchTensor):
+        if paged_pair:
+            value = paged_attention_value(q, k_cache, v_cache, k_new, v_new,
+                                          attention_mask.data, batch=b, heads=n_head)
+        elif isinstance(k_cache, TorchTensor):
             if attn_sparsity >= 1.0:  # Dense attention
                 if compress_cache and k_cache.device.device_type == DeviceType.COMPRESSED:
                     # Compressed backing store: decompress to a new tensor first.
@@ -890,7 +897,8 @@ class TorchDevice:
                     q = q.float().cpu()
                     k, v = k.float(), v.float()
                     value = self._attention_value(q, k, v, attention_mask.data,
-                        b, src_s, tgt_s, n_head, head_dim).cuda().half()
+                        b, src_s, tgt_s, n_head, head_dim).to(
+                            device=inputs.data.device, dtype=inputs.data.dtype)
                         
             else:  # Sparse attention
                 # shape: (s, b * n_head, head_dim)

@@ -1,0 +1,52 @@
+{
+  "run_id": "run_a1",
+  "source_run_id": "source_a1",
+  "consumer_id": "consumer_a1",
+  "context": "REPLACE_WITH_IMMUTABLE_EXECUTION_CONTEXT",
+  "declared_execution_digest": "REPLACE_WITH_SOURCE_LAUNCH_DECLARATION",
+  "source_incarnation": null,
+  "source_native_endpoint": {
+    "instance_id": "REPLACE_SOURCE_INSTANCE",
+    "url": "tcp://127.0.0.1:50101",
+    "http_url": "http://127.0.0.1:50102"
+  },
+  "target_native_endpoint": {
+    "instance_id": "REPLACE_TARGET_INSTANCE",
+    "url": "tcp://127.0.0.1:50103",
+    "http_url": "http://127.0.0.1:50104"
+  },
+  "coordinator_url": "http://127.0.0.1:50105",
+  "redis_endpoint": "127.0.0.1:50106",
+  "source_page_endpoint": "http://127.0.0.1:50107",
+  "source_holder_peers": [],
+  "page_control_url": "http://127.0.0.1:50108",
+  "model_path": "/REPLACE/model",
+  "source_model_dht_prefix": "REPLACE_SOURCE_MODEL_SWARM",
+  "model_dht_prefix": "REPLACE_MODEL_SWARM",
+  "peer": "REPLACE_TARGET_MODEL_PEER",
+  "request_count": 3,
+  "identity_templates_file": "/REPLACE/actual_templates.json",
+  "source_manifests_file": "/REPLACE/actual_source_manifests.json",
+  "initial_history_file": "/REPLACE/complete_terminal_history.json",
+  "history_boundary": {
+    "truncated": false,
+    "consumer_id": "consumer_a1",
+    "window_id": "window_a1",
+    "initial_completion_seq": 0,
+    "clock_domain_id": "REPLACE_REAL_HISTORY_CLOCK_DOMAIN",
+    "completion_sequence_semantics": "unique_successful_full_request_disclosure"
+  },
+  "clock_domain_file": "/REPLACE/target/clock.json",
+  "ingress_clock_domain": "REPLACE_ACTUAL_INGRESS_DOMAIN",
+  "source_state_dir": "/REPLACE/source/run_a1",
+  "target_state_dir": "/REPLACE/target/run_a1",
+  "source_config_dir": "/REPLACE/source/config_a1",
+  "target_config_dir": "/REPLACE/target/config_a1",
+  "prefetch_strategy": "lrfu",
+  "distributed_telemetry": false,
+  "retention_policy": "dynamo",
+  "history_tier": "both",
+  "cpu_capacity_blocks": 16,
+  "gpu_capacity_blocks": 17,
+  "host_min_priority": 0
+}

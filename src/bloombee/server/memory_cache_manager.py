@@ -18,7 +18,7 @@ from hivemind.utils import TensorDescriptor, enter_asynchronously, get_logger
 from bloombee.data_structures import Handle
 from bloombee.utils.asyncio import shield_and_wait
 from bloombee.utils.debug_config import get_env_bool_with_debug_fallback
-from bloombee.utils.misc import get_size_in_bytes
+from bloombee.utils.misc import get_size_in_bytes, is_dummy
 
 from transformers import PretrainedConfig
 
@@ -54,6 +54,7 @@ class KVCacheManager:
         # mainline. The legacy _write_kvs slab write remains the source of
         # truth in both modes.
         self._paged_kv_enabled = _is_paged_kv_enabled()
+        self._dynamo_page_binding = threading.local()
         self._reorder_executor = ThreadPoolExecutor(max_workers=1)
         self._pending_reorder: Optional[Future] = None
         self._pending_reorder_lock = threading.Lock()
@@ -592,7 +593,88 @@ class KVCacheManager:
         return allocation_tokens_num
 
 
+    @contextlib.contextmanager
+    def bind_dynamo_pages(self, handles, session, *, on_chunk_complete=None):
+        """Opt-in same-device, batch-one Llama pages; does not release the lease.
+
+        The service owner keeps the session across ordinary prefill/decode RPCs,
+        publishes compatible completed blocks, and releases it in finally.
+        Legacy dense/slab and speculative paged shim remain separate defaults.
+        """
+        from bloombee.server.dynamo_pages import PageSession
+        if not isinstance(session, PageSession):
+            raise TypeError("PageSession required")
+        session._check()
+        if getattr(self._dynamo_page_binding, "binding", None) is not None:
+            raise RuntimeError("nested dynamo page bindings are unsupported")
+        if (getattr(self.block_config, "model_type", None) != "llama"
+                or self._paged_kv_enabled or self.offloading_policy.compress_cache
+                or self.offloading_policy.cpu_cache_compute
+                or self.offloading_policy.cache_gpu_percent != 100):
+            raise ValueError("direct pages require ordinary noncompressed Llama attention")
+        if session.pool.num_heads != self.block_config.num_attention_heads:
+            raise ValueError("pool must use the expanded attention-head cache layout")
+        if on_chunk_complete is not None and not callable(on_chunk_complete):
+            raise TypeError("on_chunk_complete must be callable or None")
+        self._dynamo_page_binding.binding = (tuple(handles), session, on_chunk_complete)
+        try:
+            yield session
+        finally:
+            del self._dynamo_page_binding.binding
+
+    def dynamo_page_session(self):
+        binding = getattr(self._dynamo_page_binding, "binding", None)
+        return None if binding is None else binding[1]
+
+    def dynamo_chunk_completed(self, start_position, inputs, outputs):
+        """Report one real completed chunk after its new KV has been appended.
+
+        Transient borrowed tensors, absolute logical [start,end), no future
+        output or dense history. The service callback owns CPU retention/cutoff,
+        aux copying and request finalization; it must not append to this session.
+        """
+        binding = getattr(self._dynamo_page_binding, "binding", None)
+        if binding is None:
+            raise RuntimeError("chunk progress requires a bound page session")
+        session = binding[1]
+        end = start_position + inputs.shape[1]
+        if (inputs.ndim != 3 or inputs.shape != outputs.shape
+                or start_position < 0 or end != session.length):
+            raise ValueError("chunk progress does not match committed page length")
+        session.pool.events.append(dict(event="chunk_complete", start=start_position, end=end))
+        callback = binding[2]
+        if callback is not None:
+            callback(session=session, start=start_position, end=end, inputs=inputs, outputs=outputs)
+            if session.length != end:
+                raise RuntimeError("chunk callback must not change the page sequence")
+
+    def _write_dynamo_pages(self, kvs, start_position, batch_offset=0,
+                            full_batch_size=0, micro_batch_size=0):
+        session = self.dynamo_page_session()
+        if session is None:
+            return False
+        if batch_offset or full_batch_size not in (0, 1) or micro_batch_size not in (0, 1):
+            raise ValueError("direct page writes require batch one")
+        if start_position != session.length:
+            raise ValueError("page writes must append at the actual committed prefix")
+        key, value = kvs
+        key = key if isinstance(key, torch.Tensor) else key.data
+        value = value if isinstance(value, torch.Tensor) else value.data
+        if key.ndim == 4 and value.ndim == 4 and key.shape[0] == value.shape[0] == 1:
+            key, value = key[0].permute(1, 0, 2), value[0].permute(1, 0, 2)
+        elif key.ndim == 3 and value.ndim == 3:
+            # Backend's normal Bloom return layout is K[H,D,T], V[H,T,D].
+            if key.shape[0] != session.pool.num_heads or key.shape[1] != session.pool.head_dim:
+                raise ValueError("invalid Bloom-layout page update")
+            key, value = key.permute(2, 0, 1), value.permute(1, 0, 2)
+        else:
+            raise ValueError("unsupported paged KV update layout")
+        session.append(key, value)
+        return True
+
     def add_cache(self, kvs: AdaptedKVCache, start_position: int):
+        if self._write_dynamo_pages(kvs, start_position):
+            return
         self._write_kvs(kvs, start_position)
         self._track_paged_write(kvs, start_position, commit=True)
 
@@ -610,6 +692,8 @@ class KVCacheManager:
             full_batch_size: Total batch size for micro-batch support (0 = no micro-batch)
             micro_batch_size: Actual size of this micro-batch (0 = use full_batch_size - batch_offset)
         """
+        if self._write_dynamo_pages(new_kvs, start_position, batch_offset, full_batch_size, micro_batch_size):
+            return
         if self._verbose_kv_logs:
             logger.info(
                 "[MBPIPE_UPDATE_CACHE] start_position=%s batch_offset=%s full_batch=%s micro_batch=%s new_kvs_type=%s active_cache_depth=%s",
@@ -1115,6 +1199,20 @@ class KVCacheManager:
         if cache_tensors is None:
             assert self._active_cache_tensors_stack, "write_pkv_cache called outside of use_cache context"
             cache_tensors = self._active_cache_tensors_stack[-1]  # TorchTensor
+        page_session = self.dynamo_page_session()
+        if page_session is not None:
+            if (batch_offset or full_batch_size not in (0, 1) or micro_batch_size not in (0, 1)
+                    or requested_rows not in (0, 1) or kv_cache_position_ids is not None):
+                raise ValueError("direct page read supports ordinary batch-one prefix only")
+            if (hypo_ids is not None and not is_dummy(hypo_ids)
+                    and not torch.equal(hypo_ids.cpu(), torch.zeros(1, dtype=hypo_ids.dtype))):
+                raise ValueError("page hypothesis reordering is unsupported")
+            if prefix_length != page_session.length:
+                raise ValueError("requested prefix differs from claimed page session")
+            if prefix_length == 0:
+                return None, None, False
+            key, value = page_session.operands(prefix_length)
+            return key, value, False
         if prefix_length <= 0:
             return None, None, False
         
@@ -1393,6 +1491,9 @@ class KVCacheManager:
     
     @contextlib.contextmanager
     def use_cache(self, *handles: Handle) -> Sequence[torch.Tensor]:
+        binding = getattr(self._dynamo_page_binding, "binding", None)
+        if binding is not None and tuple(handles) != binding[0]:
+            raise ValueError("page binding cannot redirect another request's cache handles")
         with self.cache.use_cache(*handles) as cache_tensors:
             # Keep underlying tensors in the stack for centralized writes,
             # but yield clones to callers to prevent accidental in-place edits

@@ -695,6 +695,16 @@ def _drop_mb_step_state(key: Any, *, overlap: bool = False, accum: bool = False)
         _MB_STEP_STATE_TOUCHED_AT.pop(key, None)
 
 
+def _dynamo_step_metadata(step_metadata, prompts):
+    """Propagate only explicit opt-in identity, tagging unsupported deep prompts."""
+    metadata = step_metadata.get("dynamo_cache")
+    if metadata is None:
+        return None
+    if any(prompt is not None and not is_dummy(prompt) for prompt in prompts):
+        return dict(metadata, _server_has_prompts=True)
+    return metadata
+
+
 async def iterate_rpc_inference(
     requested_uids: Sequence[ExpertUID],
     requested_backends: Sequence[TransformerBackend],
@@ -1067,6 +1077,7 @@ async def iterate_rpc_inference(
                         cache_handles,
                         prefix_length,
                         active_adapter,
+                        dynamo_cache=_dynamo_step_metadata(step_metadata, prompts),
                         tree_attention_mask=tree_attention_mask,
                         kv_cache_position_ids=kv_cache_position_ids,
                         draft_tokens=draft_tokens,
@@ -1120,6 +1131,7 @@ async def iterate_rpc_inference(
                             handles,
                             prefix_length,
                             active_adapter,
+                            dynamo_cache=_dynamo_step_metadata(step_metadata, prompts),
                             tree_attention_mask=tree_attention_mask,
                             kv_cache_position_ids=kv_cache_position_ids,
                             draft_tokens=draft_tokens,
@@ -1804,6 +1816,11 @@ async def iterate_rpc_inference(
         # Note: quant_type is always NONE (quantization CLI removed), so always use standard threshold
         merge_max_tokens = MAX_SHORT_INFERENCE_TOKENS
         can_merge_pools = batch_size * length_increment <= merge_max_tokens
+        if step_metadata.get("remote_prefix") is not None and prefix_length == 0:
+            if batch_size != 1 or is_spec_dec or has_prompts or should_split_batch(batch_size):
+                raise ValueError("native prefix RPC requires plain batch1, no prompts/spec/microbatch")
+            can_merge_pools = True
+
         # print('-=-=-=-=-=-=-=-==-=- can merge pools : ', can_merge_pools)
         priority = prioritizer.prioritize(
             hidden_states,
@@ -1951,6 +1968,7 @@ async def iterate_rpc_inference(
                             cache_handles,
                             prefix_length,
                             active_adapter,
+                            dynamo_cache=_dynamo_step_metadata(step_metadata, prompts),
                             tree_attention_mask=mb_inputs.tree_attention_mask,
                             kv_cache_position_ids=mb_inputs.kv_cache_position_ids,
                             draft_tokens=mb_inputs.draft_tokens,
@@ -2274,6 +2292,7 @@ async def iterate_rpc_inference(
                         cache_handles,
                         prefix_length,
                         active_adapter,
+                        dynamo_cache=_dynamo_step_metadata(step_metadata, prompts),
                         tree_attention_mask=tree_attention_mask,
                         kv_cache_position_ids=kv_cache_position_ids,
                         draft_tokens=draft_tokens,
@@ -2285,10 +2304,19 @@ async def iterate_rpc_inference(
                         full_batch_size=batch_size,
                         micro_batch_size=batch_size,
                     )
+                    if step_metadata.get("remote_prefix") is not None and prefix_length == 0:
+                        from dataclasses import replace as _replace_prefix
+                        envelope = dict(step_metadata["remote_prefix"])
+                        envelope["rpc_session_id"] = step_metadata.get("session_id")
+                        envelope["handler_queue_end_us"] = step_metadata.get("_queue_wait_end_us")
+                        inference_infos = tuple(_replace_prefix(i, remote_prefix=envelope) for i in inference_infos)
                     submit_result = await requested_backends[0].inference_pool.submit_task(
                         hidden_states, hypo_ids, inference_infos, *prompts, priority=priority
                     )
                     hidden_states, keep_indices, runtime_timing = _unpack_inference_submit_result(submit_result)
+                    if isinstance(runtime_timing, dict) and runtime_timing.get("remote_prefix_receipt") is not None:
+                        step_metadata["remote_prefix_receipt"] = runtime_timing["remote_prefix_receipt"]
+
                     _accumulate_runtime_timing(runtime_timing_total, runtime_timing)
                 
             else:
@@ -2363,6 +2391,7 @@ async def iterate_rpc_inference(
                                 handles,
                                 prefix_length,
                                 active_adapter,
+                                dynamo_cache=_dynamo_step_metadata(step_metadata, prompts),
                                 tree_attention_mask=mb_inputs.tree_attention_mask,
                                 kv_cache_position_ids=mb_inputs.kv_cache_position_ids,
                                 draft_tokens=mb_inputs.draft_tokens,
@@ -2487,6 +2516,7 @@ async def iterate_rpc_inference(
                             handles,
                             prefix_length,
                             active_adapter,
+                            dynamo_cache=_dynamo_step_metadata(step_metadata, prompts),
                             tree_attention_mask=tree_attention_mask,
                             kv_cache_position_ids=kv_cache_position_ids,
                             draft_tokens=draft_tokens,

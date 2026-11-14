@@ -7,7 +7,11 @@ from transformers import PretrainedConfig, PreTrainedModel
 from bloombee.models.bloom.block import WrappedBloomBlock
 from bloombee.models.deepseekv3.block import WrappedDeepseekV3Block
 from bloombee.models.falcon.block import WrappedFalconBlock
-from bloombee.models.gemma4.block import WrappedGemma4Block
+from bloombee.utils.auto_config import _UNAVAILABLE_MODEL_REASONS
+if "gemma4" in _UNAVAILABLE_MODEL_REASONS:
+    WrappedGemma4Block = None  # Not a model implementation; dispatch rejects this family.
+else:
+    from bloombee.models.gemma4.block import WrappedGemma4Block
 from bloombee.models.glm4_moe_lite.block import WrappedGlm4MoeLiteBlock
 from bloombee.models.mixtral.block import WrappedMixtralBlock
 from bloombee.models.nemotron_h.block import WrappedNemotronHBlock

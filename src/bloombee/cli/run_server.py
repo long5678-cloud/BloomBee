@@ -73,6 +73,8 @@ def main():
                         help='Weight quantization type. Currently only INT8 is supported, and only for '
                              "DeepSeek-V3's MoE expert weights (~98%% of its params) -- see convert_block().")
 
+    parser.add_argument('--torch_num_threads', type=int, default=None, help='Explicit CPU thread limit per worker; positive integer')
+
     parser.add_argument('--num_handlers', type=int, default=8, required=False,
                         help='server will use this many processes to handle incoming requests')
     parser.add_argument('--prefetch_batches', type=int, default=1, required=False,
@@ -102,6 +104,12 @@ def main():
     parser.add_argument('--attn_cache_tokens', type=int, default=None,
                         help='The number of past attention key/value pairs that will be stored between inference steps. '
                              'Default: 16384 for models with multi-query attention (based on Llama 2, Falcon), 4096 for others')
+
+    parser.add_argument('--ready_file', type=str, default=None, help='New JSON readiness receipt after actual model runtime is ready')
+    parser.add_argument('--offload_dir', type=str, default=None,
+                        help='Owned data-disk directory for this server offload workspace')
+    parser.add_argument('--weight_cache_dir', type=str, default=None,
+                        help='Owned directory for source/revision-bound FlexGen conversions')
 
     parser.add_argument('--cache_dir', type=str, default=None,
                         help='Path to a directory in which a downloaded pretrained model configuration should be cached if the standard cache should not be used.')
@@ -230,7 +238,12 @@ def main():
 
     validate_version()
 
-    if not torch.backends.openmp.is_available():
+    requested_threads = args.pop("torch_num_threads")
+    if requested_threads is not None and requested_threads <= 0:
+        parser.error("--torch_num_threads must be positive")
+    if requested_threads is not None:
+        torch.set_num_threads(requested_threads)
+    elif not torch.backends.openmp.is_available():
         # Necessary to prevent the server from freezing after forks
         torch.set_num_threads(1)
     else:

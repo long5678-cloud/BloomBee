@@ -1,467 +1,128 @@
-<p align="center">
-    <img src="figures/bloombee.jpg" alt="Bloombee Logo" /><br>
-    Run large language models in a heterogeneous decentralized environment over internet.<br>
-    <br>
-    <a href="https://pypi.org/project/bloombee/"><img src="https://img.shields.io/pypi/v/bloombee.svg?label=PyPI&color=green"></a>
-    <a href="https://github.com/ai-decentralized/bloombee/actions"><img src="https://img.shields.io/github/actions/workflow/status/ai-decentralized/bloombee/pylint.yml?branch=main&label=Build"></a>
-    <a href="https://discord.gg/Ypexx2rxt9"><img src="https://img.shields.io/discord/1267714065166241813?label=Discord&logo=discord&logoColor=white"></a>
-    <a href="https://github.com/ai-decentralized/bloombee/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ai-decentralized/bloombee?color=blue"></a>
-    <a href="https://pypi.org/project/bloombee/"><img src="https://img.shields.io/pypi/pyversions/bloombee"></a>
-    <a href="https://pypi.org/project/bloombee/"><img src="https://img.shields.io/pypi/dm/bloombee?label=Downloads"></a>
-    <a href="https://arxiv.org/abs/2604.21072"><img src="https://img.shields.io/badge/arXiv-2604.21072-b31b1b.svg"></a>
-    <a href="https://github.com/ai-decentralized/bloombee"><img src="https://img.shields.io/github/stars/ai-decentralized/bloombee?style=social"></a>
-</p>
+# BloomBee KV network — local review branch
 
-The rapid rise of generative AI has boosted demand for large language model (LLM) inference services. While proprietary models are still favored, advancements in open-source LLMs have made them competitive. However, high costs and limited GPU resources hinder deployment. BloomBee is a decentralized offline serving system that leverages idle GPU resources to provide cost-effective access to LLMs.
+Composable local retention, distributed usage telemetry, and LMCache-backed remote prefetch for the existing BloomBee project. This checkout is based on upstream `0028a5e89ddb634106a2d86fed0197105a377b97`; the earlier fork branch was `9612af3f4002a69f74ec317b7e3e97af61bcadf6`. It is an uncommitted review candidate, not a published release.
 
-Instead of requiring a single powerful machine, BloomBee splits a model's transformer blocks across multiple peers in a P2P network. If your GPU can only hold a small portion of a large model like LLaMA 3.1 (405B), you can join a network of servers each hosting different layers and collaboratively serve inference requests.
-
-<p align="center">
-    📄 &nbsp;<b><a href="https://arxiv.org/abs/2604.21072">Read the paper</a></b> &nbsp;|&nbsp;
-    🚀 &nbsp;<b><a href="https://colab.research.google.com/drive/1BZn0KrEGaNA2dlzmCTtTIjJKx3bNzOMs#scrollTo=1Qhi4I2PSGgg">Try now in Colab</a></b>
-</p>
-
-## News
-
-- `2026/09/06`: Support GPT-OSS and Gemma 4 compatibility (PR [#64](...) by @JiuChen0).
-- `2026/08/30`: Add DeepSeek-V3 support for BloomBee (PR [#63](...) by @syj-7).
-- `2026/08/04`: Add the EAGLE-2 speculative drafter runtime (PR [#57](...) by @XinRanZh).
-- `2026/06/27`: Add GQA model support (PR [#61](...) by @JiuChen0).
-- `2026/04/22` : Released our [paper](https://arxiv.org/abs/2604.21072) on arXiv.
-- `2026/02/23` : Improve documentation, CI, and developer tooling (PR [#41](../../pull/41) by @dadaism).
-- `2026/02/19` : Support micro batching and lossless compression (PR [#39](../../pull/39) by @JiuChen0).
-- `2026/02/05` : Add batch support for speculative decoding and its pruning (PR [#38](../../pull/38) by @xiongxu1998).
-- `2026/01/13` : Spec dec (PR [#37](../../pull/37) by @xiongxu1998).
-
-### More News
-
-- `2025/11/29` : Update a new template to support weight cache and batch (PR [#36](../../pull/36) by @TomekWei).
-- `2025/11/21` : Remove O(prompt_len) prompt copies (PR [#35](../../pull/35) by @JiuChen0).
-- `2025/11/12` : Optimize shared memory usage, clean up legacy quantization, and remove unused modules (PR [#34](../../pull/34) by @JiuChen0).
-- `2025/11/01` : Add multi-batch inference support, fix hivemind dependency, and improve installation process (PR [#27](../../pull/27) by @JiuChen0).
-
-
-## Key Features
-
-Running an LLM across decentralized GPUs is bottlenecked by inter-node bandwidth and per-node memory. BloomBee addresses both, with a focus on **multi-dimensional communication optimization** to reduce or hide communication overhead. 
-- **Tensor offloading** — reduces per-node memory consumption so each peer can host more layers, shrinking the total number of network hops.
-- **Speculative decoding over internet** — reduces communication frequency by sending multiple draft tokens per round-trip.
-- **Lossless activation-compression** — shrinks the bytes transferred per activation, without accuracy loss.
-- **Micro-batch pipelining** — overlaps communication with computation to hide network latency.
-
-
-## Table of Contents
-
-- [How It Works](#how-it-works)
-- [Supported Models](#supported-models)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-  - [1. Start a Bootstrap Node](#1-start-a-bootstrap-node)
-  - [2. Start Worker Servers](#2-start-worker-servers)
-  - [3. Run Inference](#3-run-inference)
-- [CLI Reference](#cli-reference)
-- [Environment Switches](README.environment-switches.md)
-- [Logging Reference](README.logging.md)
-- [Python API](#python-api)
-  - [Speculative Decoding (EAGLE-2)](#speculative-decoding-eagle-2)
-- [Benchmarking](#benchmarking)
-- [Examples](#examples)
-- [Troubleshooting](#troubleshooting)
-- [Citation](#citation)
-- [Acknowledgements](#acknowledgements)
-
----
-
-## How It Works
-
-BloomBee distributes a model's transformer layers across a peer-to-peer network:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  CLIENT (you)                                           │
-│  • Runs word embeddings and the LM head locally         │
-│  • Routes through remote layers via DHT                 │
-└──────────────────────┬──────────────────────────────────┘
-                       │ P2P (libp2p)
-         ┌─────────────┼─────────────┐
-         ▼             ▼             ▼
-   ┌──────────┐  ┌──────────┐  ┌──────────┐
-   │ Worker A │  │ Worker B │  │ Worker C │
-   │ Layers   │  │ Layers   │  │ Layers   │
-   │  0 – 15  │  │ 16 – 31  │  │ 32 – 47  │
-   └──────────┘  └──────────┘  └──────────┘
-         Peers registered in DHT
+```text
+src/bloombee/
+  kv_cache/
+    placement.py                  # Original whole-prefix byte API
+    api.py, dynamo.py              # Cache factories and CPU block retention
+    telemetry*.py                 # Ledger, DHT query, model-evidence adapters
+    page_retention.py             # Terminal-confirmed physical retention
+    network/
+      api.py                      # Options, Components, validated score()
+      ordinary.py                 # Ordinary token-input model request adapter
+      controller.py               # Current ordinary-request controller (d1)
+      worker.py, worker_protocol.py
+      joint_runtime.py, joint_strategy.py
+      native_page_bridge.py       # Official LMCache SDK/coordinator bridge
+      ready_bank.py, bundle_contract.py
+      lrfu_policy.py, transition_policy.py
+      __main__.py                 # Explicit check/score/worker/front/server CLI
+  client/                         # Normal model/session RPC, opt-in metadata
+  server/                         # Physical pages, ready reader, normal backend
+examples/kv_network.py             # Real CPU retention example
+examples/ordinary_request.py       # Ordinary token-input call
+configs/server.local.json          # Explicit local service settings template
+docs/                             # Installation, API, runtime, evidence
+provenance/                       # Source manifest and change evidence
+tests/kv_network/                 # Portable CPU/contract checks and fixtures
 ```
 
-A **Distributed Hash Table (DHT)** keeps track of which server hosts which layers. The client automatically discovers and routes through available peers. Servers are decentralized — anyone with a compatible GPU can join and contribute capacity.
+## Module → options → calls
 
----
-
-## Supported Models
-
-| Model Family | Example HuggingFace IDs |
-|---|---|
-| **LLaMA / LLaMA 2 / LLaMA 3** | `meta-llama/Llama-2-7b-hf`, `meta-llama/Meta-Llama-3-8B` |
-| **BLOOM** | `bigscience/bloom-7b1`, `bigscience/bloom` |
-| **Falcon** | `tiiuae/falcon-7b`, `tiiuae/falcon-40b` |
-| **Mixtral** | `mistralai/Mixtral-8x7B-v0.1` |
-| **Qwen3** | `Qwen/Qwen3-0.6B`, `Qwen/Qwen3-4B`, `Qwen/Qwen3-14B` |
-| **Gemma-4** | `google/gemma-4-31B-it` |
-| **GPT-OSS** | `openai/gpt-oss-20b` |
-| **DeepSeek V3** | `unsloth/DeepSeek-V3-bf16` |
-
-Any HuggingFace model with a matching architecture can be served. Use `AutoDistributedModelForCausalLM` to load a model automatically.
-
-> **Note:** Qwen3 (152k vocab) and Gemma-4 (262k vocab) have large vocabularies, so the client-side LM head matmul dominates decode latency on CPU. Use a GPU client for these families (`model.to("cuda")`, or `--client_device cuda` in `benchmarks/benchmark_inference.py`).
-
----
-
-## Prerequisites
-
-- **Python** 3.8 or later
-- **PyTorch** 1.12 or later (with CUDA for GPU support)
-- A GPU with at least **~4 GB VRAM** to serve a portion of a model (workers)
-- A machine with internet access and, optionally, a public IP or port forwarding for external peer discovery
-
-> **Note:** The client machine does not need a GPU — only worker servers do.
-
----
-
-## Installation
-
-#### From PyPI
-```bash
-pip install bloombee
-```
-
-#### From Source
-```bash
-git clone https://github.com/ai-decentralized/BloomBee.git
-cd BloomBee
-pip install .
-```
-
-#### Heterogeneous NVIDIA / Chameleon Hosts
-
-BloomBee is intended to run across heterogeneous GPU fleets, so avoid relying on `pip install torch` to pick a CUDA wheel. If `nvidia-smi` sees the GPU but `torch.cuda.is_available()` is `False`, or before installing BloomBee on a fresh host, let BloomBee choose a PyTorch wheel from the local NVIDIA driver CUDA version and GPU compute capability:
-
-```bash
-conda activate bb
-python scripts/install_compatible_torch.py
-pip install -e .
-```
-
-For example, Tesla P100 / Pascal hosts are kept on a CUDA 12.1 PyTorch wheel that supports SM 6.0, while newer GPUs with newer drivers can use newer CUDA wheels. You can preview the decision with:
-
-```bash
-python scripts/install_compatible_torch.py --dry-run
-```
-
-Manual overrides are available for unusual clusters:
-
-```bash
-BLOOMBEE_TORCH_SPEC='torch==2.4.1+cu121' \
-BLOOMBEE_TORCH_INDEX_URL='https://download.pytorch.org/whl/cu121' \
-python scripts/install_compatible_torch.py
-```
-
----
-
-## Quick Start
-
-([Try in Colab](https://colab.research.google.com/drive/1pENMOEoEV01DqBImZzuX_4jTV3fNwNga#scrollTo=oyCFDemCZsRs))
-
-### 1. Start a Bootstrap Node
-
-A bootstrap node is a lightweight DHT peer that helps other nodes discover each other. Start one first:
-
-```bash
-python -m bloombee.cli.run_dht \
-  --host_maddrs /ip4/0.0.0.0/tcp/31340 \
-  --identity_path bootstrap.id
-```
-
-You will see a line like:
-
-```
-Mon 00 01:23:45.678 [INFO] Running a DHT instance. To connect other peers to this one, use:
-  --initial_peers /ip4/YOUR_IP/tcp/31340/p2p/QmefxzDL1DaJ7TcrZjLuz7Xs9sUVKpufyg7f5276ZHFjbQ
-```
-
-Copy this address — you'll pass it as `--initial_peers` to all workers and clients.
-
-> If you want your swarm accessible from outside your local network, make sure you have a **public IP address** or have **port forwarding** configured correctly.
-
-### 2. Start Worker Servers
-
-Export the bootstrap address for convenience:
-
-```bash
-export BBSERVER=/ip4/YOUR_IP/tcp/31340/p2p/QmefxzDL1DaJ7TcrZjLuz7Xs9sUVKpufyg7f5276ZHFjbQ
-```
-
-Start workers, each hosting a slice of the model. For a 32-layer model, you might split it across two servers:
-
-```bash
-# Worker 1: hosts 16 transformer layers
-python -m bloombee.cli.run_server meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --num_blocks 16 \
-  --identity_path worker_1.id
-
-# Worker 2: hosts the remaining 16 layers
-python -m bloombee.cli.run_server meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --num_blocks 16 \
-  --identity_path worker_2.id
-```
-
-Workers will automatically download their assigned model layers from HuggingFace on first run.
-
-### 3. Run Inference
-
-```bash
-python benchmarks/benchmark_inference.py \
-  --model meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --torch_dtype float32 \
-  --seq_len 128
-```
-
-<!-- #### Fine-tuning
-
-```bash
-python benchmarks/benchmark_training.py \
-  --model meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --torch_dtype float32 \
-  --n_steps 20 \
-  --batch_size 32 \
-  --seq_len 128
-``` -->
-
----
-
-## CLI Reference
-
-### `bloombee.cli.run_dht` — Bootstrap Node
-
-Starts a lightweight DHT peer for peer discovery. Does not load any model.
-
-| Argument | Default | Description |
+| Module | Options | Calls and responsibility |
 |---|---|---|
-| `--host_maddrs` | — | Multiaddresses to listen on (e.g. `/ip4/0.0.0.0/tcp/31340`) |
-| `--identity_path` | — | Path to store/load this node's persistent identity key |
-| `--announce_maddrs` | — | Public multiaddresses to announce to other peers (useful behind NAT) |
+| Local retention | `lru`, `hotness`, `decay`, `dynamo` | `create_cache(...)`; storage contracts differ. Normal service selects the same four names with `BLOOMBEE_RETENTION_POLICY`. |
+| Telemetry | enabled/disabled; window, retention, TTL, membership | `record(Event(...)) → publish() → query(start,end)`; successful complete-group reuse only. |
+| Prefetch | enabled/disabled; `lrfu` or `transition` | `score(context,strategy)` is pure; native runtime qualifies history, warms via LMCache, prepares/acks/retires/activates a bundle, then normal BloomBee uses it. |
 
-### `bloombee.cli.run_server` — Worker Server
+A=local retention, B=Telemetry, C=Prefetch in the examples below. These module combinations are unrelated to the historical cache factory options named `A`, `B`, and `A+B`.
 
-Loads and serves transformer blocks on a peer in the swarm.
+## Quick start
 
-| Argument | Default | Description |
-|---|---|---|
-| `model` | *(required)* | HuggingFace model name or local path |
-| `--initial_peers` | — | Multiaddresses of bootstrap nodes to connect to |
-| `--num_blocks` | auto | Number of transformer layers to serve |
-| `--block_indices` | auto | Specific layer index range to serve (e.g. `0:16`) |
-| `--identity_path` | — | Path to store/load this peer's persistent identity key |
-| `--quant_type` | none | Quantization: `int8` (LLM.int8) or `nf4` (QLoRA 4-bit) |
-| `--torch_dtype` | auto | Model precision: `float32`, `float16`, `bfloat16` |
-| `--throughput` | `auto` | Reported throughput in tokens/sec; use `eval` to measure or `dry_run` to skip |
-| `--cache_dir` | — | Directory to cache downloaded model weights |
-| `--max_batch_size` | 2048 | Maximum number of tokens per forward batch |
-
----
-
-## Environment Switches
-
-[README.environment-switches.md](README.environment-switches.md) contains the full `BLOOMBEE_*` switch reference, including:
-
-- micro-batching / overlap / server-to-server push
-- KV cache and offload flags
-- lossless compression and profiling flags
-- debug groups and log-channel toggles
-- speculative decoding and EAGLE-2 flags
-- activation dumping and runtime helpers
-
-If you add a new switch later, the quickest rescan command is:
+Use Python 3.11 for the local checks. See [installation](docs/installation.md) for model and optional native dependencies.
 
 ```bash
-rg -n -o "BLOOMBEE_[A-Z0-9_]+" README*.md src benchmarks tests | sort -u
+python -m pip install -r requirements-review.lock.txt
+export PYTHONPATH="$PWD/src${PYTHONPATH:+:$PYTHONPATH}"
+python -m bloombee.kv_cache.network check --local lru
+python examples/kv_network.py --policy hotness
+python -m pytest --noconftest tests/kv_network tests/test_kv_cache_placement.py tests/test_kv_cache_telemetry_api.py -q -p no:cacheprovider
+python tests/kv_network/check_page_retention.py /path/to/new-test-output
 ```
 
----
+The last command requires a new output directory. The CPU suite includes real loopback DHT peers and HTTP transfer; synthetic tensors and model doubles are explicitly labeled and do not count as GPU/LMCache model validation.
 
-## Python API
+## Independent and combined calls
 
-BloomBee integrates with HuggingFace Transformers. Use the `Auto` classes to load a distributed model:
-
-```python
-from transformers import AutoTokenizer
-from bloombee import AutoDistributedModelForCausalLM
-
-model = AutoDistributedModelForCausalLM.from_pretrained(
-    "meta-llama/Llama-2-7b-hf",
-    initial_peers=["/ip4/YOUR_IP/tcp/31340/p2p/Qm..."],
-)
-tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-hf")
-
-inputs = tokenizer("The quick brown fox", return_tensors="pt")
-outputs = model.generate(**inputs, max_new_tokens=50)
-print(tokenizer.decode(outputs[0]))
-```
-
-For efficient multi-turn generation, reuse an inference session to avoid reprocessing past tokens:
-
-```python
-with model.transformer.h.inference_session(max_length=512) as sess:
-    for _ in range(20):
-        outputs = model.generate(max_new_tokens=1, session=sess)
-```
-
-### Speculative Decoding (EAGLE-2)
-
-EAGLE-2 speculative decoding is available for LLaMA-family targets through the speculative auto class and EAGLE drafter:
-
-```python
-from transformers import AutoTokenizer
-from bloombee import AutoDistributedSpeculativeModel
-from bloombee.models.llama.eagle_drafter import EAGLEDrafter
-
-model_name = "lmsys/vicuna-33b-v1.3"
-model = AutoDistributedSpeculativeModel.from_pretrained(
-    model_name,
-    initial_peers=["/ip4/YOUR_IP/tcp/31340/p2p/Qm..."],
-).to("cuda")
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-drafter = EAGLEDrafter.for_target(model, device="cuda")
-
-input_ids = tokenizer("The quick brown fox", return_tensors="pt")["input_ids"].to("cuda")
-outputs = model.generate(
-    input_ids,
-    drafter=drafter,
-    max_new_tokens=128,
-    max_tree_depth=5,
-)
-```
-
-By default, EAGLE-2 auto-selection is conservative and only picks known LLaMA-family drafter checkpoints. Pass `ea_model_path` explicitly for a custom compatible checkpoint. Runtime generation uses a compact tree budget by default; pass `tree_budget=59, topk_per_step=10` to reproduce the paper's total-token=60 tree. In current benchmarks, EAGLE-2 shows positive throughput on 13B-class targets and is recommended most strongly for 33B-class and larger targets, where target verification cost amortizes the drafter/tree overhead better.
-
-> **Measuring acceptance correctly.** EAGLE drafters are trained on the target's
-> conversation distribution, so the **prompt format and domain dominate the
-> measured acceptance length.** Use the model's chat template (for Vicuna:
-> `"A chat between a curious user ... USER: {q} ASSISTANT:"`) with
-> instruction-style prompts. On Vicuna-13B + `EAGLE-Vicuna-13B-v1.3` we measure
-> steady-state accept length **5.3–5.8 on code/math prompts**, ~3.3 on free-form
-> chat, ~5.0 averaged (matching EAGLE-2's reported ≈4). Generic non-chat text
-> (e.g. `"Topic 1: ..."`) is out-of-distribution and collapses acceptance to
-> ~2.4, which silently understates speculative-decoding throughput. Always report
-> the prompt set used alongside acceptance numbers.
-
-Available auto classes:
-
-| Class | Use case |
-|---|---|
-| `AutoDistributedModelForCausalLM` | Text generation |
-| `AutoDistributedModelForSequenceClassification` | Classification |
-| `AutoDistributedModel` | Raw transformer (no LM head) |
-
----
-
-## Benchmarking
-
-Three benchmark scripts are provided in `benchmarks/`:
+The following API sketch assumes an application-supplied `dht`, qualified
+`context`, and complete `native_config`; it is not a standalone copy/paste script.
+Runnable CPU examples (real retention/DHT/ticket lifecycle; no model or LMCache
+transfer claim) are:
 
 ```bash
-# Measure autoregressive inference throughput (tokens/sec)
-python benchmarks/benchmark_inference.py \
-  --model meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --seq_len 256
-
-# Measure forward pass throughput (tokens/sec)
-python benchmarks/benchmark_forward.py \
-  --model meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --batch_size 4 \
-  --seq_len 128
-
-# Measure training (forward + backward) throughput
-python benchmarks/benchmark_training.py \
-  --model meta-llama/Llama-2-7b-hf \
-  --initial_peers $BBSERVER \
-  --batch_size 4 \
-  --seq_len 128 \
-  --n_steps 20
+python examples/kv_network_combinations.py --modules A
+python examples/kv_network_combinations.py --modules B
+python examples/kv_network_combinations.py --modules AB
+python examples/kv_network_combinations.py --modules C
+python examples/kv_network_combinations.py --modules ABC --strategy transition
 ```
 
----
+For real C transfer/model consumption, prepare the actual services, manifests,
+identity and controller config in [ordinary runtime](docs/ordinary-runtime.md).
+The CPU example deliberately does not invent this deployment state.
 
-## Examples
+```python
+from bloombee.kv_cache.network.api import Components, Options, score
 
-Jupyter notebook examples are in the `examples/` directory:
+# A only. Does not load Transformers, Hivemind or LMCache.
+a = Components(Options(local="lru"), local_kwargs={"capacity_bytes": 64 << 20})
 
-| Notebook | Description |
-|---|---|
-| [prompt-tuning-sst2.ipynb](examples/prompt-tuning-sst2.ipynb) | Prompt-tune LLaMA for sentiment classification (SST-2) |
-| [prompt-tuning-personachat.ipynb](examples/prompt-tuning-personachat.ipynb) | Prompt-tune BLOOM for dialogue generation (PersonaChat) |
+# B only. Supply an actual DHT object; creating a publisher starts no service.
+b = Components(Options(telemetry=True), telemetry_kwargs={
+    "dht": dht, "namespace": "application", "node_id": "consumer-a"})
 
----
+# A+B. A's actual completion facts must be passed to B by the caller.
+ab = Components(Options(local="decay", telemetry=True),
+    local_kwargs={"capacity_bytes": 64 << 20},
+    telemetry_kwargs={"dht": dht, "namespace": "application", "node_id": "consumer-a"})
 
-## Troubleshooting
+# Pure C selection: validated completed history and the already qualified C set.
+selection = score(context, "transition")
 
-**Workers cannot find each other**
-- Ensure all workers use the same `--initial_peers` address.
-- If running across machines, verify the bootstrap node has a public IP and the port is open.
-- Use `--announce_maddrs` to explicitly advertise your public address if behind NAT.
-
-**`ModuleNotFoundError: No module named 'bloombee'`**
-- Run `pip install bloombee` or `pip install -e .` from the repository root.
-
-**Out of GPU memory on a worker**
-- Reduce `--num_blocks` to serve fewer layers.
-- Enable quantization: `--quant_type int8` or `--quant_type nf4`.
-- Use a smaller `--max_batch_size`.
-
-**`transformers` version mismatch**
-- Current source installs and checks for Transformers 5.x:
-  ```bash
-  pip install -e .
-  # or, if repairing an existing environment:
-  pip install "transformers>=5.5.0"
-  ```
-
-**Slow inference / high latency**
-- Latency increases with the number of network hops between layers. Place workers on the same local network when possible.
-- Ensure workers report accurate throughput: use `--throughput eval` on the first run.
-
----
-## Contribution
-Bloombee is mainly developed by [PASA Lab](https://www.pasalabs.org/) at University of California Merced with significant supports from [Yotta Labs](https://www.yottalabs.ai/) and College of William&Mary. We welcome and appreciate any contribution to this open-source project.
-
-
-## Citation
-
-If you find BloomBee useful in your research, please cite our paper:
-
-```bibtex
-@misc{bloombee2026,
-      title={Distributed Generative Inference of LLM at Internet Scales with Multi-Dimensional Communication Optimization}, 
-      author={Jiu Chen and Shuangyan Yang and Xu Xiong and Hexiao Duan and Xinran Zhang and Jie Ren and Dong Li},
-      year={2026},
-      eprint={2604.21072},
-      archivePrefix={arXiv},
-      primaryClass={cs.DC},
-      url={https://arxiv.org/abs/2604.21072}, 
-}
+# A+B+C: real native configuration, no implicit model or worker launch.
+abc = Components(Options(local="lru", telemetry=True, prefetch="lrfu"),
+    local_kwargs={"capacity_bytes": 64 << 20},
+    telemetry_kwargs={"dht": dht, "namespace": "application", "node_id": "consumer-a"},
+    prefetch_kwargs={"config": native_config})
+ready = abc.prefetch.start()  # Explicit loopback ticket service startup.
+# The configured worker/controller and normal model use this runtime's APIs.
+abc.close()
 ```
 
+`Components` exposes real implementations; it does not silently convert serialized bytes into GPU pages or make every model call use a cache. Use [the ordinary request adapter](docs/ordinary-runtime.md) for model integration. C does not require distributed B publication, but it always requires successful full-request history. Disabling any component does not launch it.
 
-## Acknowledgements
+## Ordinary BloomBee
 
-BloomBee is built upon the following open-source projects:
+```bash
+# Use an existing compatible model environment; see docs/installation.md.
+export PYTHONPATH="$PWD/src${PYTHONPATH:+:$PYTHONPATH}"
+CUDA_VISIBLE_DEVICES=0 python -m bloombee.kv_cache.network server \
+  --config configs/server.local.json -- /path/to/model \
+  --new_swarm --block_indices 0:32 --device cuda:0 --torch_dtype float16
+```
 
-  - [Hivemind](https://github.com/learning-at-home/hivemind) - A PyTorch library for decentralized deep learning across the Internet.
-  - [FlexLLMGen](https://github.com/FMInference/FlexLLMGen) - An offloading-based system running on weak GPUs.
-  - [Petals](https://github.com/bigscience-workshop/petals) - A library for decentralized LLMs fine-tuning and inference without offloading.
+Edit the immutable execution context and capacities in the configuration first. Use the normal BloomBee peer address produced by the server. The server command preserves disabled SDPA and disabled FP16 reduced-precision reduction. It does not select a device, download weights, prepare a conversion, or launch LMCache. Normal upstream [server instructions](docs/upstream-readme.md) still apply.
+
+For a minimal token request see `examples/ordinary_request.py`. For remote C, install/run the official pinned coordinator/MP/Redis services and supply their real identities and endpoints as described in [ordinary runtime](docs/ordinary-runtime.md). Cache data must cross the configured network endpoint; shared weights are not shared cache evidence.
+
+## Validation and limits
+
+Historical integrated execution: ten groups, 60/60 short requests, 180 output tokens; eight Remote groups each used a real LMCache cross-node 16 MiB transfer followed by local reuse. R1–R6 used c1; R7/R8 used d1. Those measurements precede this reorganization and the latest-upstream merge.
+
+The short workload used 33 mapped input tokens and three generated tokens, not full original coding requests. It did not prove prediction ready before natural queue-head arrival, elimination of on-demand waiting, a winning predictor, or general acceleration. Prefetch's target is CPU. Numeric correctness and actual cache-use events remain separate facts.
+
+Current local results and exact gaps are in [validation](docs/validation.md). The new latest-upstream GPU/model/native end-to-end path requires a separate real-environment acceptance; CPU checks cannot certify it. No zero-bug, arbitrary-model, concurrency, TP, or production-readiness guarantee is made.
+
+See [native configuration and audit](docs/native-configuration.md), [API](docs/kv-network-api.md), [evidence](docs/evidence.md), [upstream compatibility](docs/upstream-compatibility.md), and [licenses](NOTICE-KV.md).

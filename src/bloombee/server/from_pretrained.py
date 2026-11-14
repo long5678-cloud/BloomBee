@@ -30,10 +30,9 @@ from bloombee.models.deepseekv3.block import WrappedDeepseekV3Block
 from bloombee.models.mixtral import WrappedMixtralBlock
 from bloombee.models.nemotron_h.block import WrappedNemotronHBlock
 from bloombee.models.falcon.block import WrappedFalconBlock
-from bloombee.models.gemma4.block import WrappedGemma4Block
 from bloombee.models.glm4_moe_lite.block import WrappedGlm4MoeLiteBlock
 from bloombee.models.qwen3.block import WrappedQwen3Block
-from bloombee.server.block_utils import get_model_block, resolve_block_dtype
+from bloombee.server.block_utils import get_model_block, resolve_block_dtype, WrappedGemma4Block
 from bloombee.utils.auto_config import AutoDistributedConfig
 from bloombee.utils.disk_cache import DEFAULT_CACHE_DIR, allow_cache_reads, allow_cache_writes, free_disk_space_for
 from bloombee.utils.hf_auth import always_needs_auth

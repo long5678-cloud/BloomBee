@@ -258,6 +258,12 @@ class _ServerInferenceSession:
             raise Exception("Session is closed, cannot perform step")
         n_new_tokens = inputs.shape[1]
         n_input_tokens = n_new_tokens
+        if (self._position == 0 and self.session_metadata.get("remote_prefix") is not None
+                and not self.session_metadata.get("active_adapter")):
+            from bloombee.kv_cache.prefix_context import normalize_prefix_context
+            tree_attention_mask, kv_cache_position_ids = normalize_prefix_context(
+                tree_attention_mask, kv_cache_position_ids, batch_size=int(inputs.shape[0]),
+                sequence_length=n_input_tokens, speculative=is_spec_dec)
         # print('client step() n_input_tokens', n_input_tokens)
         if self.history is None: # if the history log is empty
             self.history, self._history_storage = append_sequence_history(
@@ -545,6 +551,15 @@ class _ServerInferenceSession:
 
             # [NETWORK_TIMING] Measure deserialization time
             deserialize_start = time.perf_counter()
+            self.remote_prefix_receipt = None
+            if outputs_serialized.metadata:
+                receipt = MSGPackSerializer.loads(outputs_serialized.metadata).get("remote_prefix_receipt")
+                if receipt is not None:
+                    from bloombee.client.prefix_generation import validate_prefix_receipt
+                    self.remote_prefix_receipt = validate_prefix_receipt(receipt,
+                        rpc_session_id=self.session_id,
+                        envelope=self.session_metadata.get("remote_prefix", {}),
+                        input_tokens=n_input_tokens, layer_start=self.span.start, layer_end=self.span.end)
             outputs = list(map(deserialize_torch_tensor, outputs_serialized.tensors))
             deserialize_end = time.perf_counter()
             deserialize_time_ms = (deserialize_end - deserialize_start) * 1000
@@ -654,7 +669,7 @@ class InferenceSession:
     An interface to a multi-step *inference* session for a sequence of remote transformer blocks
     """
 
-    def __init__(self, sequence_manager: RemoteSequenceManager, max_length: int):
+    def __init__(self, sequence_manager: RemoteSequenceManager, max_length: int, *, dynamo_cache=None):
         self._sequence_manager = sequence_manager
         self._closed = False
         self._server_sessions = []
@@ -669,6 +684,12 @@ class InferenceSession:
         # [MBPIPE] Log micro-batch pipeline configuration at client session creation
         mbpipe_log_config(logger, context="InferenceSession.__init__")
         self.first_inference = True
+        # Explicit first-prefill identity, sent through the ordinary wire metadata.
+        # It never changes response shapes or skips client-side output handling.
+        if dynamo_cache is not None:
+            from bloombee.client.dynamo_config import normalize_dynamo_config
+            dynamo_cache = normalize_dynamo_config(dynamo_cache)
+        self._dynamo_cache = dynamo_cache
 
     @property
     def num_blocks(self) -> int:
@@ -694,6 +715,12 @@ class InferenceSession:
                 metadata = self._sequence_manager.get_request_metadata(
                     "rpc_inference", span_uids, peer_id=span.peer_id
                 )
+                if getattr(self, "remote_prefix", None) is not None:
+                    metadata = dict(metadata or {}, remote_prefix=self.remote_prefix)
+                if self._dynamo_cache is not None:
+                    if getattr(self, "remote_prefix", None) is not None:
+                        raise ValueError("remote_prefix and dynamo_cache are separate protocols; choose one")
+                    metadata = dict(metadata or {}, dynamo_cache=self._dynamo_cache)
                 session = RemoteExpertWorker.run_coroutine(
                     _ServerInferenceSession.create(
                         self._sequence_manager.config,
@@ -781,6 +808,7 @@ class InferenceSession:
                 f"Maximum length exceeded: prefix {self._position} + current {n_input_tokens} exceeds pre-allocated maximum {self._max_length}"
             )
 
+        native_prefix_receipt = None
         server_idx = 0
         block_idx = 0
         inference_step_start = time.perf_counter()
@@ -827,6 +855,12 @@ class InferenceSession:
                         is_spec_dec,
                         step_id=step_id,
                     )
+                    receipt = getattr(server_session, "remote_prefix_receipt", None)
+                    if receipt is not None:
+                        if server_session.span.start != 0 or server_session.span.end != self.num_blocks:
+                            raise RuntimeError("native prefix receipt requires a full-model provider")
+                        native_prefix_receipt = receipt
+                        self.remote_prefix_receipt = receipt
                     if is_spec_dec and need_pruning:
                         self.keep_indices = keep_indices
 
@@ -923,10 +957,12 @@ class InferenceSession:
             and n_input_tokens > 0
             and outputs.shape[1] < n_input_tokens
         ):
-            raise RuntimeError(
-                "Final stage returned fewer tokens than requested for the current step: "
-                f"outputs.shape={tuple(outputs.shape)}, current_step_tokens={n_input_tokens}"
-            )
+            if (native_prefix_receipt is None or is_spec_dec
+                    or outputs.shape[1] != n_input_tokens - native_prefix_receipt["skipped_tokens"]):
+                raise RuntimeError(
+                    "Final stage returned fewer tokens without a matching native prefix receipt: "
+                    f"outputs.shape={tuple(outputs.shape)}, current_step_tokens={n_input_tokens}"
+                )
 
         # 🔍 CLIENT DEBUG: Log inference step end
         inference_step_end = time.perf_counter()

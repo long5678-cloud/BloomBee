@@ -831,6 +831,8 @@ class TransformerConnectionHandler(ConnectionHandler):
                     max_length=max_length,
                     timeout=alloc_timeout,
                     force_full_batch_alloc=is_spec_request,
+                    release_attempt=(metadata.get("dynamo_cache") or {}).get("attempt_id")
+                                    if isinstance(metadata.get("dynamo_cache"), dict) else None,
                 ) as cache_handles:
                     end_cache_time = perf_counter()
                     cache_alloc_ms = (end_cache_time - cache_alloc_start) * 1000
@@ -1009,7 +1011,10 @@ class TransformerConnectionHandler(ConnectionHandler):
                         push_time.append(push_schedule_ms) ###
                         # print('current step push outputs task prepare time ', start_ExpertResponse_time-can_push_case_time) ###
                         # print_time_now('')
-                        yield runtime_pb2.ExpertResponse(tensors=output_tensors)
+                        prefix_receipt = step_metadata.get("remote_prefix_receipt") if isinstance(step_metadata, dict) else None
+                        yield runtime_pb2.ExpertResponse(tensors=output_tensors,
+                            metadata=MSGPackSerializer.dumps({"remote_prefix_receipt": prefix_receipt})
+                            if prefix_receipt is not None else b"")
                         end_ExpertResponse_time=perf_counter() ###
                         response_emit_ms = (end_ExpertResponse_time - start_ExpertResponse_time) * 1000.0
                         handler_step_total_ms = (end_ExpertResponse_time - handler_step_start) * 1000.0
@@ -2735,6 +2740,7 @@ class TransformerConnectionHandler(ConnectionHandler):
         max_length: int,
         timeout: Optional[float],
         force_full_batch_alloc: bool = False,
+        release_attempt: Optional[str] = None,
     ) -> Sequence[Sequence[Handle]]:
         """
         Allocate memory cache for all transformer blocks, return cache handle
@@ -2867,10 +2873,22 @@ class TransformerConnectionHandler(ConnectionHandler):
             f"logical_batch={logical_batch_size}, max_length={max_length}"
         )
         
-        async with backends[0].cache_manager.allocate_cache(*chain(*descriptors), timeout=timeout) as raw_handles:
-            
-            logger.info("OFFLOAD: allocation completed; entering use_cache region")
-            yield nested_pack(raw_handles, descriptors)
+        raw_handles = None
+        try:
+            async with cache_manager.allocate_cache(*chain(*descriptors), timeout=timeout) as raw_handles:
+                logger.info("OFFLOAD: allocation completed; entering use_cache region")
+                yield nested_pack(raw_handles, descriptors)
+        finally:
+            # allocate_cache has exited here: force_free placed its marker on
+            # the FIFO. The runtime, never this handler, consumes it.
+            pool = getattr(backends[0], "release_pool", None)
+            if raw_handles and pool is not None and isinstance(release_attempt, str) and release_attempt:
+                if all(b.cache_manager.cache is cache_manager.cache and len(ds) == 1
+                       for b, ds in zip(backends, descriptors)):
+                    future = pool.submit_task(cache_manager.cache.release_journal.instance,
+                                              release_attempt, tuple(raw_handles),
+                                              tuple(str(b.name) for b in backends))
+                    await asyncio.shield(future)
 
     def _cleanup_warmup_shared_memory(self):
         """

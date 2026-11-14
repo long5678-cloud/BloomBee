@@ -135,3 +135,8 @@ class InferenceMetadata:
     batch_offset: int = 0  # Start index in the full batch for this micro-batch
     full_batch_size: int = 0  # Total batch size (0 means no micro-batch, use entire cache)
     micro_batch_size: int = 0  # Actual size of this micro-batch (0 means use full_batch_size - batch_offset)
+
+    # Optional standard-RPC native prefix extension; absent preserves ordinary inference.
+    remote_prefix: Optional[dict] = None
+    # Opt-in ordinary-RPC prefill reuse; absent retains the original execution.
+    dynamo_cache: Optional[dict] = None

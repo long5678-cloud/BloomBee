@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import gc
+import json
+from pathlib import Path
 import math
 import multiprocessing as mp
 import os
@@ -124,6 +126,9 @@ class Server:
         torch_dtype: str = "auto",
         revision: Optional[str] = None,
         cache_dir: Optional[str] = None,
+        ready_file: Optional[str] = None,
+        offload_dir: Optional[str] = None,
+        weight_cache_dir: Optional[str] = None,
         max_disk_space: Optional[int] = None,
         device: Optional[Union[str, torch.device]] = None,
         compression=CompressionType.NONE,
@@ -153,6 +158,9 @@ class Server:
         """Create a server with one or more bloom blocks. See run_server.py for documentation."""
 
         converted_model_name_or_path = get_compatible_model_repo(converted_model_name_or_path)
+        self.ready_file = Path(ready_file) if ready_file else None
+        if self.ready_file is not None and self.ready_file.exists():
+            raise FileExistsError('use a new --ready_file; existing receipt preserved')
         self.converted_model_name_or_path = converted_model_name_or_path
 
         self.num_handlers = num_handlers
@@ -284,7 +292,7 @@ class Server:
         self.adapters = adapters
 
         ##############################################################
-        self.env = ExecutionEnv.create(os.path.expanduser("~/.cache/bloombee/flexgen_offload_dir"), device_type=device.type) ##########
+        self.env = ExecutionEnv.create(os.path.abspath(os.path.expanduser(offload_dir or "~/.cache/bloombee/flexgen_offload_dir")), device_type=device.type) ##########
 
         # Policy: keep weights, KV cache, and activations on GPU by default.
         #
@@ -350,7 +358,7 @@ class Server:
         self.policy.log_batch_size_strategy()
 
         self.weight_home = array_1d(self.num_blocks, ValueHolder)
-        self.path = os.path.join(tempfile.gettempdir(), 'data', 'llama_weights')
+        self.path = os.path.abspath(os.path.expanduser(weight_cache_dir)) if weight_cache_dir else os.path.join(tempfile.gettempdir(), 'data', 'llama_weights')
 
         enable_spec_pruner = os.environ.get("BLOOMBEE_ENABLE_SPEC_PRUNER", "1") == "1"
         if enable_spec_pruner:
@@ -536,6 +544,24 @@ class Server:
             )
             try:
                 self.module_container.ready.wait()
+                if self.ready_file is not None and not self.ready_file.exists():
+                    receipt = dict(status='model_runtime_ready',pid=os.getpid(),
+                        peer_id=str(self.dht.peer_id),visible_maddrs=[str(x) for x in self.dht.get_visible_maddrs()],
+                        model_path=self.converted_model_name_or_path,revision=self.revision,
+                        dht_prefix=self.dht_prefix,device=str(self.device),ready_monotonic_ns=time.monotonic_ns())
+                    import hashlib
+                    receipt['loaded_python'] = {
+                        name: dict(path=str(Path(module.__file__).resolve()),
+                                   sha256=hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest())
+                        for name, module in list(sys.modules.items())
+                        if name.startswith('bloombee.') and getattr(module, '__file__', None)
+                        and str(module.__file__).endswith('.py') and Path(module.__file__).is_file()
+                    }
+                    self.ready_file.parent.mkdir(parents=True,exist_ok=True)
+                    draft=self.ready_file.with_suffix(self.ready_file.suffix+'.draft')
+                    with draft.open('x') as stream:
+                        json.dump(receipt,stream,indent=2);stream.flush();os.fsync(stream.fileno())
+                    os.link(draft,self.ready_file)
 
                 while True:
                     timeout = random.random() * 2 * self.mean_balance_check_period
@@ -829,6 +855,10 @@ class ModuleContainer(threading.Thread):
         super().__init__()
 
         self.dht, self.module_backends = dht, module_backends
+        # The ordinary runtime uses this existing DHT for remote page records;
+        # no experiment sidecar or per-layer DHT process is created.
+        for backend in self.module_backends.values():
+            backend.cache_manager._dynamo_dht = dht
         self.server_info, self.update_period, self.expiration = server_info, update_period, expiration
 
         # Optimize shared memory usage: limit Queue maxsize to reduce /dev/shm peak usage
@@ -924,6 +954,13 @@ class ModuleContainer(threading.Thread):
 
         logger.debug(f"Shutting down runtime")
         self.runtime.shutdown()
+
+        seen_remote=set()
+        for backend in self.module_backends.values():
+            plane=getattr(backend.cache_manager,"_dynamo_remote_plane",None)
+            if plane is not None and id(plane) not in seen_remote:
+                seen_remote.add(id(plane))
+                plane.close()
 
         logger.debug("Shutting down backends")
         for backend in self.module_backends.values():
@@ -1034,3 +1071,12 @@ class RuntimeWithDeduplicatedPools(Runtime):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.pools = tuple(set(self.pools))
+
+    def run(self):
+        # process_batch executes on this thread; background loaders and HTTP
+        # readers may share its PID but must never service the allocation FIFO.
+        for backend in self.module_backends.values():
+            pool = getattr(backend, "release_pool", None)
+            if pool is not None:
+                pool.process_func.memory.release_journal.runtime_thread = threading.get_ident()
+        return super().run()

@@ -1,0 +1,48 @@
+{
+  "status": "a5 working draft; incomplete real acceptance",
+  "historical_a4": {
+    "baseline": "0028a5e89ddb634106a2d86fed0197105a377b97",
+    "branch": "kv/review-latest",
+    "source_tests": {
+      "passed": 279,
+      "skipped": 1,
+      "skip_reason": "CUDA-only"
+    },
+    "installed_package_tests": {
+      "passed": 279,
+      "skipped": 1
+    },
+    "page_terminal_comparisons": 205,
+    "wheel_runtime_python_files": 214,
+    "runnable_examples": [
+      "A",
+      "B",
+      "AB",
+      "C",
+      "ABC"
+    ],
+    "native_GPU_end_to_end_retested": false,
+    "dependency_profile": "Observed macOS CPU review lock; full upstream model resolver/build not certified",
+    "published": false,
+    "legacy_prefetch_tests": 12,
+    "review_status": "a4 frozen; awaiting three-owner final impact re-review"
+  },
+  "a4_manifest": "eec26300b6da8334c196b3c355335c17191c41c03873deed3ba1e1540135163f",
+  "latest_focused_tests": {
+    "native_threshold_tests": 19,
+    "conversion_optional_registration_gemma_lora_passed": 33,
+    "skipped": 2
+  },
+  "full_latest_source_suite_repeated": false,
+  "latest_wheel_rebuilt": false,
+  "latest_three_owner_signoff": false,
+  "installation_scope": "withdrawn by user; untested and not a release blocker in this task",
+  "real_minimal_case": {
+    "source_runtime_ready": true,
+    "source_cold_completed": false,
+    "remote_model_adoption_tested": false,
+    "reason": "harness used128 input+3 output against128 server limit; consumer admission no idle GPU"
+  },
+  "source_working_manifest_sha256": "ddf7b74813aa53d528d070794a04221a2fc0ca8c8c75f9b2d9d2b9a0b916b0cf",
+  "published": false
+}

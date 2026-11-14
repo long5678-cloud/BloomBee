@@ -940,7 +940,24 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
         self._device_already_set = True
 
     @torch.inference_mode() # Enter inference mode, no gradient computation to save memory
-    def inference_step( # Each block will execute once
+    def inference_step(self, hidden_states, hypo_ids, inference_info):
+        page_records = self.cache_manager.cache._dynamo_page_records
+        if len(inference_info.cache_handles) == 1 and inference_info.cache_handles[0] in page_records:
+            from bloombee.server.dynamo_page_service import run_page_continuation
+            return run_page_continuation(self, hidden_states, hypo_ids, inference_info,
+                self._inference_step_uncached, page_records[inference_info.cache_handles[0]])
+        if self.cache_manager.cache._dynamo_active_history:
+            from bloombee.server.dynamo_gpu import protect_history_before_step
+            protect_history_before_step(self.cache_manager.cache, inference_info, hypo_ids)
+        if os.environ.get("BLOOMBEE_DYNAMO_SERVICE") != "1" or getattr(inference_info, "dynamo_cache", None) is None:
+            return self._inference_step_uncached(hidden_states, hypo_ids, inference_info)
+        if os.environ.get("BLOOMBEE_DYNAMO_GPU_ENGINE", "dense") == "pages":
+            from bloombee.server.dynamo_page_service import run_page_prefill
+            return run_page_prefill(self, hidden_states, hypo_ids, inference_info, self._inference_step_uncached)
+        from bloombee.server.dynamo_service import run_dynamo_step
+        return run_dynamo_step(self, hidden_states, hypo_ids, inference_info, self._inference_step_uncached)
+
+    def _inference_step_uncached( # Each block will execute once
         self,
         hidden_states: torch.Tensor,  # Input hidden state tensor
         hypo_ids: torch.LongTensor,  # Hypothesis IDs
@@ -981,6 +998,12 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
                 # reserved in `Server._choose_num_blocks()`. This saves us from OOMs if `max_chunk_size_bytes`
                 # is at least 4-6x less than `autograd_memory`.
                 max_chunk_length = self._estimate_max_chunk_length(hidden_states, inference_info) # Estimate maximum chunk length
+                page_session = self.cache_manager.dynamo_page_session()
+                if page_session is not None:
+                    if self._is_spec_decoding or self._need_pruning:
+                        raise NotImplementedError(
+                            "direct engine pages support ordinary non-speculative Llama requests only"
+                        )
                 # Debug output removed
                 # see_memory_usage("transformer backend inference step : seq_len")
                 output_hidden_states = torch.empty_like(hidden_states) if seq_len > max_chunk_length else None # Initialize output states
@@ -1340,7 +1363,20 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
                     else:
                         output_hidden_states = output_hidden_states_chunk
 
-                    if seq_len > max_chunk_length:
+                    if page_session is not None:
+                        # Commit only this chunk's NEW KV. Reuse the page views
+                        # on the next iteration; never concatenate historical KV.
+                        self.cache_manager.update_cache(
+                            new_kvs, start_position=cache_len + offset,
+                            batch_offset=inference_info.batch_offset,
+                            full_batch_size=inference_info.full_batch_size,
+                            micro_batch_size=inference_info.micro_batch_size,
+                        )
+                        chunk_layer_past = page_session.operands()
+                        self.cache_manager.dynamo_chunk_completed(
+                            cache_len + offset, hidden_states_chunk, output_hidden_states_chunk
+                        )
+                    elif seq_len > max_chunk_length:
                         if is_glm_mla:
                             # kv_nope and k_rot have different last dims
                             # (512 vs 64 on GLM-4.7-Flash). The shared-head
@@ -1357,7 +1393,7 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
                             chunk_layer_past_llama = self._kv_to_llama_layout(chunk_layer_past, batch_size)
                             chunk_layer_past = self._concat_llama_kvs(chunk_layer_past_llama, new_kvs_llama)
 
-                if seq_len > max_chunk_length:
+                if page_session is None and seq_len > max_chunk_length:
                     if is_glm_mla:
                         concatenated_kvs = concat_mla_chunks(chunk_new_kvs)
                     else:
@@ -1372,13 +1408,14 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
                     _prof_upd_t0 = perf_counter()
 
                 # Centralized KV update via KVCacheManager (single step-level seam).
-                self._finalize_cache_update(
-                    new_kvs,
-                    cache_len=cache_len,
-                    inference_info=inference_info,
-                    kv_cache_position_ids=kv_cache_position_ids,
-                    cache_tensors=cache_tensors,
-                )
+                if page_session is None:
+                    self._finalize_cache_update(
+                        new_kvs,
+                        cache_len=cache_len,
+                        inference_info=inference_info,
+                        kv_cache_position_ids=kv_cache_position_ids,
+                        cache_tensors=cache_tensors,
+                    )
                 if self._step_profile_enabled:
                     if torch.cuda.is_available():
                         torch.cuda.synchronize()
@@ -1855,6 +1892,8 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
 
     def get_pools(self) -> Sequence[PrioritizedTaskPool]:
         pools = self.forward_pool, self.backward_pool, self.inference_pool
+        if getattr(self, "release_pool", None) is not None:
+            pools += (self.release_pool,)
         return (*pools, self.lora_pool) if hasattr(self, "lora_pool") else pools
 
     def get_info(self) -> Dict[str, Any]:
@@ -1864,6 +1903,7 @@ class TransformerBackend(ModuleBackend): # hivemind: ModuleBackend.module: nn.Mo
     def shutdown(self):
         # Break the cyclic references, otherwise TransformerBackend may be not garbage-collected
         self.forward_pool = self.backward_pool = self.inference_pool = None
+        self.release_pool = None
         if hasattr(self, "lora_pool"):
             self.lora_pool = None
 
@@ -1899,7 +1939,17 @@ def merge_inference_pools_inplace(backends: Dict[ExpertUID, TransformerBackend])
         name=f"merged_inference",
         track_transfer_timing=True,
     )
+    release_pools = {}
     for backend in backends.values():
+        if os.environ.get("BLOOMBEE_PAGE_CONTROL_PORT") and os.environ.get("BLOOMBEE_DYNAMO_GPU_ENGINE") == "pages":
+            from bloombee.server.page_release_ack import ReleaseJournal, RuntimeReleaseTask
+            memory = backend.cache_manager.cache
+            if memory not in release_pools:
+                memory.release_journal = ReleaseJournal()
+                release_pools[memory] = PrioritizedTaskPool(
+                    RuntimeReleaseTask(memory), max_batch_size=1, name="page_release",
+                    device=None)
+            backend.release_pool = release_pools[memory]
         assert not backend.inference_pool.is_alive()
         backend.inference_pool = merged_pool
         # here, the backend is "blocks" in the server.py line 536
@@ -1977,6 +2027,9 @@ class _MergedInferenceStep:
         inference_infos: Sequence[InferenceMetadata],
         *optional_prompts: Optional[torch.Tensor],
     ) -> Tuple[torch.Tensor, ...]:
+        if any(getattr(info, "remote_prefix", None) is not None for info in inference_infos):
+            from bloombee.server.prefix_rpc import run_prefix_rpc
+            return run_prefix_rpc(self, hidden_states, hypo_ids, inference_infos, optional_prompts)
         assert len(inference_infos) == len(
             optional_prompts
         ), f"found {len(inference_infos)} blocks but {len(optional_prompts)} prompts"

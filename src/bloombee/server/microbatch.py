@@ -76,6 +76,7 @@ def build_inference_metadata(
     batch_offset: int = 0,
     full_batch_size: int = 0,
     micro_batch_size: int = 0,
+    dynamo_cache: Optional[dict] = None,
 ) -> InferenceMetadata:
     return InferenceMetadata(
         uid,
@@ -92,6 +93,7 @@ def build_inference_metadata(
         batch_offset=batch_offset,
         full_batch_size=full_batch_size,
         micro_batch_size=micro_batch_size,
+        dynamo_cache=dynamo_cache,
     )
 
 

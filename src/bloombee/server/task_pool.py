@@ -120,7 +120,7 @@ class PrioritizedTaskPool(threading.Thread):
 
     def get_task_size(self, task: Task) -> int:
         """compute task processing complexity; defaults to the total number of tokens"""
-        if task.args and task.args[0].ndim >= 2:
+        if task.args and getattr(task.args[0], "ndim", 0) >= 2:
             return task.args[0].shape[0] * task.args[0].shape[1]
         return 1
 

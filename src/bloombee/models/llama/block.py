@@ -638,31 +638,40 @@ class OptimizedLlamaDecoderLayer(LlamaDecoderLayer):
                             self._kv_source_probe_emitted = True
 
                         past_key, past_value = past_key_value
-                        # Normalize past shapes into [B, H, S, D]
-                        # logger.info(f"before format past_key: {past_key.shape}")
-                        if past_key.dim() == 3:
-                            # from backend packed: [B*H, D, S] or [B*H, S, D]
-                            bh, x1, x2 = past_key.shape
-                            b = hidden_states.shape[0]
-                            h = bh // b
-                            d = self.self_attn.head_dim
-                            s = x2 if x1 == d else x1
-                            if x1 == d and x2 == s:
-                                k_bhsd = past_key.permute(0, 2, 1)
-                            else:
-                                k_bhsd = past_key
-                            v_bhsd = past_value if past_value.shape[1] == s else past_value.permute(0, 2, 1)
-                            past_key = k_bhsd.view(b, h, s, d)
-                            past_value = v_bhsd.view(b, h, s, d)
-                        # Transform to FlexGen expected (s, b*h, d)
-                        b, h, s, d = past_key.shape
-                        # logger.info(f"after format past_key: {past_key.shape}")
-                        #   Optimized: Use reshape instead of permute+contiguous+view
-                        # reshape() will avoid copy when possible
-                        past_k_new = past_key.permute(2, 0, 1, 3).reshape(s, b * h, d)
-                        past_v_new = past_value.permute(2, 0, 1, 3).reshape(s, b * h, d)
-                        # logger.info(f"past_key: {past_k_new.shape}")
-                        self.cache_read_buf[0][0].store((past_k_new, past_v_new))
+                        from bloombee.server.dynamo_pages import PagedOperand
+                        if isinstance(past_key, PagedOperand) or isinstance(past_value, PagedOperand):
+                            if not isinstance(past_key, PagedOperand) or not isinstance(past_value, PagedOperand):
+                                raise ValueError("paired page operands required")
+                            self.cache_read_buf[0][0].store((past_key, past_value))
+                        else:
+                            # Normalize past shapes into [B, H, S, D]
+                            # logger.info(f"before format past_key: {past_key.shape}")
+                            if past_key.dim() == 3:
+                                # from backend packed: [B*H, D, S] or [B*H, S, D]
+                                bh, x1, x2 = past_key.shape
+                                b = hidden_states.shape[0]
+                                h = bh // b
+                                d = self.self_attn.head_dim
+                                s = x2 if x1 == d else x1
+                                if x1 == d and x2 == s:
+                                    k_bhsd = past_key.permute(0, 2, 1)
+                                else:
+                                    k_bhsd = past_key
+                                v_bhsd = past_value if past_value.shape[1] == s else past_value.permute(0, 2, 1)
+                                past_key = k_bhsd.view(b, h, s, d)
+                                past_value = v_bhsd.view(b, h, s, d)
+                            # Transform to FlexGen expected (s, b*h, d)
+                            b, h, s, d = past_key.shape
+                            # logger.info(f"after format past_key: {past_key.shape}")
+                            #   Optimized: Use reshape instead of permute+contiguous+view
+                            # reshape() will avoid copy when possible
+                            past_k_new = past_key.permute(2, 0, 1, 3).reshape(s, b * h, d)
+                            past_v_new = past_value.permute(2, 0, 1, 3).reshape(s, b * h, d)
+                            from bloombee.server.dynamo_native_context import native_attention_storage
+                            past_k_new, past_v_new = native_attention_storage(
+                                past_k_new, past_v_new, s + hidden_states.shape[1])
+                            # logger.info(f"past_key: {past_k_new.shape}")
+                            self.cache_read_buf[0][0].store((past_k_new, past_v_new))
 
                     # log_mem(f"[Layer:{self.layer_id}] before self_attn layer={j} i={i} k={k}")
                     layer_output = self.compute_layer(i, j, k, position_ids=position_ids, generated_tokens_num=generated_tokens_num, rotary_position_ids=rotary_position_ids)
