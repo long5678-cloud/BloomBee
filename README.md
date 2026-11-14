@@ -1,11 +1,11 @@
-# BloomBee KV cache
+# BloomBee KV Network
 
 BloomBee can retain key/value (KV) tensors on a node, publish successful reuse events to a distributed hash table (DHT), and prefetch remote prefixes through LMCache. An ordinary inference request can then use the prefetched tensors on the consumer GPU.
 
 ## Modules and options
 
 ```text
-BloomBee KV cache
+BloomBee KV Network
 ├── Local retention
 │   ├── lru         Evict by least recent successful use
 │   ├── hotness     Count successful uses in a time window
@@ -18,7 +18,22 @@ BloomBee KV cache
     └── transition  Predict the next prefix from observed transitions
 ```
 
-Local retention lives in `src/bloombee/kv_cache/`. The public composition API and LMCache integration live in `src/bloombee/kv_cache/network/`. The ordinary model path uses `src/bloombee/client/` and `src/bloombee/server/`. See the [API reference](docs/kv-network-api.md) for exact eviction rules, tie handling, priorities and storage contracts.
+## Repository layout
+
+```text
+src/bloombee/
+├── kv_cache/           Local KV retention and distributed telemetry
+│   └── network/        Public API, prefetch policies and LMCache integration
+├── client/             Inference sessions and request metadata
+└── server/             Model execution, physical KV pages and prefix reuse
+
+configs/                Service and deployment configuration
+examples/               Runnable API and inference examples
+tests/kv_network/       Tests for the KV Network modules
+docs/                   Installation, API, runtime and validation guides
+```
+
+See the [API reference](docs/kv-network-api.md) for eviction rules, tie handling, priorities and storage contracts.
 
 ## Quick start
 
